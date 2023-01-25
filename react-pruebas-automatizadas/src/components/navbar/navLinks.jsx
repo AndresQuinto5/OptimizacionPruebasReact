@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import home from "../pruebas/home";
+import StartingPage from "../pruebas/StartingPage";
+
 
 const NavLinksContainer = styled.div`
     height: 100%;
@@ -43,13 +46,13 @@ export function NavLinks(props) {
         <NavLinksContainer>
             <LinkWrapper>
                 <LinkItem>
-                    <Link href="#">Home</Link>
+                    <Link href="/">Home</Link>
                 </LinkItem>
                 <LinkItem>
-                    <Link href="#">About</Link>
+                    <Link href="/StartingPage">About</Link>
                 </LinkItem>
                 <LinkItem>
-                    <Link href="#">Contact</Link>
+                    <Link href="/contact">Contact</Link>
                 </LinkItem>
             </LinkWrapper>
         </NavLinksContainer>
