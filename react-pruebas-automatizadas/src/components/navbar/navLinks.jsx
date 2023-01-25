@@ -50,7 +50,7 @@ export function NavLinks(props) {
                     <Link href="/">Home</Link>
                 </LinkItem>
                 <LinkItem>
-                    <Link href="/StartingPage">About</Link>
+                    <Link href="/Final">Final</Link>
                 </LinkItem>
                 <LinkItem>
                     <Link href="/contact">Contact</Link>
