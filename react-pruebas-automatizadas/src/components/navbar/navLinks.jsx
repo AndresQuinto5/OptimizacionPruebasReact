@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import home from "../pruebas/home";
 import StartingPage from "../pruebas/StartingPage";
+import { Route } from  "react-router-dom";
 
 
 const NavLinksContainer = styled.div`
