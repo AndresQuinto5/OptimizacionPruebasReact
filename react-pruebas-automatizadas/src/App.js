@@ -5,20 +5,21 @@ import StartingPage from './components/pruebas/StartingPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Final from './components/pruebas/final';
 import Home from './components/pruebas/home';
+import Quiz from './components/quiz';
+import { QuizProvider } from "./contexts/quiz";
 
 
 function App() {
   return (
     <BrowserRouter>
     <div className="App">
-      <div className='navbar'>
+    <div className='navbar'>
         <Navbar />
+    </div>
+    <QuizProvider>
+      <Quiz />
+    </QuizProvider>
 
-      </div>
-      <div className='starting-page'>
-        
-
-        </div>
 
     </div>
     <Routes>
