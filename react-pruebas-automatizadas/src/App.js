@@ -16,6 +16,9 @@ function App() {
     <div className='navbar'>
         <Navbar />
     </div>
+    <QuizProvider>
+      <Quiz />
+    </QuizProvider>
 
 
     </div>
