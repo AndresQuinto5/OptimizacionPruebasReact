@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from "react";
-import questions from "../data";
+import questions from "../contexts/data";
 import { shuffleAnswers } from "../../src/helper";
 
 const initialState = {
@@ -50,10 +50,14 @@ const reducer = (state, action) => {
   }
 };
 
+
 export const QuizContext = createContext();
 
 export const QuizProvider = ({ children }) => {
   const value = useReducer(reducer, initialState);
 
+
   return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
+
 };
+

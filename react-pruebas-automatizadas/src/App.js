@@ -7,6 +7,8 @@ import Final from './components/pruebas/final';
 import Home from './components/pruebas/home';
 import Quiz from './components/quiz';
 import { QuizProvider } from "./contexts/quiz";
+import { QuizProviderTIE } from "./contexts/quizTIE";
+import QuizTIE from './components/TIE/quizTIE';
 
 
 function App() {
@@ -16,9 +18,10 @@ function App() {
     <div className='navbar'>
         <Navbar />
     </div>
-    <QuizProvider>
-      <Quiz />
-    </QuizProvider>
+
+    <QuizProviderTIE>
+      <QuizTIE />
+    </QuizProviderTIE>
 
 
     </div>
