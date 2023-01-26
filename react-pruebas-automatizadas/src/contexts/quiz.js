@@ -1,12 +1,13 @@
 import React, { createContext, useReducer } from "react";
-import questions from "../data";
+import questions from "../contexts/dataTemperamento";
 import { shuffleAnswers } from "../../src/helper";
 
 const initialState = {
   questions,
   currentQuestionIndex: 0,
   currentAnswer: "",
-  answers: shuffleAnswers(questions[0]),
+  answers: questions[0].answers,
+  answerValue: [0, 0, 0, 0], 
   showResults: false,
   correctAnswersCount: 0,
 };
@@ -14,11 +15,9 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case "SELECT_ANSWER": {
-      const correctAnswersCount =
-        action.payload ===
-        state.questions[state.currentQuestionIndex].correctAnswer
-          ? state.correctAnswersCount + 1
-          : state.correctAnswersCount;
+      const selectedAnswerIndex = state.answers.indexOf(action.payload);
+      const newAnswerValue = [...state.answerValue];
+      newAnswerValue[selectedAnswerIndex] = 1;
       return {
         ...state,
         currentAnswer: action.payload,
@@ -33,7 +32,7 @@ const reducer = (state, action) => {
         : state.currentQuestionIndex + 1;
       const answers = showResults
         ? []
-        : shuffleAnswers(state.questions[currentQuestionIndex]);
+        : state.questions[currentQuestionIndex].answers;
       return {
         ...state,
         currentAnswer: "",

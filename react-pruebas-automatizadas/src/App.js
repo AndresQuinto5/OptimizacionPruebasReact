@@ -5,7 +5,7 @@ import StartingPage from './components/pruebas/StartingPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Final from './components/pruebas/final';
 import Home from './components/pruebas/home';
-import Quiz from './components/quiz';
+import Quiz from './components/Temperamento/quizTEMP';
 import { QuizProvider } from "./contexts/quiz";
 
 

@@ -1,6 +1,9 @@
+
+const pregunta = "Seleccione una palabra de las cuatro opciones mostradas en pantalla, si no sabe el significado de alguna palabra, consulte un diccionario o pregunta antes de contestar. "
+
 const data = [
     {
-      question: "What does CSS stand for?",
+      question: pregunta,
       incorrectAnswers: [
         "Computer Style Sheets",
         "Creative Style Sheets",
@@ -11,7 +14,7 @@ const data = [
   
     {
       question:
-        "Where in an HTML document is the correct place to refer to an external style sheet?",
+      pregunta,
       incorrectAnswers: [
         "In the <body> section",
         "At the end of the document",
@@ -20,17 +23,17 @@ const data = [
       correctAnswer: "In the <head> section",
     },
     {
-      question: "Which HTML tag is used to define an internal style sheet?",
+      question: pregunta,
       incorrectAnswers: ["<script>", "<headStyle>", "<css>"],
       correctAnswer: "<style>",
     },
     {
-      question: "Which HTML attribute is used to define inline styles?",
+      question: pregunta,
       incorrectAnswers: ["class", "font", "styles"],
       correctAnswer: "style",
     },
     {
-      question: "Which is the correct CSS syntax?",
+      question: pregunta,
       incorrectAnswers: [
         "{body:color=black;}",
         "{body;color:black;}",
@@ -39,7 +42,7 @@ const data = [
       correctAnswer: "body {color: black;}",
     },
     {
-      question: "How do you insert a comment in a CSS file?",
+      question: pregunta,
       incorrectAnswers: [
         "' this is a comment",
         "// this is a comment",
@@ -48,12 +51,12 @@ const data = [
       correctAnswer: "/* this is a comment */",
     },
     {
-      question: "Which property is used to change the background color?",
+      question: pregunta,
       incorrectAnswers: ["color", "bgcolor", "bgColor"],
       correctAnswer: "background-color",
     },
     {
-      question: "How do you add a background color for all <h1> elements?",
+      question: pregunta,
       incorrectAnswers: [
         "all.h1 {background-color:#FFFFFF;}",
         "h1.setAll {background-color:#FFFFFF;}",
@@ -63,4 +66,6 @@ const data = [
     },
   ];
   
+
+
   export default data;
