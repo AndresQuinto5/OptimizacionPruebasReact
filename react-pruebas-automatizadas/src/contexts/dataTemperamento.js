@@ -1,5 +1,5 @@
 
-const pregunta = "Seleccione una palabra de las cuatro opciones mostradas en pantalla, si no sabe el significado de alguna palabra, consulte un diccionario o pregunta antes de contestar. "
+const pregunta = "Seleccione la palabra que más lo identifique, si no sabe el significado de alguna palabra, consulte un diccionario antes de contestar. "
 
 const data2 = [
     {
