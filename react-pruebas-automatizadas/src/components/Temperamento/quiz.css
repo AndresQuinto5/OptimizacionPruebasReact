@@ -82,11 +82,11 @@
   }
   
   .wrong-answer {
-    border: 2px solid #dc0a0a;
+    border: 2px solid #f16a24;
   }
   
   .wrong-answer .answer-letter {
-    background: #dc0a0a;
+    background: #f16a24;
   }
   
   .next-button {
