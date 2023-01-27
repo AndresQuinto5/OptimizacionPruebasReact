@@ -53,7 +53,7 @@ export function NavLinks(props) {
                     <Link href="/Temperamento">Test de Temperamento</Link>
                 </LinkItem>
                 <LinkItem>
-                    <Link href="/contact">Contact</Link>
+                    <Link href="/TIE">TIE</Link>
                 </LinkItem>
             </LinkWrapper>
         </NavLinksContainer>
