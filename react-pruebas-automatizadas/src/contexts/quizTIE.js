@@ -1,12 +1,12 @@
 import React, { createContext, useReducer } from "react";
 import questionsTIE from "../contexts/dataTIE"
-import { shuffleAnswers } from "../../src/helper";
+import { AnswerList } from "../../src/helper";
 
 const initialStateTIE = {
     questionsTIE,
     currentQuestionIndex: 0,
     currentAnswer: "",
-    answers: shuffleAnswers(questionsTIE[0]),
+    answers: AnswerList(questionsTIE[0]),
     showResults: false,
     correctAnswersCount: 0,
   };
@@ -33,7 +33,7 @@ const initialStateTIE = {
           : state.currentQuestionIndex + 1;
         const answers = showResults
           ? []
-          : shuffleAnswers(state.questionsTIE[currentQuestionIndex]);
+          : AnswerList(state.questionsTIE[currentQuestionIndex]);
         return {
           ...state,
           currentAnswer: "",
