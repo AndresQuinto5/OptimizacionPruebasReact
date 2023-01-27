@@ -1,15 +1,23 @@
 import React, { createContext, useReducer } from "react";
-import questions from "../contexts/data";
-import { shuffleAnswers } from "../../src/helper";
+import questions from "./dataTemperamento";
+import { AnswerList } from "../../src/helper";
 
 const initialState = {
   questions,
   currentQuestionIndex: 0,
   currentAnswer: "",
-  answers: shuffleAnswers(questions[0]),
+  answers: AnswerList(questions[0]),
   showResults: false,
   correctAnswersCount: 0,
 };
+
+const generateAnswers = (question) => {
+  if (!question) {
+    return [];
+  }
+  return question.answers
+};
+
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -33,7 +41,7 @@ const reducer = (state, action) => {
         : state.currentQuestionIndex + 1;
       const answers = showResults
         ? []
-        : shuffleAnswers(state.questions[currentQuestionIndex]);
+        : AnswerList(state.questions[currentQuestionIndex]);
       return {
         ...state,
         currentAnswer: "",
@@ -50,13 +58,10 @@ const reducer = (state, action) => {
   }
 };
 
-
 export const QuizContext = createContext();
 
 export const QuizProvider = ({ children }) => {
   const value = useReducer(reducer, initialState);
 
-
   return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;
-
 };
