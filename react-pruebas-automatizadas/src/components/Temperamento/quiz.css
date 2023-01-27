@@ -10,7 +10,7 @@
   }
   
   .question {
-    background-color: #0094da;
+    background-color: #003660;
     color: white;
     padding: 10px;
     min-height: 60px;
@@ -27,7 +27,7 @@
   }
   
   .congratulations {
-    background-color: #0094da;
+    background-color: #003660;
     padding: 20px;
     font-size: 36px;
     color: #fff;
@@ -42,7 +42,7 @@
   .answer {
     width: 48%;
     background: #fff;
-    border: 2px solid #0094da;
+    border: 2px solid #003660;
     min-height: 70px;
     cursor: pointer;
     margin-bottom: 30px;
@@ -58,7 +58,7 @@
   
   .answer-letter {
     font-size: 30px;
-    background-color: #0084da;
+    background-color: #003660;
     color: #fff;
     width: 70px;
     display: flex;
@@ -74,11 +74,11 @@
   }
   
   .correct-answer {
-    border: 2px solid #1ea55b;
+    border: 2px solid #f16a24;
   }
   
   .correct-answer .answer-letter {
-    background: #1ea55b;
+    background: #f16a24;
   }
   
   .wrong-answer {

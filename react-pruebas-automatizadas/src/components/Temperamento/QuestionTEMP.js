@@ -5,24 +5,20 @@ import { QuizContext } from "../../contexts/quiz";
 const Question = () => {
   const [quizState, dispatch] = useContext(QuizContext);
   const currentQuestion = quizState.questions[quizState.currentQuestionIndex];
-  const handleSelectAnswer = (answerText) => {
-    dispatch({
-      type: "UPDATE_ANSWER",
-      payload: { answerText, value: 1 },
-    });
-  };
-
   return (
     <div>
       <div className="question">{currentQuestion.question}</div>
       <div className="answers">
-        {currentQuestion.answers.map((answer, index) => (
+        {quizState.answers.map((answer, index) => (
           <Answer
-            answerText={answer.text}
-            value={answer.value}
+            answerText={answer}
+            currentAnswer={quizState.currentAnswer}
+            correctAnswer={currentQuestion.correctAnswer}
             key={index}
             index={index}
-            onSelectAnswer={handleSelectAnswer}
+            onSelectAnswer={(answerText) =>
+              dispatch({ type: "SELECT_ANSWER", payload: answerText })
+            }
           />
         ))}
       </div>

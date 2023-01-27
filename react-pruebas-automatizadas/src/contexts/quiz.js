@@ -1,23 +1,32 @@
 import React, { createContext, useReducer } from "react";
-import questions from "../contexts/dataTemperamento";
-import { shuffleAnswers } from "../../src/helper";
+import questions from "./dataTemperamento";
+import { AnswerList } from "../../src/helper";
 
 const initialState = {
   questions,
   currentQuestionIndex: 0,
   currentAnswer: "",
-  answers: questions[0].answers,
-  answerValue: [0, 0, 0, 0], 
+  answers: AnswerList(questions[0]),
   showResults: false,
   correctAnswersCount: 0,
 };
 
+const generateAnswers = (question) => {
+  if (!question) {
+    return [];
+  }
+  return question.answers
+};
+
+
 const reducer = (state, action) => {
   switch (action.type) {
     case "SELECT_ANSWER": {
-      const selectedAnswerIndex = state.answers.indexOf(action.payload);
-      const newAnswerValue = [...state.answerValue];
-      newAnswerValue[selectedAnswerIndex] = 1;
+      const correctAnswersCount =
+        action.payload ===
+        state.questions[state.currentQuestionIndex].correctAnswer
+          ? state.correctAnswersCount + 1
+          : state.correctAnswersCount;
       return {
         ...state,
         currentAnswer: action.payload,
@@ -32,7 +41,7 @@ const reducer = (state, action) => {
         : state.currentQuestionIndex + 1;
       const answers = showResults
         ? []
-        : state.questions[currentQuestionIndex].answers;
+        : AnswerList(state.questions[currentQuestionIndex]);
       return {
         ...state,
         currentAnswer: "",
