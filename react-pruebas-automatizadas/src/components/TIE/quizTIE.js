@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { QuizContextTIE } from "../../contexts/quizTIE";
-import "./quizTIE.css";
+import "../Temperamento/quiz.css";
 import QuestionTIE from "./QuestionTIE";
 
 
