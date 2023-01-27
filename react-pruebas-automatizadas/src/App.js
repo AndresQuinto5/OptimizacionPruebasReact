@@ -7,6 +7,7 @@ import TestTemperamento from './components/pruebas/TestTemperamento';
 import Home from './components/pruebas/home';
 import Quiz from './components/Temperamento/quizTEMP';
 import { QuizProvider } from "./contexts/quiz";
+import TestTIE from './components/pruebas/TIE';
 
 
 function App() {
@@ -16,14 +17,12 @@ function App() {
     <div className='navbar'>
         <Navbar />
     </div>
-    
-
 
     </div>
     <Routes>
       <Route exact path='/' element={< Home />}></Route>
       <Route exact path='/Temperamento' element={< TestTemperamento />}></Route>
-      <Route exact path='/TIE' element={< StartingPage />}></Route>
+      <Route exact path='/TIE' element={< TestTIE />}></Route>
     </Routes>
     </BrowserRouter>
   );
