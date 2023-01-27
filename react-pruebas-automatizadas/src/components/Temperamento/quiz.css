@@ -10,14 +10,15 @@
   }
   
   .question {
-    background-color: #003660;
+    background-color: #183a54;
     color: white;
-    padding: 10px;
+    padding: 1.5em;
     min-height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
+
   }
   
   .results {
@@ -82,11 +83,11 @@
   }
   
   .wrong-answer {
-    border: 2px solid #dc0a0a;
+    border: 2px solid #f16a24;
   }
   
   .wrong-answer .answer-letter {
-    background: #dc0a0a;
+    background: #f16a24;
   }
   
   .next-button {
