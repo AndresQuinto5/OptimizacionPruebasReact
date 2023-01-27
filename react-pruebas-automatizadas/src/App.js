@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TestTemperamento from './components/pruebas/TestTemperamento';
 import Home from './components/pruebas/home';
 import Quiz from './components/Temperamento/quizTEMP';
-import { QuizProvider } from "./contexts/quiz";
+import { QuizProvider } from "./contexts/quizTemperamento";
 import TestTIE from './components/pruebas/TIE';
 
 

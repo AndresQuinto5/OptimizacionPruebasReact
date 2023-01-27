@@ -3,7 +3,7 @@ import Card from "./card";
 import "./StartingPage.css";
 
 import Quiz from '../Temperamento/quizTEMP';
-import { QuizProvider } from "../../contexts/quiz";
+import { QuizProvider } from "../../contexts/quizTemperamento";
 
 
 

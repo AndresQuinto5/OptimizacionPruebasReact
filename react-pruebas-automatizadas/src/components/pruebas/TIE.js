@@ -1,6 +1,6 @@
 import React from "react";
 import Quiz from '../Temperamento/quizTEMP';
-import { QuizProvider } from "../../contexts/quiz";
+import { QuizProvider } from "../../contexts/quizTemperamento";
 import { QuizProviderTIE } from "../../contexts/quizTIE";
 import QuizTIE from "../TIE/quizTIE";
 
