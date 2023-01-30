@@ -30,7 +30,7 @@ const Quiz = () => {
       {!quizState.showResults && (
         <div>
           <div className="score">
-            Question {quizState.currentQuestionIndex + 1}/
+            Pregunta {quizState.currentQuestionIndex + 1}/
             {quizState.questions.length}
           </div>
           <Question />
@@ -39,7 +39,7 @@ const Quiz = () => {
               onClick={() => dispatch({ type: "NEXT_QUESTION" })}
               className="next-button"
             >
-              Next question
+              Siguiente
             </div>
           )}
         </div>
