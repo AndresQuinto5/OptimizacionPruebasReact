@@ -47,7 +47,7 @@ export function NavLinks(props) {
         <NavLinksContainer>
             <LinkWrapper>
                 <LinkItem>
-                    <Link href="/">Home</Link>
+                    <Link href="/">Inicio</Link>
                 </LinkItem>
                 <LinkItem>
                     <Link href="/Temperamento">Test de Temperamento</Link>
