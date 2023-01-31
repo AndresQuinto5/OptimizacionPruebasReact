@@ -11,12 +11,12 @@ const QuizTIE = () => {
     <div className="quiz">
       {quizState.showResults && (
         <div className="results">
-          <div className="congratulations">Congratulations!</div>
+          <div className="congratulations">Test de inteligencia emocional</div>
           <div className="results-info">
-            <div>You have completed the quiz.</div>
+            <div>Se ha finalizado el test!</div>
             <div>
-              You've got {quizState.correctAnswersCount} of &nbsp;
-              {quizState.questionsTIE.length} right.
+              Despliegue de resultados {quizState.correctAnswersCount} aqui &nbsp;
+              {quizState.questionsTIE.length}
             </div>
           </div>
           <div
@@ -30,7 +30,7 @@ const QuizTIE = () => {
       {!quizState.showResults && (
         <div>
           <div className="score">
-            Question {quizState.currentQuestionIndex + 1}/
+            Pregunta {quizState.currentQuestionIndex + 1}/
             {quizState.questionsTIE.length}
           </div>
           <QuestionTIE />
@@ -39,7 +39,7 @@ const QuizTIE = () => {
               onClick={() => dispatch({ type: "NEXT_QUESTION" })}
               className="next-button"
             >
-              Next question
+              Siguiente
             </div>
           )}
         </div>
