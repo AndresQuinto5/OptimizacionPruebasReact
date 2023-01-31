@@ -11,11 +11,12 @@ const Answer = ({
     currentAnswer === index && currentAnswer !== correctAnswer;
   const correctAnswerClass = isCorrectAnswer ? "correct-answer" : "";
   const wrongAnswerClass = isWrongAnswer ? "wrong-answer" : "";
-  const disabledClass = currentAnswer ? "disabled-answer" : "";
+  //const disabledClass = currentAnswer ? "disabled-answer" : "";
   return (
     <div
-      className={`answer ${correctAnswerClass} ${wrongAnswerClass} ${disabledClass}`}
-      onClick={() => onSelectAnswer(index)}
+    className={`answer ${correctAnswerClass} ${wrongAnswerClass} `}
+    onClick={() => onSelectAnswer(index)}
+      
     >
       <div className="answer-letter">{letterMapping[index]}</div>
       <div className="answer-text">{answerText}</div>

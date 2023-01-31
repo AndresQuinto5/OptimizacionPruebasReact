@@ -47,6 +47,7 @@ const data2 = [
     { answer: "Reservado", value: 0 },
     ],
     },
+    
     {
     question: pregunta,
     answers: [
@@ -363,6 +364,7 @@ const data2 = [
     { answer: "Astuto", value: 0 },
     ],
     },
+    
     // ... más preguntas
     ];
 

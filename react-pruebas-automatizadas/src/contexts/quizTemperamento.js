@@ -25,7 +25,7 @@ const generateAnswers = (question) => {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "SELECT_ANSWER": {
+    case "SELECT_ANSWER": { /*
       if(action.payload == 1){
         state.sangineoAnswers = state.sangineoAnswers + 1
       }else if (action.payload == 2){
@@ -34,13 +34,23 @@ const reducer = (state, action) => {
         state.melancolicoAnswers = state.melancolicoAnswers + 1
       }else if (action.payload == 4){
         state.flematicoAnswers = state.flematicoAnswers + 1
-      }
+      }*/
       return {
         ...state,
         currentAnswer: action.payload
       };
     }
     case "NEXT_QUESTION": {
+      let currentAnswer = state.currentAnswer;
+      if(currentAnswer == 1){
+        state.sangineoAnswers = state.sangineoAnswers + 1
+      }else if (currentAnswer == 2){
+        state.colericoAnswers = state.colericoAnswers + 1
+      }else if (currentAnswer == 3){
+        state.melancolicoAnswers = state.melancolicoAnswers + 1
+      }else if (currentAnswer == 4){
+        state.flematicoAnswers = state.flematicoAnswers + 1
+      }
       const showResults =
         state.currentQuestionIndex === state.questions.length - 1;
       const currentQuestionIndex = showResults
