@@ -18,8 +18,16 @@ const Quiz = () => {
           <div className="results-info">
             <div>You have completed the quiz.</div>
             <div>
-              You've got {quizState.correctAnswersCount} of &nbsp;
-              {quizState.questions.length} right.
+              Sangineo {quizState.sangineoAnswers / 2}
+            </div>
+            <div>
+              Colerico {quizState.colericoAnswers / 2}
+            </div>
+            <div>
+              Melancolico {quizState.melancolicoAnswers / 2}
+            </div>
+            <div>
+              Flematico {quizState.flematicoAnswers / 2}
             </div>
           </div>
           <div

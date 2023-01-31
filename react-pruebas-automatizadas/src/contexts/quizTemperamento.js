@@ -9,6 +9,10 @@ const initialState = {
   answers: AnswerList(questions[0]),
   showResults: false,
   correctAnswersCount: 0,
+  sangineoAnswers: 0,
+  colericoAnswers: 0,
+  melancolicoAnswers: 0,
+  flematicoAnswers: 0
 };
 
 const generateAnswers = (question) => {
@@ -22,15 +26,18 @@ const generateAnswers = (question) => {
 const reducer = (state, action) => {
   switch (action.type) {
     case "SELECT_ANSWER": {
-      const correctAnswersCount =
-        action.payload ===
-        state.questions[state.currentQuestionIndex].correctAnswer
-          ? state.correctAnswersCount + 1
-          : state.correctAnswersCount;
+      if(action.payload == 1){
+        state.sangineoAnswers = state.sangineoAnswers + 1
+      }else if (action.payload == 2){
+        state.colericoAnswers = state.colericoAnswers + 1
+      }else if (action.payload == 3){
+        state.melancolicoAnswers = state.melancolicoAnswers + 1
+      }else if (action.payload == 4){
+        state.flematicoAnswers = state.flematicoAnswers + 1
+      }
       return {
         ...state,
-        currentAnswer: action.payload,
-        correctAnswersCount,
+        currentAnswer: action.payload
       };
     }
     case "NEXT_QUESTION": {

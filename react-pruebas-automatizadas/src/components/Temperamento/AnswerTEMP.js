@@ -5,17 +5,17 @@ const Answer = ({
   currentAnswer,
   correctAnswer,
 }) => {
-  const letterMapping = ["A", "B", "C", "D"];
-  const isCorrectAnswer = currentAnswer && answerText === correctAnswer;
+  const letterMapping = ["", "A", "B", "C", "D"];
+  const isCorrectAnswer = currentAnswer && index === correctAnswer;
   const isWrongAnswer =
-    currentAnswer === answerText && currentAnswer !== correctAnswer;
+    currentAnswer === index && currentAnswer !== correctAnswer;
   const correctAnswerClass = isCorrectAnswer ? "correct-answer" : "";
   const wrongAnswerClass = isWrongAnswer ? "wrong-answer" : "";
   const disabledClass = currentAnswer ? "disabled-answer" : "";
   return (
     <div
       className={`answer ${correctAnswerClass} ${wrongAnswerClass} ${disabledClass}`}
-      onClick={() => onSelectAnswer(answerText)}
+      onClick={() => onSelectAnswer(index)}
     >
       <div className="answer-letter">{letterMapping[index]}</div>
       <div className="answer-text">{answerText}</div>

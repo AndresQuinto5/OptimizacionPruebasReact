@@ -14,10 +14,11 @@ const Question = () => {
             answerText={answer}
             currentAnswer={quizState.currentAnswer}
             correctAnswer={currentQuestion.correctAnswer}
-            key={index}
-            index={index}
-            onSelectAnswer={(answerText) =>
-              dispatch({ type: "SELECT_ANSWER", payload: answerText })
+            key={index +1}
+            index={index +1}
+            onSelectAnswer={(key) => {
+              dispatch({ type: "SELECT_ANSWER", payload: key })
+            }
             }
           />
         ))}
