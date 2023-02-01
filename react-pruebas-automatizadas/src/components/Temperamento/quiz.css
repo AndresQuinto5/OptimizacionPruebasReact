@@ -38,6 +38,9 @@
     margin-top: 40px;
     margin-bottom: 40px;
     font-size: 18px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
   }
   
   .answer {
@@ -136,3 +139,4 @@
   .disabled-answer {
     pointer-events: none;
   }
+  
