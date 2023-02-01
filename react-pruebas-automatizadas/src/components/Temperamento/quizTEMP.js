@@ -22,10 +22,10 @@ const Quiz = () => {
   const fle = (quizState.flematicoAnswers/2);
 
   const pieResults = [
-    { name: "Sanguineo", Frecuencia: san },
-    { name: "Colerico", Frecuencia: col },
-    { name: "Melancolico", Frecuencia: mel },
-    { name: "Flematico", Frecuencia: fle }
+    { name: "Sanguíneo", Frecuencia: san },
+    { name: "Colérico", Frecuencia: col },
+    { name: "Melancólico", Frecuencia: mel },
+    { name: "Flemático", Frecuencia: fle }
   ];
   return (
     <div className="quiz">
@@ -35,25 +35,25 @@ const Quiz = () => {
           <div className="results-info">
             <div className="exitoprompt">Ha completado con exito el test!</div>
             <div>
-              Sangineo {(quizState.sangineoAnswers / 2) }
+              Sanguíneo {(quizState.sangineoAnswers / 2) }
             </div>
             <div>
-              Colerico {(quizState.colericoAnswers /2) }
+              Colérico {(quizState.colericoAnswers /2) }
             </div>
             <div>
-              Melancolico {(quizState.melancolicoAnswers / 2) }
+              Melancólico {(quizState.melancolicoAnswers / 2) }
             </div>
             <div>
-              Flematico {(quizState.flematicoAnswers / 2) }
+              Flemático {(quizState.flematicoAnswers / 2) }
             </div>
               <BarChart
-                width={400}
-                height={250}
+                width={465}
+                height={300}
                 data={pieResults}
                 margin={{
                   top: 5,
-                  right: 30,
-                  left: 30,
+                  right: 20,
+                  left: 20,
                   bottom: 5,
                 }}
               >
