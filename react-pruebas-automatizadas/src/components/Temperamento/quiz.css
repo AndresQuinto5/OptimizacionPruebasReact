@@ -140,3 +140,12 @@
     pointer-events: none;
   }
   
+  .exitoprompt {
+    color: #003660;
+
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+    align-items: left;
+
+  }

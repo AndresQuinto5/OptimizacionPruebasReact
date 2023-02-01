@@ -4,44 +4,36 @@ import Question from "./QuestionTEMP";
 import { QuizContext } from "../../contexts/quizTemperamento";
 import "./quiz.css";
 import React, { useState } from 'react';
-import { PieChart, Pie, Sector, Cell, Tooltip} from "recharts";
+import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
+
+
+
+
 
 
 const Quiz = () => {
 
   const [quizState, dispatch] = useContext(QuizContext);
   const [complete, setComplete] = useState(false);
-  const san = (quizState.sangineoAnswers/2)*2.5;
-  const col = (quizState.colericoAnswers/2)*2.5;
-  const mel = (quizState.melancolicoAnswers/2)*2.5;
-  const fle = (quizState.flematicoAnswers/2)*2.5;
+  //data normalization for chart
+  const san = (quizState.sangineoAnswers/2);
+  const col = (quizState.colericoAnswers/2);
+  const mel = (quizState.melancolicoAnswers/2);
+  const fle = (quizState.flematicoAnswers/2);
+
   const pieResults = [
-    { name: "Sanguineo", value: san },
-    { name: "Colerico", value: col },
-    { name: "Melancolico", value: mel },
-    { name: "Flematico", value: fle }
+    { name: "Sanguineo", Frecuencia: san },
+    { name: "Colerico", Frecuencia: col },
+    { name: "Melancolico", Frecuencia: mel },
+    { name: "Flematico", Frecuencia: fle }
   ];
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-  const RADIAN = Math.PI / 180;
-  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-    const x = cx + radius * Math.cos(-midAngle * RADIAN);
-    const y = cy + radius * Math.sin(-midAngle * RADIAN);
-    return (
-      <text x={x} y={y} fill="black" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central" >
-        {`${(percent * 100).toFixed(0)}% `}
-        {pieResults[index].name}
-      </text>
-    );
-  };
-  
   return (
     <div className="quiz">
       {quizState.showResults && (
         <div className="results">
           <div className="congratulations">Congratulations!</div>
           <div className="results-info">
-            <div>You have completed the quiz.</div>
+            <div className="exitoprompt">Ha completado con exito el test!</div>
             <div>
               Sangineo {(quizState.sangineoAnswers / 2) }
             </div>
@@ -54,22 +46,24 @@ const Quiz = () => {
             <div>
               Flematico {(quizState.flematicoAnswers / 2) }
             </div>
-            <PieChart width={400} height={400}>
-              <Pie
-                  data={pieResults}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={true}
-                  label={renderCustomizedLabel}
-                  outerRadius={80}
-                  fill="#black"
-                  dataKey="value"
-                >
-                  {pieResults.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-              </Pie>
-          </PieChart>
+              <BarChart
+                width={400}
+                height={250}
+                data={pieResults}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 30,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis tickCount={5} domain={[0, 40]} />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="Frecuencia" fill="#f16a24" />
+          </BarChart>
           </div>
           <div
             onClick={() => dispatch({ type: "RESTART" })}
