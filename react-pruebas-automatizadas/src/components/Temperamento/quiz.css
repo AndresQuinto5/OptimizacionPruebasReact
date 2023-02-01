@@ -101,6 +101,22 @@
     text-transform: uppercase;
     cursor: pointer;
     text-align: center;
+    margin-right: 4em;
+
+  }
+
+  .prev-button {
+    margin: 0 auto;
+    color: #fff;
+    background: #003660;
+    width: 300px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 14px 75px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    margin-left: 4em;
   }
   
   .score {
