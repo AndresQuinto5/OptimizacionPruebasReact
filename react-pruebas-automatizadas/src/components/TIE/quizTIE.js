@@ -21,7 +21,7 @@ const QuizTIE = () => {
           </div>
           <div
             onClick={() => dispatch({ type: "RESTART" })}
-            className="next-button"
+            className="restart-button"
           >
             Restart
           </div>
@@ -29,17 +29,30 @@ const QuizTIE = () => {
       )}
       {!quizState.showResults && (
         <div>
+
           <div className="score">
             Pregunta {quizState.currentQuestionIndex + 1}/
             {quizState.questionsTIE.length}
           </div>
           <QuestionTIE />
+
+
           {quizState.currentAnswer && (
-            <div
-              onClick={() => dispatch({ type: "NEXT_QUESTION" })}
-              className="next-button"
-            >
-              Siguiente
+            <div>
+              {quizState.currentQuestionIndex !== 0 && (
+                <div
+                  onClick={() => dispatch({ type: "PREVIOUS_QUESTION" })}
+                  className="prev-button"
+                >
+                  Anterior
+                </div>
+              )}
+              <div
+                onClick={() => dispatch({ type: "NEXT_QUESTION" })}
+                className="next-button"
+              >
+                Siguiente
+              </div>
             </div>
           )}
         </div>

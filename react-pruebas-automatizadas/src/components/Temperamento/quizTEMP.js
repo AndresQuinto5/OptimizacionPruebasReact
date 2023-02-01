@@ -21,7 +21,7 @@ const Quiz = () => {
           </div>
           <div
             onClick={() => dispatch({ type: "RESTART" })}
-            className="next-button"
+            className="restart-button"
           >
             Restart
           </div>
@@ -35,11 +35,21 @@ const Quiz = () => {
           </div>
           <Question />
           {quizState.currentAnswer && (
-            <div
-              onClick={() => dispatch({ type: "NEXT_QUESTION" })}
-              className="next-button"
-            >
-              Siguiente
+            <div>
+              {quizState.currentQuestionIndex !== 0 && (
+                <div
+                  onClick={() => dispatch({ type: "PREVIOUS_QUESTION" })}
+                  className="prev-button"
+                >
+                  Anterior
+                </div>
+              )}
+              <div
+                onClick={() => dispatch({ type: "NEXT_QUESTION" })}
+                className="next-button"
+              >
+                Siguiente
+              </div>
             </div>
           )}
         </div>
