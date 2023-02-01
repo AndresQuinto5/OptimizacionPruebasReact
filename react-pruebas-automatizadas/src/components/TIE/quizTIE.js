@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { QuizContextTIE } from "../../contexts/quizTIE";
-import "./quizTIE.css";
+import "../Temperamento/quiz.css";
 import QuestionTIE from "./QuestionTIE";
 
 
@@ -11,17 +11,17 @@ const QuizTIE = () => {
     <div className="quiz">
       {quizState.showResults && (
         <div className="results">
-          <div className="congratulations">Congratulations!</div>
+          <div className="congratulations">Test de inteligencia emocional</div>
           <div className="results-info">
-            <div>You have completed the quiz.</div>
+            <div>Se ha finalizado el test!</div>
             <div>
-              You've got {quizState.correctAnswersCount} of &nbsp;
-              {quizState.questionsTIE.length} right.
+              Despliegue de resultados {quizState.correctAnswersCount} aqui &nbsp;
+              {quizState.questionsTIE.length}
             </div>
           </div>
           <div
             onClick={() => dispatch({ type: "RESTART" })}
-            className="next-button"
+            className="restart-button"
           >
             Restart
           </div>
@@ -29,17 +29,30 @@ const QuizTIE = () => {
       )}
       {!quizState.showResults && (
         <div>
+
           <div className="score">
-            Question {quizState.currentQuestionIndex + 1}/
+            Pregunta {quizState.currentQuestionIndex + 1}/
             {quizState.questionsTIE.length}
           </div>
           <QuestionTIE />
+
+
           {quizState.currentAnswer && (
-            <div
-              onClick={() => dispatch({ type: "NEXT_QUESTION" })}
-              className="next-button"
-            >
-              Next question
+            <div>
+              {quizState.currentQuestionIndex !== 0 && (
+                <div
+                  onClick={() => dispatch({ type: "PREVIOUS_QUESTION" })}
+                  className="prev-button"
+                >
+                  Anterior
+                </div>
+              )}
+              <div
+                onClick={() => dispatch({ type: "NEXT_QUESTION" })}
+                className="next-button"
+              >
+                Siguiente
+              </div>
             </div>
           )}
         </div>

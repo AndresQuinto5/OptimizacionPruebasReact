@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import questions from "./dataTemperamento";
-import { AnswerList } from "../../src/helper";
+import { AnswerList } from "../helper";
 
 const initialState = {
   questions,

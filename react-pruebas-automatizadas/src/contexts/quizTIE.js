@@ -42,6 +42,23 @@ const initialStateTIE = {
           answers,
         };
       }
+      case "PREVIOUS_QUESTION": {
+        const showResults =
+          state.currentQuestionIndex === state.questionsTIE.length - 1;
+        const currentQuestionIndex = showResults
+          ? state.currentQuestionIndex
+          : state.currentQuestionIndex - 1;
+        const answers = showResults
+          ? []
+          : AnswerList(state.questionsTIE[currentQuestionIndex]);
+        return {
+          ...state,
+          currentAnswer: "",
+          showResults,
+          currentQuestionIndex,
+          answers,
+        };
+      }
       case "RESTART": {
         return initialStateTIE;
       }
