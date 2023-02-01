@@ -122,6 +122,18 @@
     margin-left: 4em;
   }
   
+  .restart-button {
+    margin: 0 auto;
+    color: #fff;
+    background: #003660;
+    width: 300px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 14px 75px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+  }
   .score {
     background: #fff;
     color: 000;
@@ -146,6 +158,17 @@
     font-size: 18px;
     font-weight: 500;
     text-align: left;
-    align-items: left;
-
+    align-items: center;
+  }
+  .sanguineo {
+    padding: 0.5em;
+  }
+  .colerico {
+    padding: 0.5em;
+  }
+  .melancolico {
+    padding: 0.5em;
+  }
+  .flematico {
+    padding: 0.5em;
   }

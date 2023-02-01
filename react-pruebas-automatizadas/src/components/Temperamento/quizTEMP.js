@@ -31,19 +31,19 @@ const Quiz = () => {
     <div className="quiz">
       {quizState.showResults && (
         <div className="results">
-          <div className="congratulations">Congratulations!</div>
+          <div className="congratulations">Ha completado con exito el test!!</div>
           <div className="results-info">
-            <div className="exitoprompt">Ha completado con exito el test!</div>
-            <div>
+            <div className="exitoprompt">Sus resultados son:</div>
+            <div className="sanguineo">
               Sanguíneo {(quizState.sangineoAnswers / 2) }
             </div>
-            <div>
+            <div className="colerico">
               Colérico {(quizState.colericoAnswers /2) }
             </div>
-            <div>
+            <div className="melancolico">
               Melancólico {(quizState.melancolicoAnswers / 2) }
             </div>
-            <div>
+            <div className="flematico">
               Flemático {(quizState.flematicoAnswers / 2) }
             </div>
               <BarChart
@@ -61,13 +61,12 @@ const Quiz = () => {
                 <XAxis dataKey="name" />
                 <YAxis tickCount={5} domain={[0, 40]} />
                 <Tooltip />
-                <Legend />
                 <Bar dataKey="Frecuencia" fill="#f16a24" />
           </BarChart>
           </div>
           <div
             onClick={() => dispatch({ type: "RESTART" })}
-            className="next-button"
+            className="restart-button"
           >
             Restart
           </div>
