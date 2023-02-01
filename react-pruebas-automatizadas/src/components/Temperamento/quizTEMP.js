@@ -18,16 +18,16 @@ const Quiz = () => {
           <div className="results-info">
             <div>You have completed the quiz.</div>
             <div>
-              Sangineo {quizState.sangineoAnswers / 2}
+              Sangineo {(quizState.sangineoAnswers / 2) * 2.5}
             </div>
             <div>
-              Colerico {quizState.colericoAnswers / 2}
+              Colerico {(quizState.colericoAnswers /2) * 2.5}
             </div>
             <div>
-              Melancolico {quizState.melancolicoAnswers / 2}
+              Melancolico {(quizState.melancolicoAnswers / 2) * 2.5}
             </div>
             <div>
-              Flematico {quizState.flematicoAnswers / 2}
+              Flematico {(quizState.flematicoAnswers / 2) * 2.5}
             </div>
           </div>
           <div
