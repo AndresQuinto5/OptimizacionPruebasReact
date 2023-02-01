@@ -35,21 +35,11 @@ const Quiz = () => {
           </div>
           <Question />
           {quizState.currentAnswer && (
-            <div>
-              {quizState.currentQuestionIndex !== 0 && (
-                <div
-                  onClick={() => dispatch({ type: "PREVIOUS_QUESTION" })}
-                  className="prev-button"
-                >
-                  Anterior
-                </div>
-              )}
-              <div
-                onClick={() => dispatch({ type: "NEXT_QUESTION" })}
-                className="next-button"
-              >
-                Siguiente
-              </div>
+            <div
+              onClick={() => dispatch({ type: "NEXT_QUESTION" })}
+              className="next-button"
+            >
+              Siguiente
             </div>
           )}
         </div>
