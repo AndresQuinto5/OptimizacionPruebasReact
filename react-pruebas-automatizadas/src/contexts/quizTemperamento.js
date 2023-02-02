@@ -85,6 +85,38 @@ const reducer = (state, action) => {
         answers,
       };
     }
+    case "PREVIOUS_QUESTION": {
+      const showResults =
+        state.currentQuestionIndex === state.questions.length - 1;
+      const currentQuestionIndex = showResults
+        ? state.currentQuestionIndex
+        : state.currentQuestionIndex - 1;
+      const answers = showResults
+        ? []
+        : AnswerList(state.questions[currentQuestionIndex]);
+      if(showResults === true){
+          console.log(state.mapa)
+          state.mapa.forEach((valor,clave)=> {
+            if(valor == 1){
+              state.sangineoAnswers -= 1
+            }else if(valor == 2){
+              state.colericoAnswers -= 1
+            }else if(valor == 3){
+              state.melancolicoAnswers -= 1
+            }else if(valor == 4){
+              state.flematicoAnswers -= 1
+            }
+          })
+        }
+      
+      return {
+        ...state,
+        currentAnswer: "",
+        showResults,
+        currentQuestionIndex,
+        answers,
+      };
+    }
     case "RESTART": {
       return initialState;
     }
