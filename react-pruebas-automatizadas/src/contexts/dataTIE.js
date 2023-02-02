@@ -19,6 +19,7 @@ const dataTIE = [
     { answer: "Totalmente de acuerdo", value: 3 , subcompetencia: "CEP", competencia: "Autoconciencia"},
     ],
     },
+    
     {
     question: "Dejo que mis sentimientos afecten a mis pensamientos.",
     answers: [
@@ -810,7 +811,7 @@ const dataTIE = [
     { answer: "Bastante de acuerdo", value: 2 , subcompetencia: "IEP", competencia: "Autoconciencia"},
     { answer: "Totalmente de acuerdo", value: 3 , subcompetencia: "IEP", competencia: "Autoconciencia"},
     ],
-    },
+    }, 
     // ... más preguntas
     ];
 

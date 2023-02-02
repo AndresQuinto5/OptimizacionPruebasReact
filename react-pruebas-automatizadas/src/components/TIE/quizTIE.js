@@ -34,6 +34,14 @@ const QuizTIE = () => {
             {quizState.questionsTIE.length}
           </div>
           <QuestionTIE />
+          {quizState.currentQuestionIndex !== 0 && (
+                <div
+                  onClick={() => dispatch({ type: "PREVIOUS_QUESTION" })}
+                  className="prev-button"
+                >
+                  Anterior
+                </div>
+          )}
           {quizState.currentAnswer && (
             <div
               onClick={() => dispatch({ type: "NEXT_QUESTION" })}

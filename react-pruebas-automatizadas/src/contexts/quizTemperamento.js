@@ -53,7 +53,6 @@ const reducer = (state, action) => {
       }else if (currentAnswer == 4){
         state.mapa.set(state.currentQuestionIndex, currentAnswer)
       }
-      console.log()
       const showResults =
         state.currentQuestionIndex === state.questions.length - 1;
       const currentQuestionIndex = showResults
