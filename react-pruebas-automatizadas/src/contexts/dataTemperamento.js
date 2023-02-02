@@ -10,7 +10,7 @@ const data2 = [
     { answer: "Analitico", value: 0 },
     { answer: "Adaptable", value: 0 },
     ],
-    },/*
+    },
     {
     question: pregunta,
     answers: [
@@ -364,7 +364,7 @@ const data2 = [
     { answer: "Astuto", value: 0 },
     ],
     },
-    */
+    
     // ... más preguntas
     ];
 
