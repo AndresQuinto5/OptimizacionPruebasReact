@@ -87,7 +87,7 @@ const reducer = (state, action) => {
     }
     case "PREVIOUS_QUESTION": {
       const showResults =
-        state.currentQuestionIndex === state.questions.length - 1;
+        state.currentQuestionIndex === state.questions.length;
       const currentQuestionIndex = showResults
         ? state.currentQuestionIndex
         : state.currentQuestionIndex - 1;
@@ -98,13 +98,13 @@ const reducer = (state, action) => {
           console.log(state.mapa)
           state.mapa.forEach((valor,clave)=> {
             if(valor == 1){
-              state.sangineoAnswers -= 1
+              state.sangineoAnswers += 1
             }else if(valor == 2){
-              state.colericoAnswers -= 1
+              state.colericoAnswers += 1
             }else if(valor == 3){
-              state.melancolicoAnswers -= 1
+              state.melancolicoAnswers += 1
             }else if(valor == 4){
-              state.flematicoAnswers -= 1
+              state.flematicoAnswers += 1
             }
           })
         }
