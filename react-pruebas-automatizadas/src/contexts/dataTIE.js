@@ -29,6 +29,7 @@ const dataTIE = [
     { answer: "Totalmente de acuerdo", value: 0 , subcompetencia: "MEDFC", competencia: "Autocontrol"},
     ],
     },
+    
     {
     question: "Si estoy estresado, pienso en todo lo que me falta por hacer y me bloqueo.",
     answers: [
@@ -55,7 +56,7 @@ const dataTIE = [
     { answer: "Bastante de acuerdo", value: 2 , subcompetencia: "IEEO", competencia: "Empatía"},
     { answer: "Totalmente de acuerdo", value: 3 , subcompetencia: "IEEO", competencia: "Empatía"},
     ],
-    },
+    },/*
     {
     question: "Tengo dificultad para calcular el impacto que mi comportamiento tiene sobre los demás.",
     answers: [
@@ -811,7 +812,7 @@ const dataTIE = [
     { answer: "Bastante de acuerdo", value: 2 , subcompetencia: "IEP", competencia: "Autoconciencia"},
     { answer: "Totalmente de acuerdo", value: 3 , subcompetencia: "IEP", competencia: "Autoconciencia"},
     ],
-    }, 
+    }, */
     // ... más preguntas
     ];
 

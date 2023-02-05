@@ -10,44 +10,45 @@ const initialStateTIE = {
     showResults: false,
     correctAnswersCount: 0,
     indexValue: 0,
+
     //Competencia
     Autoconciencia: 0,
     //subs
-    IdentificarEmocionesPropias: 0,
-    ComprenderEmocionesPropias: 0,
+    IEP: 0,
+    CEP: 0,
+
     //Competencia
     Autocontrol: 0,
     //subs
-    ManejarYdirigirEmociones: 0,
-    ToleranciaAlEstres: 0,
-    Automotivacion: 0,
+    MEDFC: 0,
+    TAE: 0,
+    AUTO: 0,
+
     //Competencia
     Empatia: 0,
     //subs
-    IdentificarEmocionesEnOtros: 0,
-    ComprenderEmocionesOtros: 0,
+    IEEO: 0,
+    CEEO: 0,
+
     //Competencia
     HabilidadesSociales : 0,
     //subs
-    Colaboracion: 0,
-    FlexibilidadYAdaptacionAlCambio: 0,
-    ResolucionDeConflictos: 0,
-    Comunicacion: 0,
-    Influencia: 0,
-    Liderazgo: 0,
+    COLAB: 0,
+    FYAAC: 0,
+    RDC: 0,
+    COM: 0,
+    INFLU: 0,
+    LIDER: 0,
+    //para el boton anterior
+    PreviousAnsw: 0,
+    PreviousSubcomp: "",
     mapa: new Map()
   };
   
   const reducerTIE = (state, action) => {
     switch (action.type) {
       case "SELECT_ANSWER": {
-        /*
-        const correctAnswersCount =
-          action.payload ===
-          state.questionsTIE[state.currentQuestionIndex].correctAnswer
-            ? state.correctAnswersCount + 1
-            : state.correctAnswersCount;
-            */
+
         return {
           ...state,
           currentAnswer: action.payload,
@@ -55,88 +56,117 @@ const initialStateTIE = {
         };
       }
       case "NEXT_QUESTION": {
-          let currentAnswer = state.currentAnswer;
+        const PreguntaYrespuestas = state.questionsTIE[state.currentQuestionIndex].answers;
+        const respuesta = PreguntaYrespuestas[state.indexValue].value;
+        const subcomp = PreguntaYrespuestas[state.indexValue].subcompetencia;
+        let currentAnswer = state.currentAnswer;
+        const showResults =
+        state.currentQuestionIndex === state.questionsTIE.length - 1;
+        const currentQuestionIndex = showResults
+        ? state.currentQuestionIndex
+        : state.currentQuestionIndex + 1;
+        const answers = showResults
+        ? []
+        : AnswerList(state.questionsTIE[currentQuestionIndex]);
 
           if(currentAnswer == "Nada de acuerdo"){
-            console.log(" NUMERO 1")
+            console.log(" A")
             state.indexValue = 0;
+            state.mapa.set(state.currentQuestionIndex, {respuesta, description: subcomp});
+            console.log(state.mapa)
+            console.log(respuesta, subcomp)
+            console.log(PreguntaYrespuestas,respuesta, subcomp)
+            let myMapElement = state.mapa.get(state.currentQuestionIndex);
+            console.log("this is respuesta mymapelement",myMapElement.respuesta);
+            console.log("this is descrpop mymapelement",myMapElement.description);
+
           }else if (currentAnswer == "Algo de acuerdo"){
-            console.log("NUMERO 2")
+            console.log("B")
             state.indexValue = 1;
+            state.mapa.set(state.currentQuestionIndex, {respuesta, description: subcomp});
+            
+            console.log(state.mapa)
+            console.log(respuesta, subcomp)
+            console.log(PreguntaYrespuestas,respuesta, subcomp)
           }else if (currentAnswer == "Bastante de acuerdo"){
-            console.log("NUMERO 3")
+            console.log("C")
             state.indexValue = 2;
+            state.mapa.set(state.currentQuestionIndex, {respuesta, description: subcomp});
+
+            console.log(state.mapa)
+            console.log(respuesta, subcomp)
+            console.log(PreguntaYrespuestas,respuesta, subcomp)
           }else if (currentAnswer == "Totalmente de acuerdo"){
-            console.log("NUMERO 4")
+            console.log("D")
             state.indexValue = 3;
+            state.mapa.set(state.currentQuestionIndex, {respuesta, description: subcomp});
+
+            console.log(state.mapa)
+            console.log(respuesta, subcomp)
+            console.log(PreguntaYrespuestas,respuesta, subcomp)
           }
-          const X = state.X;
-          state.X = questionsTIE[state.currentQuestionIndex].answers;
-          //Definir un index para la respuesta seleccionada y utilizarlo para mandar a llamar los resultados
-          const respuesta = X[state.indexValue].value;
-          const subcomp = X[state.indexValue].subcompetencia;
+          if (showResults === true){
+            console.log(state.mapa)
+            state.mapa.forEach((value, key) => {
+              if (value.description == "IEP"){
+                  state.IEP += value.respuesta;
+                } 
+              else if (value.description == "CEP"){
+                  state.CEP += value.respuesta;
+                }
+              else if (value.description == "MEDFC"){
+                  state.MEDFC += value.respuesta;
+              }
+              else if (value.description == "TAE"){
+                state.TAE += value.respuesta;
+              }
+              else if (value.description == "AUTO"){
+                state.AUTO += value.respuesta;
+              }
+              else if (value.description == "IEEO"){
+                state.IEEO += value.respuesta;
+              }
+              else if (value.description == "CEEO"){
+                state.CEEO += value.respuesta;
+              }
+              else if (value.description == "COLAB"){
+                state.COLAB += value.respuesta;
+              }
+              else if (value.description == "FYAAC"){
+                state.FYAAC += value.respuesta;
+              }
+              else if (value.description == "RDC"){
+                state.RDC += value.respuesta;
+              }
+              else if (value.description == "COM"){
+                state.COM += value.respuesta;
+              }
+              else if (value.description == "INFLU"){
+                state.INFLU += value.respuesta;
+              }
+              else if (value.description == "LIDER"){
+                state.LIDER += value.respuesta;
+              }
 
-          if (subcomp == "IEP"){
-            state.IdentificarEmocionesPropias += respuesta;}
-          else if (subcomp == "CEP"){
-            state.ComprenderEmocionesPropias += respuesta;}
-          else if (subcomp == "MEDFC"){
-            state.ManejarYdirigirEmociones += respuesta;}
-          else if (subcomp == "TAE"){
-            state.ToleranciaAlEstres += respuesta;}
-          else if (subcomp == "AUTO"){
-            state.Automotivacion += respuesta;}
-          else if (subcomp == "IEEO"){
-            state.IdentificarEmocionesEnOtros += respuesta;}
-          else if (subcomp == "CEEO"){
-            state.ComprenderEmocionesOtros += respuesta;}
-          else if (subcomp == "COLAB"){
-            state.Colaboracion += respuesta;}
-          else if (subcomp == "FYAAC"){
-            state.FlexibilidadYAdaptacionAlCambio += respuesta;}
-          else if (subcomp == "RDC"){
-            state.ResolucionDeConflictos += respuesta;}
-          else if (subcomp == "COM"){
-            state.Comunicacion += respuesta;}
-          else if (subcomp == "INFLU"){
-            state.Influencia += respuesta;}
-          else if (subcomp == "LIDER"){
-            state.Liderazgo += respuesta;}
+            })
+            console.log("Estos son los valores de las subscompetencias");
+            console.log(state.IEP);
+            console.log(state.CEP);
+            console.log(state.MEDFC);
+            console.log(state.TAE);
+            console.log(state.AUTO);
+            console.log(state.IEEO);
+            console.log(state.CEEO);
+            console.log(state.COLAB);
+            console.log(state.FYAAC);
+            console.log(state.RDC);
+            console.log(state.COM);
+            console.log(state.INFLU);
+            console.log(state.LIDER);
+          }
           
 
-         // console.log("value:", X[0].value);
-          console.log("subcompetencia:", X[state.indexValue].subcompetencia);
-          console.log("this is respuesta", respuesta);
-          console.log("this is subcomp", state.IdentificarEmocionesPropias);
-          console.log("this is current answer", state.currentAnswer);
-          console.log(state.IdentificarEmocionesPropias);
-          console.log(state.ComprenderEmocionesPropias);
-          console.log(state.ManejarYdirigirEmociones);
-          console.log(state.ToleranciaAlEstres);
-          console.log(state.Automotivacion);
-          console.log(state.IdentificarEmocionesEnOtros);
-          console.log(state.ComprenderEmocionesOtros);
-          console.log(state.Colaboracion);
-          console.log(state.FlexibilidadYAdaptacionAlCambio);
-          console.log(state.ResolucionDeConflictos);
-          console.log(state.Comunicacion);
-          console.log(state.Influencia);
-          console.log(state.Liderazgo);
-
-          //console.log("competencia:", X[0].competencia);
-
-          //console.log('this is autoconciencia', state.Autoconciencia);
-          
-          
-
-        const showResults =
-          state.currentQuestionIndex === state.questionsTIE.length - 1;
-        const currentQuestionIndex = showResults
-          ? state.currentQuestionIndex
-          : state.currentQuestionIndex + 1;
-        const answers = showResults
-          ? []
-          : AnswerList(state.questionsTIE[currentQuestionIndex]);
+        
         return {
           ...state,
           currentAnswer: "",
@@ -147,27 +177,14 @@ const initialStateTIE = {
       }
       case "PREVIOUS_QUESTION": {
         const showResults =
-          state.currentQuestionIndex === state.questions.length;
+          state.currentQuestionIndex === state.questionsTIE.length;
         const currentQuestionIndex = showResults
           ? state.currentQuestionIndex
           : state.currentQuestionIndex - 1;
         const answers = showResults
           ? []
-          : AnswerList(state.questions[currentQuestionIndex]);
-        if(showResults === true){
-            console.log(state.mapa)
-            state.mapa.forEach((valor,clave)=> {
-              if(valor == 1){
-                state.sangineoAnswers += 1
-              }else if(valor == 2){
-                state.colericoAnswers += 1
-              }else if(valor == 3){
-                state.melancolicoAnswers += 1
-              }else if(valor == 4){
-                state.flematicoAnswers += 1
-              }
-            })
-          }
+          : AnswerList(state.questionsTIE[currentQuestionIndex]);
+    
         return {
           ...state,
           currentAnswer: "",

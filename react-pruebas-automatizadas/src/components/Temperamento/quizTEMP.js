@@ -16,10 +16,10 @@ const Quiz = () => {
   const [quizState, dispatch] = useContext(QuizContext);
   const [complete, setComplete] = useState(false);
   //data normalization for chart
-  const san = (quizState.sangineoAnswers/2);
-  const col = (quizState.colericoAnswers/2);
-  const mel = (quizState.melancolicoAnswers/2);
-  const fle = (quizState.flematicoAnswers/2);
+  const san = (quizState.sangineoAnswers);
+  const col = (quizState.colericoAnswers);
+  const mel = (quizState.melancolicoAnswers);
+  const fle = (quizState.flematicoAnswers);
 
   const pieResults = [
     { name: "Sanguíneo", Frecuencia: san },
@@ -35,16 +35,16 @@ const Quiz = () => {
           <div className="results-info">
             <div className="exitoprompt">Sus resultados son:</div>
             <div className="sanguineo">
-              Sanguíneo {(quizState.sangineoAnswers / 2) }
+              Sanguíneo {(quizState.sangineoAnswers) }
             </div>
             <div className="colerico">
-              Colérico {(quizState.colericoAnswers /2) }
+              Colérico {(quizState.colericoAnswers) }
             </div>
             <div className="melancolico">
-              Melancólico {(quizState.melancolicoAnswers / 2) }
+              Melancólico {(quizState.melancolicoAnswers) }
             </div>
             <div className="flematico">
-              Flemático {(quizState.flematicoAnswers / 2) }
+              Flemático {(quizState.flematicoAnswers) }
             </div>
               <BarChart
                 width={465}
