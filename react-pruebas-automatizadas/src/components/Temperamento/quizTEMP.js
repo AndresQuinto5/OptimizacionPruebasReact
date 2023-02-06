@@ -16,10 +16,10 @@ const Quiz = () => {
   const [quizState, dispatch] = useContext(QuizContext);
   const [complete, setComplete] = useState(false);
   //data normalization for chart
-  const san = (quizState.sangineoAnswers);
-  const col = (quizState.colericoAnswers);
-  const mel = (quizState.melancolicoAnswers);
-  const fle = (quizState.flematicoAnswers);
+  const san = (quizState.sangineoAnswers/2);
+  const col = (quizState.colericoAnswers/2);
+  const mel = (quizState.melancolicoAnswers/2);
+  const fle = (quizState.flematicoAnswers/2);
 
   const pieResults = [
     { name: "Sanguíneo", Frecuencia: san },
@@ -35,16 +35,16 @@ const Quiz = () => {
           <div className="results-info">
             <div className="exitoprompt">Sus resultados son:</div>
             <div className="sanguineo">
-              Sanguíneo {(quizState.sangineoAnswers) }
+              Sanguíneo {(quizState.sangineoAnswers / 2) }
             </div>
             <div className="colerico">
-              Colérico {(quizState.colericoAnswers) }
+              Colérico {(quizState.colericoAnswers /2) }
             </div>
             <div className="melancolico">
-              Melancólico {(quizState.melancolicoAnswers) }
+              Melancólico {(quizState.melancolicoAnswers / 2) }
             </div>
             <div className="flematico">
-              Flemático {(quizState.flematicoAnswers) }
+              Flemático {(quizState.flematicoAnswers / 2) }
             </div>
               <BarChart
                 width={465}
@@ -121,7 +121,7 @@ const Quiz = () => {
           <div>
             <div>
               <div className="score">
-             Question {quizState.currentQuestionIndex + 1}/
+             Pregunta {quizState.currentQuestionIndex + 1}/
              {quizState.questions.length}
             </div>
              <Question />
@@ -135,7 +135,7 @@ const Quiz = () => {
               )}
              {quizState.currentAnswer && (
               <div>
-                <div onClick={() => dispatch({ type: "NEXT_QUESTION" })} className="next-button">Next question</div>
+                <div onClick={() => dispatch({ type: "NEXT_QUESTION" })} className="next-button">Siguiente</div>
               </div>
             )}
               
