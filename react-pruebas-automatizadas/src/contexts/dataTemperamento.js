@@ -47,7 +47,7 @@ const data2 = [
     { answer: "Respetuoso", value: 0 },
     { answer: "Reservado", value: 0 },
     ],
-    },/*
+    },
     {
     question: pregunta,
     answers: [
@@ -365,7 +365,7 @@ const data2 = [
     ],
     },
     
-    // ... más preguntas*/
+    // ... más preguntas
     ];
 
 

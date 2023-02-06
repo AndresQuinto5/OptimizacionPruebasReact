@@ -11,10 +11,9 @@ const AnswerTIE = ({
       currentAnswer === answerText && currentAnswer !== correctAnswer;
     const correctAnswerClass = isCorrectAnswer ? "correct-answer" : "";
     const wrongAnswerClass = isWrongAnswer ? "wrong-answer" : "";
-    const disabledClass = currentAnswer ? "disabled-answer" : "";
     return (
       <div
-        className={`answer ${correctAnswerClass} ${wrongAnswerClass} ${disabledClass}`}
+        className={`answer ${correctAnswerClass} ${wrongAnswerClass}`}
         onClick={() => onSelectAnswer(answerText)}
       >
         <div className="answer-letter">{letterMapping[index]}</div>
