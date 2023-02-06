@@ -16,10 +16,10 @@ const Quiz = () => {
   const [quizState, dispatch] = useContext(QuizContext);
   const [complete, setComplete] = useState(false);
   //data normalization for chart
-  const san = (quizState.sangineoAnswers/2);
-  const col = (quizState.colericoAnswers/2);
-  const mel = (quizState.melancolicoAnswers/2);
-  const fle = (quizState.flematicoAnswers/2);
+  const san = (quizState.sangineoAnswers);
+  const col = (quizState.colericoAnswers);
+  const mel = (quizState.melancolicoAnswers);
+  const fle = (quizState.flematicoAnswers);
 
   const pieResults = [
     { name: "Sanguíneo", Frecuencia: san },
