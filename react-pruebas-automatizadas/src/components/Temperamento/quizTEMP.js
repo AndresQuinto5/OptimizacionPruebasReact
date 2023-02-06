@@ -35,16 +35,16 @@ const Quiz = () => {
           <div className="results-info">
             <div className="exitoprompt">Sus resultados son:</div>
             <div className="sanguineo">
-              Sanguíneo {(quizState.sangineoAnswers / 2) }
+              Sanguíneo {(quizState.sangineoAnswers) }
             </div>
             <div className="colerico">
-              Colérico {(quizState.colericoAnswers /2) }
+              Colérico {(quizState.colericoAnswers) }
             </div>
             <div className="melancolico">
-              Melancólico {(quizState.melancolicoAnswers / 2) }
+              Melancólico {(quizState.melancolicoAnswers) }
             </div>
             <div className="flematico">
-              Flemático {(quizState.flematicoAnswers / 2) }
+              Flemático {(quizState.flematicoAnswers) }
             </div>
               <BarChart
                 width={465}
