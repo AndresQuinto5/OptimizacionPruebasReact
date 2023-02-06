@@ -19,7 +19,6 @@ const dataTIE = [
     { answer: "Totalmente de acuerdo", value: 3 , subcompetencia: "CEP", competencia: "Autoconciencia"},
     ],
     },
-    
     {
     question: "Dejo que mis sentimientos afecten a mis pensamientos.",
     answers: [

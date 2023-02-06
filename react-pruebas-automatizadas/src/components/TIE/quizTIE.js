@@ -21,6 +21,11 @@ const QuizTIE = () => {
   const COM =(quizState.COM);
   const INFLU =(quizState.INFLU);
   const LIDER =(quizState.LIDER);
+  const Autoconciencia = IEP + CEP;
+  const Autocontrol = MEDFC + TAE + AUTO;
+  const Empatia = IEEO + CEEO;
+  const HabilidadesSociales = COLAB + FYAAC + RDC + COM + INFLU + LIDER;
+
 
 
   const BarChartResults = [
@@ -51,18 +56,18 @@ const QuizTIE = () => {
               {quizState.questionsTIE.length}
             </div>
             <BarChart
-                width={465}
-                height={300}
+                width={550}
+                height={330}
                 data={BarChartResults}
                 margin={{
                   top: 5,
                   right: 20,
                   left: 20,
-                  bottom: 5,
+                  bottom: 40,
                 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
+                <XAxis dataKey="name" interval={0} angle={45} textAnchor="start" />
                 <YAxis tickCount={5} />
                 <Tooltip />
                 <Bar dataKey="Frecuencia" fill="#f16a24" />
