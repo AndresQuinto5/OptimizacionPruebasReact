@@ -43,6 +43,7 @@ const initialStateTIE = {
     PreviousAnsw: 0,
     PreviousSubcomp: "",
     mapa: new Map()
+    
   };
   
   const reducerTIE = (state, action) => {
@@ -52,70 +53,68 @@ const initialStateTIE = {
         return {
           ...state,
           currentAnswer: action.payload,
+
           //correctAnswersCount,
         };
       }
       case "NEXT_QUESTION": {
         const PreguntaYrespuestas = state.questionsTIE[state.currentQuestionIndex].answers;
-        const respuesta = PreguntaYrespuestas[state.indexValue].value;
-        const subcomp = PreguntaYrespuestas[state.indexValue].subcompetencia;
+        let respuesta;
+        let subcomp;
         let currentAnswer = state.currentAnswer;
-        const showResults =
-        state.currentQuestionIndex === state.questionsTIE.length - 1;
-        const currentQuestionIndex = showResults
-        ? state.currentQuestionIndex
-        : state.currentQuestionIndex + 1;
-        const answers = showResults
-        ? []
-        : AnswerList(state.questionsTIE[currentQuestionIndex]);
+        
+        switch (currentAnswer) {
+          case "Nada de acuerdo":
+          state.indexValue = 0;
+          respuesta = PreguntaYrespuestas[state.indexValue].value;
+          subcomp = PreguntaYrespuestas[state.indexValue].subcompetencia;
+          console.log(subcomp, respuesta)
+          break;
+          case "Algo de acuerdo":
+          state.indexValue = 1;
+          respuesta = PreguntaYrespuestas[state.indexValue].value;
+          subcomp = PreguntaYrespuestas[state.indexValue].subcompetencia;
+          console.log(subcomp, respuesta)
 
-          if(currentAnswer == "Nada de acuerdo"){
-            console.log(" A")
-            state.indexValue = 0;
-            state.mapa.set(state.currentQuestionIndex, {respuesta, description: subcomp});
-            console.log(state.mapa)
-            console.log(respuesta, subcomp)
-            console.log(PreguntaYrespuestas,respuesta, subcomp)
-            let myMapElement = state.mapa.get(state.currentQuestionIndex);
-            console.log("this is respuesta mymapelement",myMapElement.respuesta);
-            console.log("this is descrpop mymapelement",myMapElement.description);
+          break;
+          case "Bastante de acuerdo":
+          state.indexValue = 2;
+          respuesta = PreguntaYrespuestas[state.indexValue].value;
+          subcomp = PreguntaYrespuestas[state.indexValue].subcompetencia;
+          console.log(subcomp, respuesta)
 
-          }else if (currentAnswer == "Algo de acuerdo"){
-            console.log("B")
-            state.indexValue = 1;
-            state.mapa.set(state.currentQuestionIndex, {respuesta, description: subcomp});
-            
-            console.log(state.mapa)
-            console.log(respuesta, subcomp)
-            console.log(PreguntaYrespuestas,respuesta, subcomp)
-          }else if (currentAnswer == "Bastante de acuerdo"){
-            console.log("C")
-            state.indexValue = 2;
-            state.mapa.set(state.currentQuestionIndex, {respuesta, description: subcomp});
+          break;
+          case "Totalmente de acuerdo":
+          state.indexValue = 3;
+          respuesta = PreguntaYrespuestas[state.indexValue].value;
+          subcomp = PreguntaYrespuestas[state.indexValue].subcompetencia;
+          console.log(subcomp, respuesta)
 
-            console.log(state.mapa)
-            console.log(respuesta, subcomp)
-            console.log(PreguntaYrespuestas,respuesta, subcomp)
-          }else if (currentAnswer == "Totalmente de acuerdo"){
-            console.log("D")
-            state.indexValue = 3;
-            state.mapa.set(state.currentQuestionIndex, {respuesta, description: subcomp});
-
-            console.log(state.mapa)
-            console.log(respuesta, subcomp)
-            console.log(PreguntaYrespuestas,respuesta, subcomp)
+          break;
           }
+          state.mapa.set(state.currentQuestionIndex, {respuesta, description: subcomp});
+          console.log(state.mapa)
+          
+          const showResults =
+          state.currentQuestionIndex === state.questionsTIE.length - 1;
+          const currentQuestionIndex = showResults
+          ? state.currentQuestionIndex
+          : state.currentQuestionIndex + 1;
+          const answers = showResults
+          ? []
+          : AnswerList(state.questionsTIE[currentQuestionIndex]);
+          
           if (showResults === true){
             console.log(state.mapa)
             state.mapa.forEach((value, key) => {
               if (value.description == "IEP"){
-                  state.IEP += value.respuesta;
-                } 
+                state.IEP += value.respuesta;
+              } 
               else if (value.description == "CEP"){
-                  state.CEP += value.respuesta;
-                }
+                state.CEP += value.respuesta;
+              }
               else if (value.description == "MEDFC"){
-                  state.MEDFC += value.respuesta;
+                state.MEDFC += value.respuesta;
               }
               else if (value.description == "TAE"){
                 state.TAE += value.respuesta;
@@ -147,7 +146,7 @@ const initialStateTIE = {
               else if (value.description == "LIDER"){
                 state.LIDER += value.respuesta;
               }
-
+              
             })
             console.log("Estos son los valores de las subscompetencias");
             console.log(state.IEP);

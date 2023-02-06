@@ -4,7 +4,7 @@ const dataTIE = [
     {
     question: "Pienso que merece la pena prestar atención a mis emociones y estados de ánimo.",
     answers: [
-    { answer: "Nada de acuerdo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Nada de acuerdo", value: 0 , subcompetencia: "IEPP", competencia: "Autoconciencia"},
     { answer: "Algo de acuerdo", value: 1 , subcompetencia: "IEP", competencia: "Autoconciencia"},
     { answer: "Bastante de acuerdo", value: 2 , subcompetencia: "IEP", competencia: "Autoconciencia"},
     { answer: "Totalmente de acuerdo", value: 3 , subcompetencia: "IEP", competencia: "Autoconciencia"},
