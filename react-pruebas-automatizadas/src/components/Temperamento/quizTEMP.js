@@ -121,7 +121,7 @@ const Quiz = () => {
           <div>
             <div>
               <div className="score">
-             Question {quizState.currentQuestionIndex + 1}/
+             Pregunta {quizState.currentQuestionIndex + 1}/
              {quizState.questions.length}
             </div>
              <Question />
@@ -135,7 +135,7 @@ const Quiz = () => {
               )}
              {quizState.currentAnswer && (
               <div>
-                <div onClick={() => dispatch({ type: "NEXT_QUESTION" })} className="next-button">Next question</div>
+                <div onClick={() => dispatch({ type: "NEXT_QUESTION" })} className="next-button">Siguiente</div>
               </div>
             )}
               
