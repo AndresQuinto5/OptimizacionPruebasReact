@@ -11,6 +11,8 @@ const initialStateTIE = {
     correctAnswersCount: 0,
     indexValue: 0,
 
+
+    
     //Competencia
     Autoconciencia: 0,
     //subs
