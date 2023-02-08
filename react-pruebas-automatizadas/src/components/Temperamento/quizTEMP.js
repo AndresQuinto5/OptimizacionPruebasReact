@@ -68,7 +68,7 @@ const Quiz = () => {
             onClick={() => dispatch({ type: "RESTART" })}
             className="restart-button"
           >
-            Restart
+            Reiniciar
           </div>
         </div>
       )}

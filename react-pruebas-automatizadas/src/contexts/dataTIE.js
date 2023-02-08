@@ -55,7 +55,7 @@ const dataTIE = [
     { answer: "Bastante de acuerdo", value: 2 , subcompetencia: "IEEO", competencia: "Empatía"},
     { answer: "Totalmente de acuerdo", value: 3 , subcompetencia: "IEEO", competencia: "Empatía"},
     ],
-    },/*
+    },
     {
     question: "Tengo dificultad para calcular el impacto que mi comportamiento tiene sobre los demás.",
     answers: [
@@ -167,10 +167,10 @@ const dataTIE = [
     {
     question: "¿Qué emoción está expresando?",
     answers: [
-    { answer: "Nada de acuerdo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
-    { answer: "Algo de acuerdo", value: 3 , subcompetencia: "IEP", competencia: "Autoconciencia"},
-    { answer: "Bastante de acuerdo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
-    { answer: "Totalmente de acuerdo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Sorpresa", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Miedo", value: 3 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Cólera", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Tristeza", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
     ],
     },
     {
@@ -199,7 +199,7 @@ const dataTIE = [
     { answer: "Bastante de acuerdo", value: 2 , subcompetencia: "TAE", competencia: "Autocontrol"},
     { answer: "Totalmente de acuerdo", value: 3 , subcompetencia: "TAE", competencia: "Autocontrol"},
     ],
-    },
+    },/*
     {
     question: "Generalmente cumplo con lo que me propongo.",
     answers: [
@@ -329,10 +329,10 @@ const dataTIE = [
     {
     question: "¿Qué emoción está expresando?",
     answers: [
-    { answer: "Nada de acuerdo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
-    { answer: "Algo de acuerdo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
-    { answer: "Bastante de acuerdo", value: 3 , subcompetencia: "IEP", competencia: "Autoconciencia"},
-    { answer: "Totalmente de acuerdo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Cólera", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Disgusto", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Tristeza", value: 3 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Sorpresa", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
     ],
     },
     {
@@ -491,10 +491,10 @@ const dataTIE = [
     {
     question: "¿Qué emoción está expresando?",
     answers: [
-    { answer: "Nada de acuerdo", value: 3 , subcompetencia: "IEP", competencia: "Autoconciencia"},
-    { answer: "Algo de acuerdo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
-    { answer: "Bastante de acuerdo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
-    { answer: "Totalmente de acuerdo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Disgusto", value: 3 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Miedo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Tristeza", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Sorpresa", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
     ],
     },
     {
@@ -653,10 +653,10 @@ const dataTIE = [
     {
     question: "¿Qué emoción está expresando?",
     answers: [
-    { answer: "Nada de acuerdo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
-    { answer: "Algo de acuerdo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
-    { answer: "Bastante de acuerdo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
-    { answer: "Totalmente de acuerdo", value: 3 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Miedo", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Disgusto", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Felicidad", value: 0 , subcompetencia: "IEP", competencia: "Autoconciencia"},
+    { answer: "Sorpresa", value: 3 , subcompetencia: "IEP", competencia: "Autoconciencia"},
     ],
     },
     {
@@ -811,8 +811,8 @@ const dataTIE = [
     { answer: "Bastante de acuerdo", value: 2 , subcompetencia: "IEP", competencia: "Autoconciencia"},
     { answer: "Totalmente de acuerdo", value: 3 , subcompetencia: "IEP", competencia: "Autoconciencia"},
     ],
-    }, */
-    // ... más preguntas
+    }, 
+    // ... más preguntas */
     ];
 
   export default dataTIE;

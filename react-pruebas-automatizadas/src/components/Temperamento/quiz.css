@@ -181,3 +181,9 @@
     margin-top: 10px;
 
   }
+
+  .Subcompetencias{
+    display: "flex";
+    flexDirection: "row";
+    justifyContent: "flex-start";
+  }

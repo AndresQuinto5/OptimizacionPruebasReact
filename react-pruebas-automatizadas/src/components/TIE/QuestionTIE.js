@@ -12,10 +12,10 @@ const QuestionTIE = () => {
   return (
     <div>
       <div className="question">{currentQuestion.question}</div>
-      <div className="hola">{quizState.currentQuestionIndex === 19 && <img src={imagen1}/>}
-      {quizState.currentQuestionIndex === 37 && <img src={imagen2}/>}
-      {quizState.currentQuestionIndex === 55 && <img src={imagen3}/>}
-      {quizState.currentQuestionIndex === 73 && <img src={imagen4}/>}</div>
+      <div className="hola">{quizState.currentQuestionIndex === 18 && <img src={imagen1}/>}
+      {quizState.currentQuestionIndex === 36 && <img src={imagen2}/>}
+      {quizState.currentQuestionIndex === 54 && <img src={imagen3}/>}
+      {quizState.currentQuestionIndex === 72 && <img src={imagen4}/>}</div>
       <div className="answers">
         {quizState.answers.map((answer, index) => (
           <AnswerTIE
