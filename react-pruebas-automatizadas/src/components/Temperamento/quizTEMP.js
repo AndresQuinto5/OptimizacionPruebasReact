@@ -46,23 +46,11 @@ const Quiz = () => {
             <div className="flematico">
               Flemático {(quizState.flematicoAnswers) }
             </div>
-              <BarChart
-                width={465}
-                height={300}
-                data={pieResults}
-                margin={{
-                  top: 5,
-                  right: 20,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis tickCount={5} domain={[0, 40]} />
-                <Tooltip />
-                <Bar dataKey="Frecuencia" fill="#f16a24" />
-          </BarChart>
+            <div className="grafico">
+
+              
+
+            </div>
           </div>
           <div
             onClick={() => dispatch({ type: "RESTART" })}
@@ -113,7 +101,7 @@ const Quiz = () => {
                   <Field id="dpi" name="dpi" maxLength="13" />
                   <br></br>
                   <br></br>
-                  <button type="submit" className="next-button">Comenzar prueba</button>
+                  <button type="submit" className="form-button">Comenzar prueba</button>
                 </Form>
               </Formik>
             </div>
