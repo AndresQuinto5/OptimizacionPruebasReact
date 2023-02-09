@@ -55,7 +55,7 @@ const dataTIE = [
     { answer: "Bastante de acuerdo", value: 2 , subcompetencia: "IEEO", competencia: "Empatía"},
     { answer: "Totalmente de acuerdo", value: 3 , subcompetencia: "IEEO", competencia: "Empatía"},
     ],
-    },/*
+    },
     {
     question: "Tengo dificultad para calcular el impacto que mi comportamiento tiene sobre los demás.",
     answers: [
@@ -569,6 +569,7 @@ const dataTIE = [
     { answer: "Totalmente de acuerdo", value: 3 , subcompetencia: "FYAAC", competencia: "Habilidades Sociales"},
     ],
     },
+    /*
     {
     question: "Por lo general me atoro cuando pienso en distintas maneras de resolver problemas.",
     answers: [

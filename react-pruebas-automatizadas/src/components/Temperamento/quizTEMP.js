@@ -20,7 +20,18 @@ const Quiz = () => {
   const col = (quizState.colericoAnswers);
   const mel = (quizState.melancolicoAnswers);
   const fle = (quizState.flematicoAnswers);
-
+  const san100 = ((quizState.sangineoAnswers)/40)*100;
+  const col100 = ((quizState.colericoAnswers)/40)*100;
+  const mel100 = ((quizState.melancolicoAnswers)/40)*100;
+  const fle100 = ((quizState.flematicoAnswers)/40)*100;
+  const FS = (quizState.FS);
+  const FC = (quizState.FC);
+  const FM = (quizState.FM);
+  const FF = (quizState.FF);
+  const DS = (quizState.DS);
+  const DC = (quizState.DC);
+  const DM = (quizState.DM);
+  const DF = (quizState.DF);
   const pieResults = [
     { name: "Sanguíneo", Frecuencia: san },
     { name: "Colérico", Frecuencia: col },
@@ -46,7 +57,8 @@ const Quiz = () => {
             <div className="flematico">
               Flemático {(quizState.flematicoAnswers) }
             </div>
-              <BarChart
+            <div className="grafico">
+            <BarChart
                 width={465}
                 height={300}
                 data={pieResults}
@@ -62,13 +74,15 @@ const Quiz = () => {
                 <YAxis tickCount={5} domain={[0, 40]} />
                 <Tooltip />
                 <Bar dataKey="Frecuencia" fill="#f16a24" />
-          </BarChart>
+            </BarChart>
+
+            </div>
           </div>
           <div
             onClick={() => dispatch({ type: "RESTART" })}
             className="restart-button"
           >
-            Restart
+            Reiniciar
           </div>
         </div>
       )}
@@ -113,7 +127,7 @@ const Quiz = () => {
                   <Field id="dpi" name="dpi" maxLength="13" />
                   <br></br>
                   <br></br>
-                  <button type="submit" className="next-button">Comenzar prueba</button>
+                  <button type="submit" className="form-button">Comenzar prueba</button>
                 </Form>
               </Formik>
             </div>
@@ -133,14 +147,14 @@ const Quiz = () => {
                   Anterior
                 </div>
               )}
-             {quizState.currentAnswer && (
+            {quizState.currentAnswer && (
               <div>
                 <div onClick={() => dispatch({ type: "NEXT_QUESTION" })} className="next-button">Siguiente</div>
               </div>
             )}
               
               
-           </div></div>}
+          </div></div>}
         </div>
       :
         <div></div>
