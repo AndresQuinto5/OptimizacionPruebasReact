@@ -13,6 +13,15 @@ const initialState = {
   colericoAnswers: 0,
   melancolicoAnswers: 0,
   flematicoAnswers: 0,
+  FS:0,
+  FC:0,
+  FM:0,
+  FF:0,
+  DS: 0,
+  DC: 0,
+  DM: 0,
+  DF: 0,
+  
   mapa: new Map()
 };
 
@@ -67,14 +76,46 @@ const reducer = (state, action) => {
         state.mapa.forEach((valor,clave)=> {
           if(valor == 1){
             state.sangineoAnswers += 1
+            //console.log(state.sangineoAnswers, "respuesta añadida a sangineo")
           }else if(valor == 2){
             state.colericoAnswers += 1
+            //console.log(state.colericoAnswers, "respuesta añadida a colerico")
           }else if(valor == 3){
             state.melancolicoAnswers += 1
+            //console.log(state.melancolicoAnswers, "respuesta añadida a melancolico")
           }else if(valor == 4){
             state.flematicoAnswers += 1
+            //console.log(state.flematicoAnswers, "respuesta añadida a flematico")
           }
         })
+        const entries = Array.from(state.mapa.entries());
+        for (let i = 0; i < 20; i++) {
+          const [clave, valor] = entries[i];
+          if (valor === 1) {
+            state.FS += 1;
+          } else if (valor === 2) {
+            state.FC += 1;
+          } else if (valor === 3) {
+            state.FM += 1;
+          } else if (valor === 4) {
+            state.FF += 1;
+          }
+        }
+        const entries2 = Array.from(state.mapa.entries());
+        for (let i = 20; i < 40; i++) {
+          const [clave, valor] = entries2[i];
+          if (valor === 1) {
+            state.DS += 1;
+          } else if (valor === 2) {
+            state.DC += 1;
+          } else if (valor === 3) {
+            state.DM += 1;
+          } else if (valor === 4) {
+            state.DF += 1;
+          }
+        }
+        console.log(state.FS, state.FC, state.FM, state.FF, state.DS, state.DC, state.DM, state.DF)
+
       }
       return {
         ...state,
