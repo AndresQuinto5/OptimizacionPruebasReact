@@ -3,6 +3,7 @@ import { QuizContextTIE } from "../../contexts/quizTIE";
 import "../Temperamento/quiz.css";
 import QuestionTIE from "./QuestionTIE";
 import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
+import emailjs from '@emailjs/browser';
 
 
 
@@ -27,6 +28,147 @@ const QuizTIE = () => {
   const HabilidadesSociales = COLAB + FYAAC + RDC + COM + INFLU + LIDER;
 
 
+  function eval1(a){
+    if (a <= 8) {
+      return "Bajo"
+    }
+    else if (a >= 9 && a <= 12) {
+      return "Medio"
+    }
+    else if (a >= 13 && a <= 15) {
+      return "Alto"
+    }
+  }
+  function eval2(a){
+    if (a <= 15) {
+      return "Bajo"
+    }
+    else if (a >= 16 && a <= 24) {
+      return "Medio"
+    }
+    else if (a >= 25 && a <= 30) {
+      return "Alto"
+    }
+  }
+  function eval3(a){
+    if (a <= 23) {
+      return "Bajo"
+    }
+    else if (a >= 24 && a <= 35) {
+      return "Medio"
+    }
+    else if (a >= 36 && a <= 45) {
+      return "Alto"
+    }
+  }
+  function eval4(a){
+    if (a <= 45) {
+      return "Bajo"
+    }
+    else if (a >= 46 && a <= 75) {
+      return "Medio"
+    }
+    else if (a >= 76 && a <= 90) {
+      return "Alto"
+    }
+  }
+  function eval5(a){
+    if (a <= 55) {
+      return "Bajo"
+    }
+    else if (a >= 56 && a <= 84) {
+      return "Medio"
+    }
+    else if (a >= 85 && a <= 105) {
+      return "Alto"
+    }
+  }
+  /*
+  const evalIEP= "";
+  const evalCEP= "";
+  const evalMEDFC= "";
+  const evalTAE= "";
+  const evalAUTO= "";
+  const evalIEEO= "";
+  const evalCEEO= "";
+  const evalCOLAB= "";
+  const evalFYAAC= "";
+  const evalRDC= "";
+  const evalCOM= "";
+  const evalINFLU= "";
+  const evalLIDER= "";
+  const evalAutoconciencia= "";
+  const evalAutocontrol= "";
+  const evalEmpatia= "";
+  const evalHabilidadesSociales= "";
+  */
+  let evalIEP = eval2(IEP);
+  let evalCEP = eval1(CEP);
+  let evalMEDFC = eval3(MEDFC);
+  let evalTAE = eval1(TAE);
+  let evalAUTO = eval2(AUTO);
+  let evalIEEO = eval1(IEEO);
+  let evalCEEO = eval1(CEEO);
+  let evalCOLAB = eval1(COLAB);
+  let evalFYAAC = eval1(FYAAC);
+  let evalRDC = eval1(RDC);
+  let evalCOM = eval2(COM);
+  let evalINFLU = eval1(INFLU);
+  let evalLIDER = eval1(LIDER);
+  let evalAutoconciencia = eval3(Autoconciencia);
+  let evalAutocontrol = eval4(Autocontrol);
+  let evalEmpatia = eval2(Empatia);
+  let evalHabilidadesSociales = eval5(HabilidadesSociales);
+
+  var templateParams = {
+    name: 'James',
+    notes: 'Check this out!',
+    uno: IEP,
+    uno_: evalIEP,
+    dos: CEP,
+    dos_: evalCEP,
+    tres: MEDFC,
+    tres_: evalMEDFC,
+    cuatro: TAE,
+    cuatro_: evalTAE,
+    cinco: AUTO,
+    cinco_: evalAUTO,
+    seis: IEEO,
+    seis_: evalIEEO,
+    siete: CEEO,
+    siete_: evalCEEO,
+    ocho: COLAB,
+    ocho_: evalCOLAB,
+    nueve: FYAAC,
+    nueve_: evalFYAAC,
+    diez: RDC,
+    diez_: evalRDC,
+    once: COM,
+    once_: evalCOM,
+    doce: INFLU,
+    doce_: evalINFLU,
+    trece: LIDER,
+    trece_: evalLIDER,
+    catorce: Autoconciencia,
+    catorce_: evalAutoconciencia,
+    quince: Autocontrol,
+    quince_: evalAutocontrol,
+    dieciseis: Empatia,
+    dieciseis_: evalEmpatia,
+    diecisiete: HabilidadesSociales,
+    diecisiete_: evalHabilidadesSociales
+
+  };
+
+  function sendEmail(a) {
+    emailjs.send('service_ljon6t8', 'template_ikmvv1r', templateParams, 'dw7yxB6O6v4NSfxS0')
+    .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+        console.log('FAILED...', error);
+    });
+  }
+
 
   const BarChartResults = [
     { name: "IEP", Frecuencia: IEP },
@@ -43,6 +185,7 @@ const QuizTIE = () => {
     { name: "INFLU", Frecuencia: INFLU },
     { name: "LIDER", Frecuencia: LIDER }
   ];
+
 
   return (
     <div className="quiz">
@@ -72,10 +215,16 @@ const QuizTIE = () => {
                 <Tooltip />
                 <Bar dataKey="Frecuencia" fill="#f16a24" />
           </BarChart>
+                {console.log("Las evaluaciones son las siguientes",evalIEP, evalCEP, evalMEDFC, evalTAE, evalAUTO, evalIEEO, evalCEEO, 
+                evalCOLAB, evalFYAAC, evalRDC, evalCOM, evalINFLU, evalLIDER, evalAutoconciencia, evalAutocontrol, evalEmpatia, evalHabilidadesSociales)}
+                
           </div>
-
-          <div
-            onClick={() => dispatch({ type: "RESTART" })}
+          <div  
+            onClick={() => {
+              dispatch({ type: "RESTART" });
+              sendEmail(templateParams);
+            }
+              }
             className="next-button"
           >
             Restart
