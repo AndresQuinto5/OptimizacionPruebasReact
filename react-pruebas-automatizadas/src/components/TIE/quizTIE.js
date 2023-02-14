@@ -4,6 +4,8 @@ import "../Temperamento/quiz.css";
 import QuestionTIE from "./QuestionTIE";
 import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import emailjs from '@emailjs/browser';
+import { sendEmail, mergeArrays, ArrayTIE} from "../../contexts/SendEmail";
+
 
 
 
@@ -121,8 +123,6 @@ const QuizTIE = () => {
   let evalHabilidadesSociales = eval5(HabilidadesSociales);
 
   var templateParams = {
-    name: 'James',
-    notes: 'Check this out!',
     uno: IEP,
     uno_: evalIEP,
     dos: CEP,
@@ -160,7 +160,7 @@ const QuizTIE = () => {
 
   };
 
-  function sendEmail(a) {
+  function sendEmail22(a) {
     emailjs.send('service_ljon6t8', 'template_ikmvv1r', templateParams, 'dw7yxB6O6v4NSfxS0')
     .then(function(response) {
         console.log('SUCCESS!', response.status, response.text);
@@ -191,8 +191,17 @@ const QuizTIE = () => {
     { name: "Empatia", Frecuencia: Empatia },
     { name: "Habilidades Sociales", Frecuencia: HabilidadesSociales }
   ];
+  
+  const handleSendEmail = () => {
+    ArrayTIE(templateParams);
+    }
+  
+  const handleMergeArrays = () => {
+    mergeArrays();
+  }
 
   return (
+    templateParams,
     <div className="quiz">
       {quizState.showResults && (
         <div className="results">
@@ -239,8 +248,9 @@ const QuizTIE = () => {
                         <Tooltip />
                         <Bar dataKey="Frecuencia" fill="#f16a24" />
                     </BarChart>
-
-                
+                    <button onClick={handleSendEmail}>Enviar resultados por correo</button>
+                    <button onClick={handleMergeArrays}>print arrays merged</button>
+                        
                   <div style={{display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
                     <div style={{width: "0%"}}></div>
                       <div style={{textAlign: "left"}}>
@@ -275,8 +285,10 @@ const QuizTIE = () => {
             <div
               onClick={() => dispatch({ type: "RESTART" })}
               className="next-button"
+              
             >
               Reiniciar
+              
             </div>
         </div>
       )}

@@ -5,11 +5,8 @@ import { QuizContext } from "../../contexts/quizTemperamento";
 import "./quiz.css";
 import React, { useState } from 'react';
 import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
-
-
-
-
-
+import emailjs from '@emailjs/browser';
+import { sendEmail, mergeArrays, ArrayTemperamento } from "../../contexts/SendEmail";
 
 const Quiz = () => {
 
@@ -32,12 +29,48 @@ const Quiz = () => {
   const DC = (quizState.DC);
   const DM = (quizState.DM);
   const DF = (quizState.DF);
+
+  var templateParams2 = {
+    name: 'James',
+    notes: 'Check this out!',
+    sangineo: san,
+    colerico: col,
+    melancolico: mel,
+    flematico: fle,
+    sobre100S: san100.toFixed(2),
+    sobre100C: col100.toFixed(2),
+    sobre100M: mel100.toFixed(2),
+    sobre100F: fle100.toFixed(2),
+    FS: FS,
+    FC: FC,
+    FM: FM,
+    FF: FF,
+    DS: DS,
+    DC: DC,
+    DM: DM,
+    DF: DF
+  };
+  console.log(templateParams2);
   const pieResults = [
     { name: "Sanguíneo", Frecuencia: san },
     { name: "Colérico", Frecuencia: col },
     { name: "Melancólico", Frecuencia: mel },
     { name: "Flemático", Frecuencia: fle }
   ];
+  
+  function sendEmail22(a) {
+    emailjs.send('service_ljon6t8', 'template_9shod4j', templateParams2, 'dw7yxB6O6v4NSfxS0')
+    .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+        console.log('FAILED...', error);
+    });
+  }
+
+  const handleSendEmail = () => {
+    ArrayTemperamento(templateParams2);
+    }
+
   return (
     <div className="quiz">
       {quizState.showResults && (
@@ -75,15 +108,11 @@ const Quiz = () => {
                 <Tooltip />
                 <Bar dataKey="Frecuencia" fill="#f16a24" />
             </BarChart>
-
+          
             </div>
           </div>
-          <div
-            onClick={() => dispatch({ type: "RESTART" })}
-            className="restart-button"
-          >
-            Reiniciar
-          </div>
+          
+          <button onClick={handleSendEmail}>Enviar resultados correo</button>
         </div>
       )}
       {!quizState.showResults ?

@@ -1,6 +1,8 @@
 import React, { createContext, useReducer } from "react";
 import questions from "./dataTemperamento";
 import { AnswerList } from "../helper";
+import { sendEmail } from "./SendEmail";
+
 
 const initialState = {
   questions,
@@ -51,6 +53,7 @@ const reducer = (state, action) => {
       };
     }
     case "NEXT_QUESTION": {
+      
       let currentAnswer = state.currentAnswer;
       console.log(state.currentQuestionIndex, "esto es el index de la pregunta?")
       if(currentAnswer == 1){
@@ -158,6 +161,7 @@ const reducer = (state, action) => {
       };
     }
     case "RESTART": {
+      
       return initialState;
     }
     default:

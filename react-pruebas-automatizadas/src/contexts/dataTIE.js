@@ -36,6 +36,7 @@ const dataTIE = [
   { answer: "Totalmente de acuerdo", value: 0 , subcompetencia: "TAE", competencia: "Autocontrol"},
   ],
   },
+  
   {
   question: "Tengo dificultad para completar tareas a largo plazo.",
   answers: [

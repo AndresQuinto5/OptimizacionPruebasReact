@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { sendEmail , alo} from "../../contexts/SendEmail";
 
 function Home() {
 const [name, setName] = useState("");
 const [identification, setIdentification] = useState("");
-
+//console.log(sendEmail())
 return (
 <div style={{ padding: "20px" }}>
 <h3>Contenido de la página principal o definir otra prueba aquí</h3>

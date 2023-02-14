@@ -365,7 +365,7 @@ const data2 = [
     ],
     },
     
-    // ... más preguntas
+    // ... más preguntas*/
     ];
 
 
