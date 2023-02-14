@@ -1,14 +1,14 @@
-import QuizTIE from "../components/TIE/quizTIE";
+/*import QuizTIE from "../components/TIE/quizTIE";
 import Quiz from "../components/Temperamento/quizTEMP";
 import emailjs from '@emailjs/browser';
 
 
-/*
+
 export const printTemplateParams = () => {
     const { templateParams } = QuizTIE();
     console.log("hola",templateParams);
     };
- */   
+
 
 
 
@@ -48,3 +48,5 @@ export function sendEmail(templateParams2) {
 export function alo() {
     console.log("hola");
     }
+
+    */

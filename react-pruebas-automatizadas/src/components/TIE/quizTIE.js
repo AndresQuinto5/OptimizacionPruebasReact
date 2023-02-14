@@ -5,9 +5,7 @@ import QuestionTIE from "./QuestionTIE";
 import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import emailjs from '@emailjs/browser';
 import { sendEmail, mergeArrays, ArrayTIE} from "../../contexts/SendEmail";
-
-
-
+import { Context } from '../../contexts/contextEmail';
 
 const QuizTIE = () => {
   const [quizState, dispatch] = useContext(QuizContextTIE);
@@ -191,23 +189,28 @@ const QuizTIE = () => {
     { name: "Empatia", Frecuencia: Empatia },
     { name: "Habilidades Sociales", Frecuencia: HabilidadesSociales }
   ];
-  
-  const handleSendEmail = () => {
-    ArrayTIE(templateParams);
-    }
-  
-  const handleMergeArrays = () => {
-    mergeArrays();
-  }
 
+  const { arrayTIE, setArrayTIE } = useContext(Context);
+  const { mergeArrays } = useContext(Context);
+
+  const handleMergeArrays = () => {
+    const templateFinal = mergeArrays();
+    console.log(templateFinal);
+  };
+  const handleSendEmail = () => {
+    setArrayTIE({ ...arrayTIE, ...templateParams })
+    console.log(arrayTIE)
+    }
+    
   return (
-    templateParams,
+
     <div className="quiz">
       {quizState.showResults && (
         <div className="results">
           <div className="congratulations">Test de inteligencia emocional</div>
             <div className="results-info"> 
-            
+            <button onClick={handleSendEmail}>Enviar correo TIE</button>
+            <button onClick={handleMergeArrays}>  merge</button>
               <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                 <BarChart
                       width={650}
@@ -248,8 +251,6 @@ const QuizTIE = () => {
                         <Tooltip />
                         <Bar dataKey="Frecuencia" fill="#f16a24" />
                     </BarChart>
-                    <button onClick={handleSendEmail}>Enviar resultados por correo</button>
-                    <button onClick={handleMergeArrays}>print arrays merged</button>
                         
                   <div style={{display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
                     <div style={{width: "0%"}}></div>

@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useState } from "react";
 import questionsTIE from "../contexts/dataTIE"
 import { AnswerList } from "../../src/helper";
 
@@ -202,6 +202,33 @@ const initialStateTIE = {
     }
   };
   
+
+  export const Context = createContext({});
+
+  export const MyProvider = (props) => {
+      const [arrayTIE, setArrayTIE] = useState({});
+      const [arrayTemp, setArrayTemp] = useState({});
+  
+      const mergeArrays = () => {
+          const templateFinal = { ...arrayTIE, ...arrayTemp };
+          return templateFinal;
+      };
+  
+      return (
+          <Context.Provider
+          value={{
+              arrayTIE,
+              setArrayTIE,
+              arrayTemp,
+              setArrayTemp,
+              mergeArrays,
+          }}
+          >
+          {props.children}
+          </Context.Provider>
+      );
+      };
+
 export const QuizContextTIE = createContext();
 
 export const QuizProviderTIE = ({ children }) => {

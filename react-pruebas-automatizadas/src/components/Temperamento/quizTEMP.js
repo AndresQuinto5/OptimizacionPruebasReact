@@ -7,6 +7,8 @@ import React, { useState } from 'react';
 import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import emailjs from '@emailjs/browser';
 import { sendEmail, mergeArrays, ArrayTemperamento } from "../../contexts/SendEmail";
+import { Context } from '../../contexts/contextEmail';
+
 
 const Quiz = () => {
 
@@ -67,12 +69,24 @@ const Quiz = () => {
     });
   }
 
+  const { arrayTemp, setArrayTemp } = useContext(Context);
+  const { mergeArrays } = useContext(Context);
+
+  const handleMergeArrays = () => {
+    const templateFinal = mergeArrays();
+    console.log(templateFinal);
+  };
+
   const handleSendEmail = () => {
-    ArrayTemperamento(templateParams2);
+    setArrayTemp({ ...arrayTemp, ...templateParams2 });
+    console.log(arrayTemp);
     }
 
   return (
+    
     <div className="quiz">
+      <button onClick={handleSendEmail}>Enviar correo Temperamento</button>
+      <button onClick={handleMergeArrays}>Merge arrays</button>
       {quizState.showResults && (
         <div className="results">
           <div className="congratulations">Ha completado con exito el test!!</div>
@@ -112,7 +126,7 @@ const Quiz = () => {
             </div>
           </div>
           
-          <button onClick={handleSendEmail}>Enviar resultados correo</button>
+          <button onClick={ArrayTemperamento}>Enviar resultados correo</button>
         </div>
       )}
       {!quizState.showResults ?
