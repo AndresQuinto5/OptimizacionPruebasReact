@@ -1,3 +1,6 @@
+import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import {  saveTemplateParams, saveTemplateParams2  } from '../../contexts/store';
 import { useContext } from "react";
 import { QuizContextTIE } from "../../contexts/quizTIE";
 import "../Temperamento/quiz.css";
@@ -7,8 +10,8 @@ import emailjs from '@emailjs/browser';
 import { sendEmail, mergeArrays, ArrayTIE} from "../../contexts/SendEmail";
 import { Context } from '../../contexts/contextEmail';
 
-const QuizTIE = () => {
-  const [quizState, dispatch] = useContext(QuizContextTIE);
+const QuizTIE = (props) => {
+  const [quizState, dispatch2] = useContext(QuizContextTIE);
   const IEP = (quizState.IEP);
   const CEP = (quizState.CEP);
   const MEDFC =(quizState.MEDFC);
@@ -27,7 +30,12 @@ const QuizTIE = () => {
   const Empatia = IEEO + CEEO;
   const HabilidadesSociales = COLAB + FYAAC + RDC + COM + INFLU + LIDER;
 
+//apartado de store
+  const dispatch = useDispatch();
+  const templateFinal = useSelector((state) => state.templateFinal);
 
+  var templateParams = quizState.templateParams;
+/*
   function eval1(a){
     if (a <= 8) {
       return "Bajo"
@@ -102,6 +110,7 @@ const QuizTIE = () => {
   const evalEmpatia= "";
   const evalHabilidadesSociales= "";
   */
+/*
   let evalIEP = eval2(IEP);
   let evalCEP = eval1(CEP);
   let evalMEDFC = eval3(MEDFC);
@@ -156,7 +165,21 @@ const QuizTIE = () => {
     diecisiete: HabilidadesSociales,
     diecisiete_: evalHabilidadesSociales
 
+  };*/
+/*
+  const handleSendEmail = () => {
+    dispatch(saveTemplateParams(templateParams));
   };
+*/
+  const handleSendEmail = () => {
+    props.saveTemplateParams(quizState.templateParams);
+  };
+
+  const handleMergeArrays = () => {
+    dispatch({ type: 'MERGE_ARRAYS' });
+    console.log("redux");
+  };
+
 
   function sendEmail22(a) {
     emailjs.send('service_ljon6t8', 'template_ikmvv1r', templateParams, 'dw7yxB6O6v4NSfxS0')
@@ -189,7 +212,7 @@ const QuizTIE = () => {
     { name: "Empatia", Frecuencia: Empatia },
     { name: "Habilidades Sociales", Frecuencia: HabilidadesSociales }
   ];
-
+/*
   const { arrayTIE, setArrayTIE } = useContext(Context);
   const { mergeArrays } = useContext(Context);
 
@@ -201,16 +224,19 @@ const QuizTIE = () => {
     setArrayTIE({ ...arrayTIE, ...templateParams })
     console.log(arrayTIE)
     }
-    
+    */
   return (
 
     <div className="quiz">
       {quizState.showResults && (
         <div className="results">
+          <button onClick={handleSendEmail}>Enviar correo </button>
+          <button onClick={handleMergeArrays}>Merge arrays</button>
+          <button onClick={sendEmail}>Merge arrays aqui</button>
+          <pre>{JSON.stringify(templateFinal, null, 2)}</pre>
           <div className="congratulations">Test de inteligencia emocional</div>
             <div className="results-info"> 
-            <button onClick={handleSendEmail}>Enviar correo TIE</button>
-            <button onClick={handleMergeArrays}>  merge</button>
+
               <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                 <BarChart
                       width={650}
@@ -284,7 +310,7 @@ const QuizTIE = () => {
             </div>
 
             <div
-              onClick={() => dispatch({ type: "RESTART" })}
+              onClick={() => dispatch2({ type: "RESTART" })}
               className="next-button"
               
             >
@@ -303,7 +329,7 @@ const QuizTIE = () => {
           <QuestionTIE />
           {quizState.currentQuestionIndex !== 0 && (
                 <div
-                  onClick={() => dispatch({ type: "PREVIOUS_QUESTION" })}
+                  onClick={() => dispatch2({ type: "PREVIOUS_QUESTION" })}
                   className="prev-button"
                 >
                   Anterior
@@ -311,7 +337,7 @@ const QuizTIE = () => {
           )}
           {quizState.currentAnswer && (
             <div
-              onClick={() => dispatch({ type: "NEXT_QUESTION" })}
+              onClick={() => dispatch2({ type: "NEXT_QUESTION" })}
               className="next-button"
             >
               Siguiente
@@ -323,4 +349,12 @@ const QuizTIE = () => {
   );
 };
 
-export default QuizTIE;
+const mapStateToProps = (state) => ({
+  templateFinal: state.templateFinal,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  saveTemplateParams: (templateParams) => dispatch(saveTemplateParams(templateParams)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuizTIE);

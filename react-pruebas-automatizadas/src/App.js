@@ -10,10 +10,10 @@ import { QuizProvider } from "./contexts/quizTemperamento";
 import TestTIE from './components/pruebas/TIE';
 import { MyProvider } from './contexts/contextEmail';
 
+
 function App() {
   return (
     <BrowserRouter>
-    <MyProvider>
     <div className="App">
     <div className='navbar'>
         <Navbar />
@@ -25,7 +25,6 @@ function App() {
       <Route exact path='/Temperamento' element={< TestTemperamento />}></Route>
       <Route exact path='/TIE' element={< TestTIE />}></Route>
     </Routes>
-    </MyProvider>
     </BrowserRouter>
   );
 }

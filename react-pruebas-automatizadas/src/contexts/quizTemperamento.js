@@ -23,6 +23,7 @@ const initialState = {
   DC: 0,
   DM: 0,
   DF: 0,
+  templateParams: {},
   
   mapa: new Map()
 };
@@ -117,7 +118,31 @@ const reducer = (state, action) => {
             state.DF += 1;
           }
         }
-        console.log(state.FS, state.FC, state.FM, state.FF, state.DS, state.DC, state.DM, state.DF)
+        const san100 = ((state.sangineoAnswers)/40)*100;
+        const col100 = ((state.colericoAnswers)/40)*100;
+        const mel100 = ((state.melancolicoAnswers)/40)*100;
+        const fle100 = ((state.flematicoAnswers)/40)*100;
+        state.templateParams = {
+          name: 'James',
+          notes: 'Check this out!',
+          sangineo: state.sangineoAnswers,
+          colerico: state.colericoAnswers,
+          melancolico: state.melancolicoAnswers,
+          flematico: state.flematicoAnswers,
+          sobre100S: san100.toFixed(2),
+          sobre100C: col100.toFixed(2),
+          sobre100M: mel100.toFixed(2),
+          sobre100F: fle100.toFixed(2),
+          FS: state.FS,
+          FC: state.FC,
+          FM: state.FM,
+          FF: state.FF,
+          DS: state.DS,
+          DC: state.DC,
+          DM: state.DM,
+          DF: state.DF
+        };
+        console.log(state.templateParams, "esto es el template params")
 
       }
       return {

@@ -1,3 +1,6 @@
+import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import {  saveTemplateParams, saveTemplateParams2  } from '../../contexts/store';
 import { useContext } from "react";
 import { Formik, Field, Form } from 'formik';
 import Question from "./QuestionTEMP";
@@ -9,10 +12,9 @@ import emailjs from '@emailjs/browser';
 import { sendEmail, mergeArrays, ArrayTemperamento } from "../../contexts/SendEmail";
 import { Context } from '../../contexts/contextEmail';
 
+const Quiz = (props) => {
 
-const Quiz = () => {
-
-  const [quizState, dispatch] = useContext(QuizContext);
+  const [quizState, dispatch22] = useContext(QuizContext);
   const [complete, setComplete] = useState(false);
   //data normalization for chart
   const san = (quizState.sangineoAnswers);
@@ -32,27 +34,13 @@ const Quiz = () => {
   const DM = (quizState.DM);
   const DF = (quizState.DF);
 
-  var templateParams2 = {
-    name: 'James',
-    notes: 'Check this out!',
-    sangineo: san,
-    colerico: col,
-    melancolico: mel,
-    flematico: fle,
-    sobre100S: san100.toFixed(2),
-    sobre100C: col100.toFixed(2),
-    sobre100M: mel100.toFixed(2),
-    sobre100F: fle100.toFixed(2),
-    FS: FS,
-    FC: FC,
-    FM: FM,
-    FF: FF,
-    DS: DS,
-    DC: DC,
-    DM: DM,
-    DF: DF
-  };
-  console.log(templateParams2);
+  //apartado de store
+  const dispatch = useDispatch();
+  const templateFinal = useSelector((state) => state.templateFinal);
+  
+  var templateParams2 = quizState.templateParams;
+
+  
   const pieResults = [
     { name: "Sanguíneo", Frecuencia: san },
     { name: "Colérico", Frecuencia: col },
@@ -60,6 +48,18 @@ const Quiz = () => {
     { name: "Flemático", Frecuencia: fle }
   ];
   
+  
+
+
+  const handleSendEmail2 = () => {
+    props.saveTemplateParams2(quizState.templateParams);
+  };
+
+  const handleMergeArrays = () => {
+    dispatch({ type: 'MERGE_ARRAYS' });
+    console.log("redux");
+  };
+
   function sendEmail22(a) {
     emailjs.send('service_ljon6t8', 'template_9shod4j', templateParams2, 'dw7yxB6O6v4NSfxS0')
     .then(function(response) {
@@ -68,7 +68,7 @@ const Quiz = () => {
         console.log('FAILED...', error);
     });
   }
-
+  /*
   const { arrayTemp, setArrayTemp } = useContext(Context);
   const { mergeArrays } = useContext(Context);
 
@@ -81,14 +81,16 @@ const Quiz = () => {
     setArrayTemp({ ...arrayTemp, ...templateParams2 });
     console.log(arrayTemp);
     }
-
+*/
   return (
     
     <div className="quiz">
-      <button onClick={handleSendEmail}>Enviar correo Temperamento</button>
-      <button onClick={handleMergeArrays}>Merge arrays</button>
       {quizState.showResults && (
         <div className="results">
+          <button onClick={handleSendEmail2}>Enviar correo 2</button>
+          <button onClick={handleMergeArrays}>Merge arrays aqui</button>
+
+          <pre>{JSON.stringify(templateFinal, null, 2)}</pre>
           <div className="congratulations">Ha completado con exito el test!!</div>
           <div className="results-info">
             <div className="exitoprompt">Sus resultados son:</div>
@@ -125,8 +127,6 @@ const Quiz = () => {
           
             </div>
           </div>
-          
-          <button onClick={ArrayTemperamento}>Enviar resultados correo</button>
         </div>
       )}
       {!quizState.showResults ?
@@ -184,7 +184,7 @@ const Quiz = () => {
              <Question />
              {quizState.currentQuestionIndex !== 0 && (
                 <div
-                  onClick={() => dispatch({ type: "PREVIOUS_QUESTION" })}
+                  onClick={() => dispatch22({ type: "PREVIOUS_QUESTION" })}
                   className="prev-button"
                 >
                   Anterior
@@ -192,7 +192,7 @@ const Quiz = () => {
               )}
             {quizState.currentAnswer && (
               <div>
-                <div onClick={() => dispatch({ type: "NEXT_QUESTION" })} className="next-button">Siguiente</div>
+                <div onClick={() => dispatch22({ type: "NEXT_QUESTION" })} className="next-button">Siguiente</div>
               </div>
             )}
               
@@ -206,5 +206,11 @@ const Quiz = () => {
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  templateFinal: state.templateFinal,
+});
 
-export default Quiz;
+const mapDispatchToProps = (dispatch) => ({
+  saveTemplateParams2: (templateParams2) => dispatch(saveTemplateParams2(templateParams2)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Quiz);
