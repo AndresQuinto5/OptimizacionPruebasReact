@@ -92,14 +92,9 @@ const Quiz = (props) => {
       
       {quizState.showResults && (
         <div className="results">
-<<<<<<< HEAD
-          
-          <div className="congratulations">Ha completado con exito el test!!</div>
-=======
           <pre>{JSON.stringify(templateFinal, null, 2)}</pre>
           <pre>{JSON.stringify(templateParams2, null, 2)}</pre>
           <div className="congratulations">¡Ha completado con exito el test!</div>
->>>>>>> ProgressBar
           <div className="results-info">
 
           {handleBanderaTEMP(true)}
