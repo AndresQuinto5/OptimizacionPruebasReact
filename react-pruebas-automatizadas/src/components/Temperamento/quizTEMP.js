@@ -1,20 +1,27 @@
+import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import {  saveTemplateParams, saveTemplateParams2  } from '../../contexts/store';
 import { useContext } from "react";
 import { Formik, Field, Form } from 'formik';
 import Question from "./QuestionTEMP";
 import { QuizContext } from "../../contexts/quizTemperamento";
 import "./quiz.css";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
+import emailjs from '@emailjs/browser';
+import { sendEmail, mergeArrays, ArrayTemperamento } from "../../contexts/SendEmail";
+import { Context } from '../../contexts/contextEmail';
+import { Redirect } from 'react-router-dom';
 
 
 
 
-
-
-const Quiz = () => {
-
-  const [quizState, dispatch] = useContext(QuizContext);
-  const [complete, setComplete] = useState(false);
+const Quiz = (props) => {
+  const complete = useSelector((state) => state.complete);
+  const [quizState, dispatch22] = useContext(QuizContext);
+  //const [complete, setComplete] = useState(false);
+  //para actualizar el store de manera continua
+  const showResults = quizState.showResults;
   //data normalization for chart
   const san = (quizState.sangineoAnswers);
   const col = (quizState.colericoAnswers);
@@ -32,136 +39,139 @@ const Quiz = () => {
   const DC = (quizState.DC);
   const DM = (quizState.DM);
   const DF = (quizState.DF);
+
+  //apartado de store
+  const dispatch = useDispatch();
+  const templateFinal = useSelector((state) => state.templateFinal);
+  
+  var templateParams2 = quizState.templateParams;
+
+  
   const pieResults = [
     { name: "Sanguíneo", Frecuencia: san },
     { name: "Colérico", Frecuencia: col },
     { name: "Melancólico", Frecuencia: mel },
     { name: "Flemático", Frecuencia: fle }
   ];
+  
+  const handleSendEmail2 = () => {
+    props.saveTemplateParams2(quizState.templateParams);
+  };
+  
+  const handleMergeArrays = () => {
+    dispatch({ type: 'MERGE_ARRAYS' });
+    console.log("redux");
+  };
+
+  useEffect(() => {
+    if (showResults) {
+      handleSendEmail2();
+      handleMergeArrays();
+    }
+  }, [showResults]);
+  
+  if (complete === false) {
+    return (
+      <div>
+        <p>Por favor complete el formulario del componente Home primero.</p>
+      </div>
+    );
+  }
+  //<pre>{JSON.stringify(templateFinal, null, 2)}</pre>
+  //<pre>{JSON.stringify(templateParams2, null, 2)}</pre>
+  <div className="congratulations">Ha completado con exito el test!!</div>
   return (
+    
     <div className="quiz">
+      
       {quizState.showResults && (
         <div className="results">
+          
           <div className="congratulations">Ha completado con exito el test!!</div>
           <div className="results-info">
             <div className="exitoprompt">Sus resultados son:</div>
-            <div className="sanguineo">
-              Sanguíneo {(quizState.sangineoAnswers) }
+              <div className="sanguineo">
+                Sanguíneo {(quizState.sangineoAnswers) }
+              </div>
+              <div className="colerico">
+                Colérico {(quizState.colericoAnswers) }
+              </div>
+              <div className="melancolico">
+                Melancólico {(quizState.melancolicoAnswers) }
+              </div>
+              <div className="flematico">
+                Flemático {(quizState.flematicoAnswers) }
+              </div>
+              </div>
+              <div className="grafico">
+                <BarChart
+                    width={465}
+                    height={300}
+                    data={pieResults}
+                    margin={{
+                      top: 5,
+                      right: 20,
+                      left: 20,
+                      bottom: 5,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis tickCount={5} domain={[0, 40]} />
+                    <Tooltip />
+                    <Bar dataKey="Frecuencia" fill="#f16a24" />
+                </BarChart>
+              
             </div>
-            <div className="colerico">
-              Colérico {(quizState.colericoAnswers) }
-            </div>
-            <div className="melancolico">
-              Melancólico {(quizState.melancolicoAnswers) }
-            </div>
-            <div className="flematico">
-              Flemático {(quizState.flematicoAnswers) }
-            </div>
-            <div className="grafico">
-            <BarChart
-                width={465}
-                height={300}
-                data={pieResults}
-                margin={{
-                  top: 5,
-                  right: 20,
-                  left: 20,
-                  bottom: 5,
-                }}
+              
+              <div
+                onClick={() => dispatch22({ type: "RESTART" })}
+                className="restart-button"
               >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis tickCount={5} domain={[0, 40]} />
-                <Tooltip />
-                <Bar dataKey="Frecuencia" fill="#f16a24" />
-            </BarChart>
-
-            </div>
-          </div>
-          <div
-            onClick={() => dispatch({ type: "RESTART" })}
-            className="restart-button"
-          >
-            Reiniciar
-          </div>
+                Reiniciar
+              </div>
         </div>
       )}
       {!quizState.showResults ?
         <div>
-          {!complete ? 
-            <div>
-              <p>
-                Por favor llenar los datos del formulario para poder tomar la prueba de temperamento.
-              </p>
-              <br></br>
-              <Formik
-                initialValues={{
-                  nombre: '',
-                  apellido: '',
-                  dpi: '',
-                }}
-                onSubmit={async (values) => {
-                  console.log(values)
-                  if (values.apellido == "" || values.nombre == "" || values.dpi == ""){
-                    alert("Tiene que llenar todo el formulario");
-                    setComplete(false)
-                  }else{
-                    // aqui va para que guarde la info del usuario
-                    setComplete(true)
-                  }
-                }}
-              >
-                <Form>
-                  <label htmlFor="nombre">Nombre</label>
-                  <br></br>
-                  <Field id="nombre" name="nombre" />
-                  <br></br>
-                  <br></br>
-                  <label htmlFor="apellido">Apellido</label>
-                  <br></br>
-                  <Field id="apellido" name="apellido" />
-                  <br></br>
-                  <br></br>
-                  <label htmlFor="dpi">DPI</label>
-                  <br></br>
-                  <Field id="dpi" name="dpi" maxLength="13" />
-                  <br></br>
-                  <br></br>
-                  <button type="submit" className="form-button">Comenzar prueba</button>
-                </Form>
-              </Formik>
-            </div>
-          :
           <div>
             <div>
               <div className="score">
-             Pregunta {quizState.currentQuestionIndex + 1}/
-             {quizState.questions.length}
-            </div>
-             <Question />
-             {quizState.currentQuestionIndex !== 0 && (
+                Pregunta {quizState.currentQuestionIndex + 1}/
+                {quizState.questions.length}
+              </div>
+            <Question />
+            <div className="button-container">
+            {quizState.currentQuestionIndex !== 0 && (
                 <div
-                  onClick={() => dispatch({ type: "PREVIOUS_QUESTION" })}
+                  onClick={() => dispatch22({ type: "PREVIOUS_QUESTION" })}
                   className="prev-button"
                 >
                   Anterior
                 </div>
               )}
+
             {quizState.currentAnswer && (
               <div>
-                <div onClick={() => dispatch({ type: "NEXT_QUESTION" })} className="next-button">Siguiente</div>
+                <div onClick={() => dispatch22({ type: "NEXT_QUESTION" })} className="next-button">Siguiente</div>
               </div>
             )}
-              
-              
-          </div></div>}
+
+            </div>
+            </div>
+          </div>
         </div>
-      :
-        <div></div>
-      }
+        : null}
+      
       
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  templateFinal: state.templateFinal,
+});
 
-export default Quiz;
+const mapDispatchToProps = (dispatch) => ({
+  saveTemplateParams2: (templateParams2) => dispatch(saveTemplateParams2(templateParams2)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Quiz);

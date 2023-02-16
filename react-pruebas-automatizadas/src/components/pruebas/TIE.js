@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import QuizTIE from '../TIE/quizTIE';
 import { QuizProviderTIE } from '../../contexts/quizTIE';
@@ -6,7 +7,15 @@ import './TIE.css';
 
 const Final = () => {
   const [showQuiz, setShowQuiz] = useState(false);
+  const complete = useSelector((state) => state.complete);
 
+  if (complete === false) {
+    return (
+      <div>
+        <p>Por favor complete el formulario del componente Home primero.</p>
+      </div>
+    );
+  }
   return (
     <div>
       <CSSTransition

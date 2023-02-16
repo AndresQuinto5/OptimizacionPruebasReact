@@ -1,14 +1,21 @@
+import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import {  saveTemplateParams, saveTemplateParams2  } from '../../contexts/store';
 import { useContext } from "react";
 import { QuizContextTIE } from "../../contexts/quizTIE";
 import "../Temperamento/quiz.css";
 import QuestionTIE from "./QuestionTIE";
 import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import emailjs from '@emailjs/browser';
+import { sendEmail, mergeArrays, ArrayTIE} from "../../contexts/SendEmail";
+import { Context } from '../../contexts/contextEmail';
+import React, { useEffect } from 'react';
 
-
-
-const QuizTIE = () => {
-  const [quizState, dispatch] = useContext(QuizContextTIE);
+const QuizTIE = (props) => {
+  const complete = useSelector((state) => state.complete);
+  const [quizState, dispatch2] = useContext(QuizContextTIE);
+    //para actualizar el store de manera continua
+  const showResults = quizState.showResults;
   const IEP = (quizState.IEP);
   const CEP = (quizState.CEP);
   const MEDFC =(quizState.MEDFC);
@@ -22,145 +29,29 @@ const QuizTIE = () => {
   const COM =(quizState.COM);
   const INFLU =(quizState.INFLU);
   const LIDER =(quizState.LIDER);
-  const Autoconciencia = IEP + CEP;
-  const Autocontrol = MEDFC + TAE + AUTO;
-  const Empatia = IEEO + CEEO;
-  const HabilidadesSociales = COLAB + FYAAC + RDC + COM + INFLU + LIDER;
+  const Autoconciencia = quizState.Autoconciencia;
+  const Autocontrol = quizState.Autocontrol;
+  const Empatia = quizState.Empatia;
+  const HabilidadesSociales = quizState.HabilidadesSociales;
 
+//apartado de store
+  const dispatch = useDispatch();
+  const templateFinal = useSelector((state) => state.templateFinal);
 
-  function eval1(a){
-    if (a <= 8) {
-      return "Bajo"
-    }
-    else if (a >= 9 && a <= 12) {
-      return "Medio"
-    }
-    else if (a >= 13 && a <= 15) {
-      return "Alto"
-    }
-  }
-  function eval2(a){
-    if (a <= 15) {
-      return "Bajo"
-    }
-    else if (a >= 16 && a <= 24) {
-      return "Medio"
-    }
-    else if (a >= 25 && a <= 30) {
-      return "Alto"
-    }
-  }
-  function eval3(a){
-    if (a <= 23) {
-      return "Bajo"
-    }
-    else if (a >= 24 && a <= 35) {
-      return "Medio"
-    }
-    else if (a >= 36 && a <= 45) {
-      return "Alto"
-    }
-  }
-  function eval4(a){
-    if (a <= 45) {
-      return "Bajo"
-    }
-    else if (a >= 46 && a <= 75) {
-      return "Medio"
-    }
-    else if (a >= 76 && a <= 90) {
-      return "Alto"
-    }
-  }
-  function eval5(a){
-    if (a <= 55) {
-      return "Bajo"
-    }
-    else if (a >= 56 && a <= 84) {
-      return "Medio"
-    }
-    else if (a >= 85 && a <= 105) {
-      return "Alto"
-    }
-  }
-  /*
-  const evalIEP= "";
-  const evalCEP= "";
-  const evalMEDFC= "";
-  const evalTAE= "";
-  const evalAUTO= "";
-  const evalIEEO= "";
-  const evalCEEO= "";
-  const evalCOLAB= "";
-  const evalFYAAC= "";
-  const evalRDC= "";
-  const evalCOM= "";
-  const evalINFLU= "";
-  const evalLIDER= "";
-  const evalAutoconciencia= "";
-  const evalAutocontrol= "";
-  const evalEmpatia= "";
-  const evalHabilidadesSociales= "";
-  */
-  let evalIEP = eval2(IEP);
-  let evalCEP = eval1(CEP);
-  let evalMEDFC = eval3(MEDFC);
-  let evalTAE = eval1(TAE);
-  let evalAUTO = eval2(AUTO);
-  let evalIEEO = eval1(IEEO);
-  let evalCEEO = eval1(CEEO);
-  let evalCOLAB = eval1(COLAB);
-  let evalFYAAC = eval1(FYAAC);
-  let evalRDC = eval1(RDC);
-  let evalCOM = eval2(COM);
-  let evalINFLU = eval1(INFLU);
-  let evalLIDER = eval1(LIDER);
-  let evalAutoconciencia = eval3(Autoconciencia);
-  let evalAutocontrol = eval4(Autocontrol);
-  let evalEmpatia = eval2(Empatia);
-  let evalHabilidadesSociales = eval5(HabilidadesSociales);
+  var templateParams = quizState.templateParams;
 
-  var templateParams = {
-    name: 'James',
-    notes: 'Check this out!',
-    uno: IEP,
-    uno_: evalIEP,
-    dos: CEP,
-    dos_: evalCEP,
-    tres: MEDFC,
-    tres_: evalMEDFC,
-    cuatro: TAE,
-    cuatro_: evalTAE,
-    cinco: AUTO,
-    cinco_: evalAUTO,
-    seis: IEEO,
-    seis_: evalIEEO,
-    siete: CEEO,
-    siete_: evalCEEO,
-    ocho: COLAB,
-    ocho_: evalCOLAB,
-    nueve: FYAAC,
-    nueve_: evalFYAAC,
-    diez: RDC,
-    diez_: evalRDC,
-    once: COM,
-    once_: evalCOM,
-    doce: INFLU,
-    doce_: evalINFLU,
-    trece: LIDER,
-    trece_: evalLIDER,
-    catorce: Autoconciencia,
-    catorce_: evalAutoconciencia,
-    quince: Autocontrol,
-    quince_: evalAutocontrol,
-    dieciseis: Empatia,
-    dieciseis_: evalEmpatia,
-    diecisiete: HabilidadesSociales,
-    diecisiete_: evalHabilidadesSociales
-
+  const handleSendEmail = () => {
+    console.log("params actualizados");
+    props.saveTemplateParams(quizState.templateParams);
   };
 
-  function sendEmail(a) {
+  const handleMergeArrays = () => {
+    dispatch({ type: 'MERGE_ARRAYS' });
+    console.log("redux");
+  };
+
+
+  function sendEmail22(a) {
     emailjs.send('service_ljon6t8', 'template_ikmvv1r', templateParams, 'dw7yxB6O6v4NSfxS0')
     .then(function(response) {
         console.log('SUCCESS!', response.status, response.text);
@@ -191,14 +82,33 @@ const QuizTIE = () => {
     { name: "Empatia", Frecuencia: Empatia },
     { name: "Habilidades Sociales", Frecuencia: HabilidadesSociales }
   ];
+  
+
+  useEffect(() => {
+    if (showResults) {
+      handleSendEmail();
+      handleMergeArrays();
+    }
+  }, [showResults]);
+
+  if (complete === false) {
+    return (
+      <div>
+        <p>Por favor complete el formulario del componente Home primero.</p>
+      </div>
+    );
+  }
 
   return (
+
     <div className="quiz">
       {quizState.showResults && (
         <div className="results">
+
           <div className="congratulations">Test de inteligencia emocional</div>
             <div className="results-info"> 
-            
+              <div className='graficos'>
+
               <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                 <BarChart
                       width={650}
@@ -239,8 +149,7 @@ const QuizTIE = () => {
                         <Tooltip />
                         <Bar dataKey="Frecuencia" fill="#f16a24" />
                     </BarChart>
-
-                
+                        
                   <div style={{display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
                     <div style={{width: "0%"}}></div>
                       <div style={{textAlign: "left"}}>
@@ -266,6 +175,7 @@ const QuizTIE = () => {
                           INFLU: <br />Influencia <br /><br />
                           LIDER: <br />Liderazgo <br /><br />
                       </div>
+              </div>
                   </div>
                 </div>
 
@@ -273,10 +183,12 @@ const QuizTIE = () => {
             </div>
 
             <div
-              onClick={() => dispatch({ type: "RESTART" })}
-              className="next-button"
+              onClick={() => dispatch2({ type: "RESTART" })}
+              className="restart-button"
+              
             >
               Reiniciar
+              
             </div>
         </div>
       )}
@@ -290,7 +202,7 @@ const QuizTIE = () => {
           <QuestionTIE />
           {quizState.currentQuestionIndex !== 0 && (
                 <div
-                  onClick={() => dispatch({ type: "PREVIOUS_QUESTION" })}
+                  onClick={() => dispatch2({ type: "PREVIOUS_QUESTION" })}
                   className="prev-button"
                 >
                   Anterior
@@ -298,7 +210,7 @@ const QuizTIE = () => {
           )}
           {quizState.currentAnswer && (
             <div
-              onClick={() => dispatch({ type: "NEXT_QUESTION" })}
+              onClick={() => dispatch2({ type: "NEXT_QUESTION" })}
               className="next-button"
             >
               Siguiente
@@ -310,4 +222,12 @@ const QuizTIE = () => {
   );
 };
 
-export default QuizTIE;
+const mapStateToProps = (state) => ({
+  templateFinal: state.templateFinal,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  saveTemplateParams: (templateParams) => dispatch(saveTemplateParams(templateParams)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuizTIE);

@@ -8,6 +8,7 @@ import Home from './components/pruebas/home';
 import Quiz from './components/Temperamento/quizTEMP';
 import { QuizProvider } from "./contexts/quizTemperamento";
 import TestTIE from './components/pruebas/TIE';
+import { MyProvider } from './contexts/contextEmail';
 
 
 function App() {
@@ -17,7 +18,6 @@ function App() {
     <div className='navbar'>
         <Navbar />
     </div>
-
     </div>
     <Routes>
       <Route exact path='/' element={< Home />}></Route>
