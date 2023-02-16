@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import styled from "styled-components";
 import { Logo } from "../logo";
 import { ProLinks } from "./progressLinks";
@@ -37,17 +38,35 @@ const RightSection = styled.div`
 `;
 
 export function ProgressBar(props) {
-
     const isMobile2 = useMediaQuery({maxWidth: DeviceSize.mobile });
-    return <ProgressBarContainer>
+    const banderaTIE = useSelector((state) => state.banderaTIE);
+    const banderaTEMP = useSelector((state) => state.banderaTEMP);
 
-        <MiddleSection>
-            <ProLinks />
-        </MiddleSection>
-
-        <RightSection>
-            <MobileNavLinks/>
-        </RightSection>
-
-    </ProgressBarContainer>
+    if ( banderaTEMP === false && banderaTIE === false) {
+        return 
+    } else if ( banderaTEMP === true && banderaTIE === true) {
+        return (
+        <ProgressBarContainer>
+    
+            <MiddleSection>
+                <ProLinks />
+            </MiddleSection>
+    
+            <RightSection>
+                <MobileNavLinks/>
+            </RightSection>
+    
+        </ProgressBarContainer>
+        )
+    } else {
+        return (
+        <ProgressBarContainer>
+    
+            <MiddleSection>
+                <ProLinks />
+            </MiddleSection>
+    
+        </ProgressBarContainer>
+        )
+    }
 }
