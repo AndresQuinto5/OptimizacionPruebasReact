@@ -77,50 +77,53 @@ const Quiz = (props) => {
       </div>
     );
   }
+  //<pre>{JSON.stringify(templateFinal, null, 2)}</pre>
+  //<pre>{JSON.stringify(templateParams2, null, 2)}</pre>
+  <div className="congratulations">Ha completado con exito el test!!</div>
   return (
     
     <div className="quiz">
       
       {quizState.showResults && (
         <div className="results">
-          <pre>{JSON.stringify(templateFinal, null, 2)}</pre>
-          <pre>{JSON.stringify(templateParams2, null, 2)}</pre>
+          
           <div className="congratulations">Ha completado con exito el test!!</div>
           <div className="results-info">
             <div className="exitoprompt">Sus resultados son:</div>
-            <div className="sanguineo">
-              Sanguíneo {(quizState.sangineoAnswers) }
-            </div>
-            <div className="colerico">
-              Colérico {(quizState.colericoAnswers) }
-            </div>
-            <div className="melancolico">
-              Melancólico {(quizState.melancolicoAnswers) }
-            </div>
-            <div className="flematico">
-              Flemático {(quizState.flematicoAnswers) }
-            </div>
-            <div className="grafico">
-            <BarChart
-                width={465}
-                height={300}
-                data={pieResults}
-                margin={{
-                  top: 5,
-                  right: 20,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis tickCount={5} domain={[0, 40]} />
-                <Tooltip />
-                <Bar dataKey="Frecuencia" fill="#f16a24" />
-            </BarChart>
-          
-            </div>
+              <div className="sanguineo">
+                Sanguíneo {(quizState.sangineoAnswers) }
               </div>
+              <div className="colerico">
+                Colérico {(quizState.colericoAnswers) }
+              </div>
+              <div className="melancolico">
+                Melancólico {(quizState.melancolicoAnswers) }
+              </div>
+              <div className="flematico">
+                Flemático {(quizState.flematicoAnswers) }
+              </div>
+              </div>
+              <div className="grafico">
+                <BarChart
+                    width={465}
+                    height={300}
+                    data={pieResults}
+                    margin={{
+                      top: 5,
+                      right: 20,
+                      left: 20,
+                      bottom: 5,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis tickCount={5} domain={[0, 40]} />
+                    <Tooltip />
+                    <Bar dataKey="Frecuencia" fill="#f16a24" />
+                </BarChart>
+              
+            </div>
+              
               <div
                 onClick={() => dispatch22({ type: "RESTART" })}
                 className="restart-button"
@@ -138,6 +141,7 @@ const Quiz = (props) => {
                 {quizState.questions.length}
               </div>
             <Question />
+            <div className="button-container">
             {quizState.currentQuestionIndex !== 0 && (
                 <div
                   onClick={() => dispatch22({ type: "PREVIOUS_QUESTION" })}
@@ -152,6 +156,8 @@ const Quiz = (props) => {
                 <div onClick={() => dispatch22({ type: "NEXT_QUESTION" })} className="next-button">Siguiente</div>
               </div>
             )}
+
+            </div>
             </div>
           </div>
         </div>

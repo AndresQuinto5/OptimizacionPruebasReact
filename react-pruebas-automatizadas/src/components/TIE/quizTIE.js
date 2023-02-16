@@ -104,10 +104,10 @@ const QuizTIE = (props) => {
     <div className="quiz">
       {quizState.showResults && (
         <div className="results">
-          <pre>{JSON.stringify(templateFinal, null, 2)}</pre>
-          <pre>{JSON.stringify(templateParams, null, 2)}</pre>
+
           <div className="congratulations">Test de inteligencia emocional</div>
             <div className="results-info"> 
+              <div className='graficos'>
 
               <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                 <BarChart
@@ -175,6 +175,7 @@ const QuizTIE = (props) => {
                           INFLU: <br />Influencia <br /><br />
                           LIDER: <br />Liderazgo <br /><br />
                       </div>
+              </div>
                   </div>
                 </div>
 
@@ -183,7 +184,7 @@ const QuizTIE = (props) => {
 
             <div
               onClick={() => dispatch2({ type: "RESTART" })}
-              className="next-button"
+              className="restart-button"
               
             >
               Reiniciar
