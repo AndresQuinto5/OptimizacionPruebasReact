@@ -9,9 +9,13 @@ import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, Cart
 import emailjs from '@emailjs/browser';
 import { sendEmail, mergeArrays, ArrayTIE} from "../../contexts/SendEmail";
 import { Context } from '../../contexts/contextEmail';
+import React, { useEffect } from 'react';
 
 const QuizTIE = (props) => {
+  const complete = useSelector((state) => state.complete);
   const [quizState, dispatch2] = useContext(QuizContextTIE);
+    //para actualizar el store de manera continua
+  const showResults = quizState.showResults;
   const IEP = (quizState.IEP);
   const CEP = (quizState.CEP);
   const MEDFC =(quizState.MEDFC);
@@ -25,153 +29,19 @@ const QuizTIE = (props) => {
   const COM =(quizState.COM);
   const INFLU =(quizState.INFLU);
   const LIDER =(quizState.LIDER);
-  const Autoconciencia = IEP + CEP;
-  const Autocontrol = MEDFC + TAE + AUTO;
-  const Empatia = IEEO + CEEO;
-  const HabilidadesSociales = COLAB + FYAAC + RDC + COM + INFLU + LIDER;
+  const Autoconciencia = quizState.Autoconciencia;
+  const Autocontrol = quizState.Autocontrol;
+  const Empatia = quizState.Empatia;
+  const HabilidadesSociales = quizState.HabilidadesSociales;
 
 //apartado de store
   const dispatch = useDispatch();
   const templateFinal = useSelector((state) => state.templateFinal);
 
   var templateParams = quizState.templateParams;
-/*
-  function eval1(a){
-    if (a <= 8) {
-      return "Bajo"
-    }
-    else if (a >= 9 && a <= 12) {
-      return "Medio"
-    }
-    else if (a >= 13 && a <= 15) {
-      return "Alto"
-    }
-  }
-  function eval2(a){
-    if (a <= 15) {
-      return "Bajo"
-    }
-    else if (a >= 16 && a <= 24) {
-      return "Medio"
-    }
-    else if (a >= 25 && a <= 30) {
-      return "Alto"
-    }
-  }
-  function eval3(a){
-    if (a <= 23) {
-      return "Bajo"
-    }
-    else if (a >= 24 && a <= 35) {
-      return "Medio"
-    }
-    else if (a >= 36 && a <= 45) {
-      return "Alto"
-    }
-  }
-  function eval4(a){
-    if (a <= 45) {
-      return "Bajo"
-    }
-    else if (a >= 46 && a <= 75) {
-      return "Medio"
-    }
-    else if (a >= 76 && a <= 90) {
-      return "Alto"
-    }
-  }
-  function eval5(a){
-    if (a <= 55) {
-      return "Bajo"
-    }
-    else if (a >= 56 && a <= 84) {
-      return "Medio"
-    }
-    else if (a >= 85 && a <= 105) {
-      return "Alto"
-    }
-  }
-  /*
-  const evalIEP= "";
-  const evalCEP= "";
-  const evalMEDFC= "";
-  const evalTAE= "";
-  const evalAUTO= "";
-  const evalIEEO= "";
-  const evalCEEO= "";
-  const evalCOLAB= "";
-  const evalFYAAC= "";
-  const evalRDC= "";
-  const evalCOM= "";
-  const evalINFLU= "";
-  const evalLIDER= "";
-  const evalAutoconciencia= "";
-  const evalAutocontrol= "";
-  const evalEmpatia= "";
-  const evalHabilidadesSociales= "";
-  */
-/*
-  let evalIEP = eval2(IEP);
-  let evalCEP = eval1(CEP);
-  let evalMEDFC = eval3(MEDFC);
-  let evalTAE = eval1(TAE);
-  let evalAUTO = eval2(AUTO);
-  let evalIEEO = eval1(IEEO);
-  let evalCEEO = eval1(CEEO);
-  let evalCOLAB = eval1(COLAB);
-  let evalFYAAC = eval1(FYAAC);
-  let evalRDC = eval1(RDC);
-  let evalCOM = eval2(COM);
-  let evalINFLU = eval1(INFLU);
-  let evalLIDER = eval1(LIDER);
-  let evalAutoconciencia = eval3(Autoconciencia);
-  let evalAutocontrol = eval4(Autocontrol);
-  let evalEmpatia = eval2(Empatia);
-  let evalHabilidadesSociales = eval5(HabilidadesSociales);
 
-  var templateParams = {
-    uno: IEP,
-    uno_: evalIEP,
-    dos: CEP,
-    dos_: evalCEP,
-    tres: MEDFC,
-    tres_: evalMEDFC,
-    cuatro: TAE,
-    cuatro_: evalTAE,
-    cinco: AUTO,
-    cinco_: evalAUTO,
-    seis: IEEO,
-    seis_: evalIEEO,
-    siete: CEEO,
-    siete_: evalCEEO,
-    ocho: COLAB,
-    ocho_: evalCOLAB,
-    nueve: FYAAC,
-    nueve_: evalFYAAC,
-    diez: RDC,
-    diez_: evalRDC,
-    once: COM,
-    once_: evalCOM,
-    doce: INFLU,
-    doce_: evalINFLU,
-    trece: LIDER,
-    trece_: evalLIDER,
-    catorce: Autoconciencia,
-    catorce_: evalAutoconciencia,
-    quince: Autocontrol,
-    quince_: evalAutocontrol,
-    dieciseis: Empatia,
-    dieciseis_: evalEmpatia,
-    diecisiete: HabilidadesSociales,
-    diecisiete_: evalHabilidadesSociales
-
-  };*/
-/*
   const handleSendEmail = () => {
-    dispatch(saveTemplateParams(templateParams));
-  };
-*/
-  const handleSendEmail = () => {
+    console.log("params actualizados");
     props.saveTemplateParams(quizState.templateParams);
   };
 
@@ -212,28 +82,30 @@ const QuizTIE = (props) => {
     { name: "Empatia", Frecuencia: Empatia },
     { name: "Habilidades Sociales", Frecuencia: HabilidadesSociales }
   ];
-/*
-  const { arrayTIE, setArrayTIE } = useContext(Context);
-  const { mergeArrays } = useContext(Context);
+  
 
-  const handleMergeArrays = () => {
-    const templateFinal = mergeArrays();
-    console.log(templateFinal);
-  };
-  const handleSendEmail = () => {
-    setArrayTIE({ ...arrayTIE, ...templateParams })
-    console.log(arrayTIE)
+  useEffect(() => {
+    if (showResults) {
+      handleSendEmail();
+      handleMergeArrays();
     }
-    */
+  }, [showResults]);
+
+  if (complete === false) {
+    return (
+      <div>
+        <p>Por favor complete el formulario del componente Home primero.</p>
+      </div>
+    );
+  }
+
   return (
 
     <div className="quiz">
       {quizState.showResults && (
         <div className="results">
-          <button onClick={handleSendEmail}>Enviar correo </button>
-          <button onClick={handleMergeArrays}>Merge arrays</button>
-          <button onClick={sendEmail}>Merge arrays aqui</button>
           <pre>{JSON.stringify(templateFinal, null, 2)}</pre>
+          <pre>{JSON.stringify(templateParams, null, 2)}</pre>
           <div className="congratulations">Test de inteligencia emocional</div>
             <div className="results-info"> 
 

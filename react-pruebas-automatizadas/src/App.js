@@ -18,7 +18,6 @@ function App() {
     <div className='navbar'>
         <Navbar />
     </div>
-
     </div>
     <Routes>
       <Route exact path='/' element={< Home />}></Route>

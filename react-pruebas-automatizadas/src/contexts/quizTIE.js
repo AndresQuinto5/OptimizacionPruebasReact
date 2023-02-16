@@ -224,6 +224,17 @@ const initialStateTIE = {
             console.log(state.INFLU);
             console.log(state.LIDER);
 
+            state.Autoconciencia = state.IEP + state.CEP;
+            state.Autocontrol = state.MEDFC + state.TAE + state.AUTO;
+            state.Empatia = state.IEEO + state.CEEO;
+            state.HabilidadesSociales = state.COLAB + state.FYAAC + state.RDC + state.COM + state.INFLU + state.LIDER;
+
+            console.log("Estos son los valores de las competencias");
+            console.log(state.Autoconciencia);
+            console.log(state.Autocontrol);
+            console.log(state.Empatia);
+            console.log(state.HabilidadesSociales);
+
             let evalIEP = eval2(state.IEP);
             let evalCEP = eval1(state.CEP);
             let evalMEDFC = eval3(state.MEDFC);
@@ -277,16 +288,9 @@ const initialStateTIE = {
               dieciseis_: evalEmpatia,
               diecisiete: state.HabilidadesSociales,
               diecisiete_: evalHabilidadesSociales
-
-
-
-
             }
-
           }
           
-
-        
         return {
           ...state,
           currentAnswer: "",

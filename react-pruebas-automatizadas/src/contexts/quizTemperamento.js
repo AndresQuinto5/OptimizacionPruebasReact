@@ -123,8 +123,6 @@ const reducer = (state, action) => {
         const mel100 = ((state.melancolicoAnswers)/40)*100;
         const fle100 = ((state.flematicoAnswers)/40)*100;
         state.templateParams = {
-          name: 'James',
-          notes: 'Check this out!',
           sangineo: state.sangineoAnswers,
           colerico: state.colericoAnswers,
           melancolico: state.melancolicoAnswers,
