@@ -11,6 +11,8 @@ const initialState = {
   templateParams: {},
   templateParams2: {},
   complete: false,
+  banderaTIE: false,
+  banderaTEMP: false,
 };
 
 function reducer(state = initialState, action) {
@@ -42,6 +44,17 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         templateFinal: {...state.idArray, ...state.templateParams, ...state.templateParams2},
+      };
+    case 'SET_BANDERA_TIE':
+      console.log(state.banderaTIE);
+      return {
+        ...state,
+        banderaTIE: action.banderaTIE,
+      };
+    case 'SET_BANDERA_TEMP':
+      return {
+        ...state,
+        banderaTEMP: action.banderaTEMP,
       };
     default:
       return state;
@@ -85,6 +98,21 @@ export function setComplete(complete) {
     };
 }
 
+//aqui levanto la bandera TIE
+export function setBanderaTIE(banderaTIE) {
+  return {
+    type: 'SET_BANDERA_TIE',
+    banderaTIE,
+  };
+}
+
+//aqui levanto la bandera TEMP
+export function setBanderaTEMP(banderaTEMP) {
+  return {
+    type: 'SET_BANDERA_TEMP',
+    banderaTEMP,
+  };
+}
 
 export const selectTemplateFinal = state => state.templateFinal;
 

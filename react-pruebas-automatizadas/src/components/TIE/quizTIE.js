@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { useSelector, useDispatch } from 'react-redux';
-import {  saveTemplateParams, saveTemplateParams2  } from '../../contexts/store';
+import { useSelector, useDispatch} from 'react-redux';
+import {  saveTemplateParams, saveTemplateParams2, banderaTIE, setBanderaTIE} from '../../contexts/store';
 import { useContext } from "react";
 import { QuizContextTIE } from "../../contexts/quizTIE";
 import "../Temperamento/quiz.css";
@@ -9,11 +9,13 @@ import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, Cart
 import emailjs from '@emailjs/browser';
 import { sendEmail, mergeArrays, ArrayTIE} from "../../contexts/SendEmail";
 import { Context } from '../../contexts/contextEmail';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const QuizTIE = (props) => {
   const complete = useSelector((state) => state.complete);
   const [quizState, dispatch2] = useContext(QuizContextTIE);
+  const [banderaTIE, setBanderaTIE] = useState(false);
+
     //para actualizar el store de manera continua
   const showResults = quizState.showResults;
   const IEP = (quizState.IEP);
@@ -50,6 +52,10 @@ const QuizTIE = (props) => {
     console.log("redux");
   };
 
+  const handleBanderaTIE = (x) => {
+    props.setBanderaTIE(x);
+    console.log("Cambiando bandera TIE...");
+  };
 
   function sendEmail22(a) {
     emailjs.send('service_ljon6t8', 'template_ikmvv1r', templateParams, 'dw7yxB6O6v4NSfxS0')
@@ -108,6 +114,8 @@ const QuizTIE = (props) => {
           <pre>{JSON.stringify(templateParams, null, 2)}</pre>
           <div className="congratulations">Test de inteligencia emocional</div>
             <div className="results-info"> 
+
+            {handleBanderaTIE(true)}
 
               <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                 <BarChart
@@ -227,6 +235,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   saveTemplateParams: (templateParams) => dispatch(saveTemplateParams(templateParams)),
+  setBanderaTIE: (banderaTIE) => dispatch(setBanderaTIE(banderaTIE)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuizTIE);

@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Navbar } from './components/navbar';
+import { ProgressBar } from './components/navbar/indexProgress';
 import StartingPage from './components/pruebas/StartingPage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TestTemperamento from './components/pruebas/TestTemperamento';
@@ -18,6 +19,9 @@ function App() {
     <div className='navbar'>
         <Navbar />
     </div>
+    
+    <ProgressBar />
+
     </div>
     <Routes>
       <Route exact path='/' element={< Home />}></Route>

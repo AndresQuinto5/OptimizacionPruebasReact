@@ -5,10 +5,23 @@ import StartingPage from "../pruebas/StartingPage";
 import { Route } from  "react-router-dom";
 
 
+const NavContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+`;
+
 const NavLinksContainer = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
+`;
+
+const NavLinksContainer2 = styled.div`
+  height: 50%;
+  display: flex;
+  align-items: center;
+  background-color: #ddd;
 `;
 
 const LinkWrapper = styled.ul`
@@ -41,21 +54,38 @@ const Link = styled.a`
     font-size: inherit;
 
 `;
-
 export function NavLinks(props) {
     return (
-        <NavLinksContainer>
+      <LinkWrapper>
+        <LinkItem>
+          <Link href="/">Inicio</Link>
+        </LinkItem>
+        <LinkItem>
+          <Link href="/Temperamento">Test de Temperamento</Link>
+        </LinkItem>
+        <LinkItem>
+          <Link href="/TIE">TIE</Link>
+        </LinkItem>
+      </LinkWrapper>
+    );
+  }
+  
+  export function Navbar() {
+    return (
+      <NavContainer>
+        <NavLinksContainer2>
             <LinkWrapper>
                 <LinkItem>
-                    <Link href="/">Inicio</Link>
+                    <Link href="/">Otro enlace</Link>
                 </LinkItem>
                 <LinkItem>
-                    <Link href="/Temperamento">Test de Temperamento</Link>
+                    <Link href="/">Otro enlace</Link>
                 </LinkItem>
                 <LinkItem>
-                    <Link href="/TIE">TIE</Link>
+                    <Link href="/">Otro enlace</Link>
                 </LinkItem>
             </LinkWrapper>
-        </NavLinksContainer>
+        </NavLinksContainer2>
+      </NavContainer>
     );
-}
+  }

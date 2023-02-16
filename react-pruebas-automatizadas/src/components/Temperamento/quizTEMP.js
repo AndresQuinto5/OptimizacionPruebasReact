@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
-import {  saveTemplateParams, saveTemplateParams2  } from '../../contexts/store';
+import {  saveTemplateParams, saveTemplateParams2, banderaTEMP, setBanderaTEMP  } from '../../contexts/store';
 import { useContext } from "react";
 import { Formik, Field, Form } from 'formik';
 import Question from "./QuestionTEMP";
@@ -19,6 +19,7 @@ import { Redirect } from 'react-router-dom';
 const Quiz = (props) => {
   const complete = useSelector((state) => state.complete);
   const [quizState, dispatch22] = useContext(QuizContext);
+  const [banderaTEMP, setBanderaTEMP] = useState(false);
   //const [complete, setComplete] = useState(false);
   //para actualizar el store de manera continua
   const showResults = quizState.showResults;
@@ -63,6 +64,11 @@ const Quiz = (props) => {
     console.log("redux");
   };
 
+  const handleBanderaTEMP = (y) => {
+    props.setBanderaTEMP(y);
+    console.log("Cambiando bandera TEMP...");
+  };
+
   useEffect(() => {
     if (showResults) {
       handleSendEmail2();
@@ -85,8 +91,11 @@ const Quiz = (props) => {
         <div className="results">
           <pre>{JSON.stringify(templateFinal, null, 2)}</pre>
           <pre>{JSON.stringify(templateParams2, null, 2)}</pre>
-          <div className="congratulations">Ha completado con exito el test!!</div>
+          <div className="congratulations">¡Ha completado con exito el test!</div>
           <div className="results-info">
+
+          {handleBanderaTEMP(true)}
+
             <div className="exitoprompt">Sus resultados son:</div>
             <div className="sanguineo">
               Sanguíneo {(quizState.sangineoAnswers) }
@@ -167,5 +176,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   saveTemplateParams2: (templateParams2) => dispatch(saveTemplateParams2(templateParams2)),
+  setBanderaTEMP: (banderaTEMP) => dispatch(setBanderaTEMP(banderaTEMP)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Quiz);
