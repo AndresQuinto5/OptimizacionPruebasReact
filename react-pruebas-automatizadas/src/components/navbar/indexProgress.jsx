@@ -1,19 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { Logo } from "../logo";
-import { NavLinks } from "./navLinks";
+import { ProLinks } from "./progressLinks";
 import { useMediaQuery } from "react-responsive";
 import { DeviceSize } from "../index.js"
 import { MobileNavLinks } from "./MobileNavLinks"
 
 
-const NavBarContainer = styled.div`
+const ProgressBarContainer = styled.div`
     box-sizing: border-box;
     width: 100%;
     height: 75px;
     box-shadow: 0 1px 3px rgba(15, 15, 0, 0.13);
     display: flex;
-    background-color: #ddd;
+    background-color: #f5f5f5;
     align-items: center;
     padding: 0 1.5em;
 `;
@@ -39,13 +39,15 @@ const RightSection = styled.div`
 export function ProgressBar(props) {
 
     const isMobile2 = useMediaQuery({maxWidth: DeviceSize.mobile });
-    return <NavBarContainer>
+    return <ProgressBarContainer>
 
         <MiddleSection>
-            {!isMobile2 && <NavLinks />}
+            <ProLinks />
         </MiddleSection>
+
         <RightSection>
-            {isMobile2 && <MobileNavLinks/>}
+            <MobileNavLinks/>
         </RightSection>
-    </NavBarContainer>
+
+    </ProgressBarContainer>
 }
