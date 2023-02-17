@@ -6,6 +6,7 @@ import { ProLinks } from "./progressLinks";
 import { useMediaQuery } from "react-responsive";
 import { DeviceSize } from "../index.js"
 import { MobileNavLinks } from "./MobileNavLinks"
+import { EmailIcon } from './SendEmailBtn'
 
 
 const ProgressBarContainer = styled.div`
@@ -53,7 +54,7 @@ export function ProgressBar(props) {
             </MiddleSection>
     
             <RightSection>
-                <MobileNavLinks/>
+                <EmailIcon/>
             </RightSection>
     
         </ProgressBarContainer>
@@ -65,7 +66,7 @@ export function ProgressBar(props) {
             <MiddleSection>
                 <ProLinks />
             </MiddleSection>
-    
+            
         </ProgressBarContainer>
         )
     }

@@ -73,6 +73,7 @@ const Quiz = (props) => {
     if (showResults) {
       handleSendEmail2();
       handleMergeArrays();
+      handleBanderaTEMP(true);
     }
   }, [showResults]);
   
@@ -94,11 +95,10 @@ const Quiz = (props) => {
         <div className="results">
 
           <div className="congratulations">¡Ha completado con exito el test!</div>
-   
 
           <div className="results-info">
 
-          {handleBanderaTEMP(true)}
+          
 
             <div className="exitoprompt">Sus resultados son:</div>
               <div className="sanguineo">

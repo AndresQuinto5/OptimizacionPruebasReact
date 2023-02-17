@@ -56,6 +56,16 @@ function reducer(state = initialState, action) {
         ...state,
         banderaTEMP: action.banderaTEMP,
       };
+      case 'RESET_STATES':
+        return {
+          idArray: {},
+          templateFinal: {},
+          templateParams: {},
+          templateParams2: {},
+          complete: false,
+          banderaTIE: false,
+          banderaTEMP: false,
+        };      
     default:
       return state;
   }
@@ -113,6 +123,13 @@ export function setBanderaTEMP(banderaTEMP) {
     banderaTEMP,
   };
 }
+
+export function resetStates() {
+  return {
+    type: 'RESET_STATES',
+  };
+}
+
 
 export const selectTemplateFinal = state => state.templateFinal;
 

@@ -29,6 +29,13 @@
     text-align: center;
   }
   
+  .results-TIE {
+    background-color: #fff;
+    height: 300px;
+    text-align: center;
+    margin-bottom: 145%;
+  }
+
   .congratulations {
     background-color: #003660;
     padding: 20px;
@@ -163,8 +170,7 @@
 
   }
   .restart-button {
-    margin-left: 5px;
-    margin-bottom: 100px;
+    margin-top: 10px;
     color: #fff;
     background: #003660;
     width: 300px;
@@ -174,8 +180,13 @@
     text-transform: uppercase;
     cursor: pointer;
     text-align: center;
-    align-items: left;
-  }
+    align-items: center;
+    display: flex;
+    justify-content: center; /* Alinea horizontalmente */
+    margin-left: auto;
+    margin-right: auto;
+}
+
   .score {
     background: #fff;
     color: 000;
