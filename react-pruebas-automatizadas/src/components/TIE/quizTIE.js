@@ -94,6 +94,7 @@ const QuizTIE = (props) => {
     if (showResults) {
       handleSendEmail();
       handleMergeArrays();
+      handleBanderaTIE(true);
     }
   }, [showResults]);
 
@@ -109,46 +110,24 @@ const QuizTIE = (props) => {
 
     <div className="quiz">
       {quizState.showResults && (
-        <div className="results">
+        <div className="results-TIE">
 
           <div className="congratulations">Test de inteligencia emocional</div>
             <div className="results-info"> 
               <div className='graficos'>
 
-            {handleBanderaTIE(true)}
 
-              <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-                <BarChart
-                      width={650}
-                      height={530}
-                      data={BarChartResultsComp}
-                      margin={{
-                        top: 5,
-                        right: 100,
-                        left: 20,
-                        bottom: 150,
-                      }}
-                    >
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" interval={0} angle={45} textAnchor="start" />
-                      <YAxis tickCount={5} />
-                      <Tooltip />
-                      <Bar dataKey="Frecuencia" fill="#f16a24" />
-                </BarChart>
 
-                
-                <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start"}}>
-                  <div style={{width: "0%"}}></div>
-
-                    <BarChart
-                        width={600}
-                        height={330}
-                        data={BarChartResults}
+                <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                  <BarChart
+                        width={650}
+                        height={530}
+                        data={BarChartResultsComp}
                         margin={{
                           top: 5,
-                          right: 50,
-                          left: 0,
-                          bottom: 40,
+                          right: 100,
+                          left: 20,
+                          bottom: 150,
                         }}
                       >
                         <CartesianGrid strokeDasharray="3 3" />
@@ -156,20 +135,42 @@ const QuizTIE = (props) => {
                         <YAxis tickCount={5} />
                         <Tooltip />
                         <Bar dataKey="Frecuencia" fill="#f16a24" />
-                    </BarChart>
-                        
-                  <div style={{display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
+                  </BarChart>
+
+                
+                  <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start"}}>
                     <div style={{width: "0%"}}></div>
-                      <div style={{textAlign: "left"}}>
-                          Subcompetencias: <br />
-                          <br />
-                          IEP: <br />Identificar emociones propias <br /><br />
-                          CEP: <br />Comprender emociones <br /><br />
-                          MEDFC: <br />Manejar y dirigir emociones de forma constructiva <br /><br />
-                          TAE: <br />Tolerancia al estrés <br /><br />
-                          AUTO: <br />Automotivación <br /><br />
-                          IEEO: <br />Identificar emociones en otros <br /><br />
-                      </div>
+
+                      <BarChart
+                          width={600}
+                          height={330}
+                          data={BarChartResults}
+                          margin={{
+                            top: 5,
+                            right: 50,
+                            left: 0,
+                            bottom: 40,
+                          }}
+                        >
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="name" interval={0} angle={45} textAnchor="start" />
+                          <YAxis tickCount={5} />
+                          <Tooltip />
+                          <Bar dataKey="Frecuencia" fill="#f16a24" />
+                      </BarChart>
+                          
+                    <div style={{display: "flex", flexDirection: "row", justifyContent: "flex-start"}}>
+                      <div style={{width: "0%"}}></div>
+                        <div style={{textAlign: "left"}}>
+                            Subcompetencias: <br />
+                            <br />
+                            IEP: <br />Identificar emociones propias <br /><br />
+                            CEP: <br />Comprender emociones <br /><br />
+                            MEDFC: <br />Manejar y dirigir emociones de forma constructiva <br /><br />
+                            TAE: <br />Tolerancia al estrés <br /><br />
+                            AUTO: <br />Automotivación <br /><br />
+                            IEEO: <br />Identificar emociones en otros <br /><br />
+                        </div>
 
                       <div style={{width: "1%"}}></div>
 
@@ -183,20 +184,15 @@ const QuizTIE = (props) => {
                           INFLU: <br />Influencia <br /><br />
                           LIDER: <br />Liderazgo <br /><br />
                       </div>
-              </div>
+                    </div>
                   </div>
                 </div>
-
               </div>
             </div>
-
             <div
               onClick={() => dispatch2({ type: "RESTART" })}
-              className="restart-button"
-              
-            >
+              className="restart-button">
               Reiniciar
-              
             </div>
         </div>
       )}

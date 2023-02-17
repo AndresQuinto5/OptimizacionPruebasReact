@@ -5,12 +5,15 @@ import { connect } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
 import {  saveIdArray, setComplete } from '../../contexts/store';
 import emailjs from '@emailjs/browser';
+import TestTemperamento from '../pruebas/TestTemperamento';
+import { useNavigate } from 'react-router-dom';
 import { sendEmail } from "../../contexts/SendEmail";
 
 import './home.css'
 
 
 function Home(props) {
+const navigate = useNavigate();
 const [name, setName] = useState("");
 const [identification, setIdentification] = useState("");
 const [complete, setComplete] = useState(false);
@@ -79,6 +82,8 @@ return (
                     handleSendIdArray(values);
                     handleMergeArrays();
                     handleSetState(true);
+                    navigate('/Temperamento');
+
                     //sendEmail();
                   }
                 }}
@@ -104,7 +109,8 @@ return (
                   <Field id="dpi" name="dpi" maxLength="13" />
                   <br></br>
                   <br></br>
-                  <button type="submit" className="form-button">Comenzar prueba</button>                  
+                  <button type="submit" className="form-button">Comenzar prueba</button>     
+                               
                 </Form>
               </Formik>
 
