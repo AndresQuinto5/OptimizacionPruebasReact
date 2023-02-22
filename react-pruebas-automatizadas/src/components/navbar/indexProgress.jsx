@@ -42,10 +42,11 @@ export function ProgressBar(props) {
     const isMobile2 = useMediaQuery({maxWidth: DeviceSize.mobile });
     const banderaTIE = useSelector((state) => state.banderaTIE);
     const banderaTEMP = useSelector((state) => state.banderaTEMP);
+    const banderaCAM = useSelector((state) => state.banderaCAM);
 
-    if ( banderaTEMP === false && banderaTIE === false) {
+    if ( banderaTEMP === false && banderaTIE === false && banderaCAM === false) {
         return 
-    } else if ( banderaTEMP === true && banderaTIE === true) {
+    } else if ( banderaTEMP === true && banderaTIE === true && banderaCAM === true) {
         return (
         <ProgressBarContainer>
     

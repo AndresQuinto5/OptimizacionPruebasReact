@@ -10,9 +10,11 @@ const initialState = {
   templateFinal: {},
   templateParams: {},
   templateParams2: {},
+  templateParamsCAM: {}, 
   complete: false,
   banderaTIE: false,
   banderaTEMP: false,
+  banderaCAM: false,
 };
 
 function reducer(state = initialState, action) {
@@ -26,6 +28,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         templateParams2: action.templateParams2,
+      };
+    case 'SAVE_TEMPLATE_CAM':
+      return {
+        ...state,
+        templateParamsCAM: action.templateParamsCAM,
       };
     case 'SAVE_ID_ARRAY':
       return {
@@ -43,7 +50,7 @@ function reducer(state = initialState, action) {
         console.log(state.templateFinal);
       return {
         ...state,
-        templateFinal: {...state.idArray, ...state.templateParams, ...state.templateParams2},
+        templateFinal: {...state.idArray, ...state.templateParams, ...state.templateParams2, ...state.templateParamsCAM},
       };
     case 'SET_BANDERA_TIE':
       console.log(state.banderaTIE);
@@ -56,15 +63,22 @@ function reducer(state = initialState, action) {
         ...state,
         banderaTEMP: action.banderaTEMP,
       };
+      case 'SET_BANDERA_CAM':
+      return {
+        ...state,
+        banderaCAM: action.banderaCAM,
+      };
       case 'RESET_STATES':
         return {
           idArray: {},
           templateFinal: {},
           templateParams: {},
           templateParams2: {},
+          templateParamsCAM: {},  
           complete: false,
           banderaTIE: false,
           banderaTEMP: false,
+          banderaCAM: false,
         };      
     default:
       return state;
@@ -91,6 +105,13 @@ export function saveTemplateParams2(templateParams2) {
       type: 'SAVE_TEMPLATE_PARAMS2',
       templateParams2,
     };
+}
+//aqui guardo los datos del quiz CAMBRIDGE
+export function saveTemplateParamsCAM(templateParamsCAM) {
+  return {
+    type: 'SAVE_TEMPLATE_CAM',
+    templateParamsCAM,
+  };
 }
 //aqui guardo los datos de la persona que esta utilizando la app
 export function saveIdArray(idArray) {
@@ -121,6 +142,13 @@ export function setBanderaTEMP(banderaTEMP) {
   return {
     type: 'SET_BANDERA_TEMP',
     banderaTEMP,
+  };
+}
+//aqui levanto la bandera CAM
+export function setBanderaCAM(banderaCAM) {
+  return {
+    type: 'SET_BANDERA_CAM',
+    banderaCAM,
   };
 }
 
