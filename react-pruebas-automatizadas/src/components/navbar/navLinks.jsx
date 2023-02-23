@@ -66,6 +66,9 @@ export function NavLinks(props) {
         <LinkItem>
           <Link href="/TIE">TIE</Link>
         </LinkItem>
+        <LinkItem>
+          <Link href="/CAM">English test</Link>
+        </LinkItem>
       </LinkWrapper>
     );
   }
