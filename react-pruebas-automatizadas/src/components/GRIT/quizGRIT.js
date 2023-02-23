@@ -13,9 +13,6 @@ import { sendEmail, mergeArrays, ArrayGRIT} from "../../contexts/SendEmail";
 import { Context } from '../../contexts/contextEmail';
 import { Redirect } from 'react-router-dom';
 
-
-
-
 const QuizGRIT = (props) => {
   const complete = useSelector((state) => state.complete);
   const [quizState, dispatchGRIT] = useContext(QuizContextGRIT);
@@ -53,6 +50,7 @@ const QuizGRIT = (props) => {
     if (showResults) {
       handleSendEmailGRIT();
       handleMergeArrays();
+      handleBanderaGRIT(true);
     }
   }, [showResults]);
   
@@ -74,8 +72,6 @@ const QuizGRIT = (props) => {
         <div className="congratulations">¡Ha completado con éxito el test!</div>
         
           <div className="results-info">    
-
-          {handleBanderaGRIT(true)}
 
             <div className="exitoprompt">Sus resultados son:</div>
               <div className="sanguineo">

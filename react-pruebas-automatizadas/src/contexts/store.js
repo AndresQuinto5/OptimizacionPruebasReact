@@ -50,13 +50,11 @@ function reducer(state = initialState, action) {
         idArray: action.idArray,
       };
     case 'SET_COMPLETE':
-      console.log('complete', action.complete);
       return {
         ...state,
         complete: action.complete,
       };
     case 'MERGE_ARRAYS':
-        console.log('merge');
         console.log(state.templateFinal);
       return {
         ...state,
@@ -90,11 +88,11 @@ function reducer(state = initialState, action) {
           templateParams: {},
           templateParams2: {},
           templateParamsCAM: {},  
+          templateParamsGRIT: {},
           complete: false,
           banderaTIE: false,
           banderaTEMP: false,
           banderaCAM: false,
-          templateParamsGRIT: {},
           banderaGRIT: false,
         };        
     default:

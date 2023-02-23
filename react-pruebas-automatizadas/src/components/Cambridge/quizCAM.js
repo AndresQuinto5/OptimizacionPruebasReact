@@ -23,11 +23,12 @@ const QuizCAM = (props) => {
   const dispatch = useDispatch();
   const templateFinal = useSelector((state) => state.templateFinal);
 
-  var templateParamsCAM = quizState.templateParams;
+  var templateParamsCAM = quizState.templateParamsCAM;
 
   const handleSendEmail = () => {
     console.log("params actualizados");
-    props.saveTemplateParamsCAM(quizState.templateParams);
+    console.log(templateParamsCAM)
+    props.saveTemplateParamsCAM(quizState.templateParamsCAM);
   };
 
   const handleMergeArrays = () => {
