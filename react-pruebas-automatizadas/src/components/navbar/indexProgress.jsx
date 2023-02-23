@@ -6,6 +6,7 @@ import { ProLinks } from "./progressLinks";
 import { useMediaQuery } from "react-responsive";
 import { DeviceSize } from "../index.js"
 import { MobileNavLinks } from "./MobileNavLinks"
+import { EmailIcon } from './SendEmailBtn' 
 
 
 const ProgressBarContainer = styled.div`
@@ -41,10 +42,11 @@ export function ProgressBar(props) {
     const isMobile2 = useMediaQuery({maxWidth: DeviceSize.mobile });
     const banderaTIE = useSelector((state) => state.banderaTIE);
     const banderaTEMP = useSelector((state) => state.banderaTEMP);
+    const banderaGRIT = useSelector((state) => state.banderaGRIT);
 
-    if ( banderaTEMP === false && banderaTIE === false) {
+    if ( banderaTEMP === false && banderaTIE === false && banderaGRIT === false) {
         return 
-    } else if ( banderaTEMP === true && banderaTIE === true) {
+    } else if ( banderaTEMP === true && banderaTIE === true && banderaGRIT === true) {
         return (
         <ProgressBarContainer>
     
@@ -53,7 +55,7 @@ export function ProgressBar(props) {
             </MiddleSection>
     
             <RightSection>
-                <MobileNavLinks/>
+                <EmailIcon /> 
             </RightSection>
     
         </ProgressBarContainer>
@@ -63,7 +65,7 @@ export function ProgressBar(props) {
         <ProgressBarContainer>
     
             <MiddleSection>
-                <ProLinks />
+                <ProLinks />    
             </MiddleSection>
     
         </ProgressBarContainer>

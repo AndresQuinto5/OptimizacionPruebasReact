@@ -10,9 +10,11 @@ const initialState = {
   templateFinal: {},
   templateParams: {},
   templateParams2: {},
+  templateParamsGRIT: {},
   complete: false,
   banderaTIE: false,
   banderaTEMP: false,
+  banderaGRIT: false,
 };
 
 function reducer(state = initialState, action) {
@@ -26,6 +28,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         templateParams2: action.templateParams2,
+      };
+    case 'SAVE_TEMPLATE_PARAMS_GRIT':
+      return {
+        ...state,
+        templateParamsGRIT: action.templateParamsGRIT,
       };
     case 'SAVE_ID_ARRAY':
       return {
@@ -43,7 +50,7 @@ function reducer(state = initialState, action) {
         console.log(state.templateFinal);
       return {
         ...state,
-        templateFinal: {...state.idArray, ...state.templateParams, ...state.templateParams2},
+        templateFinal: {...state.idArray, ...state.templateParams, ...state.templateParams2, ...state.templateParamsGRIT},
       };
     case 'SET_BANDERA_TIE':
       console.log(state.banderaTIE);
@@ -56,6 +63,23 @@ function reducer(state = initialState, action) {
         ...state,
         banderaTEMP: action.banderaTEMP,
       };
+    case 'SET_BANDERA_GRIT':
+      return {
+        ...state,
+        banderaGRIT: action.banderaGRIT,
+      };
+      case 'RESET_STATES':
+        return {
+          idArray: {},
+          templateFinal: {},
+          templateParams: {},
+          templateParams2: {},
+          templateParamsGRIT: {},
+          complete: false,
+          banderaTIE: false,
+          banderaTEMP: false,
+          banderaGRIT: false,
+        };     
     default:
       return state;
   }
@@ -80,6 +104,13 @@ export function saveTemplateParams2(templateParams2) {
     return {
       type: 'SAVE_TEMPLATE_PARAMS2',
       templateParams2,
+    };
+}
+//aqui guardo los datos del quiz 3
+export function saveTemplateParamsGRIT(templateParamsGRIT) {
+    return {
+      type: 'SAVE_TEMPLATE_PARAMS_GRIT',
+      templateParamsGRIT,
     };
 }
 //aqui guardo los datos de la persona que esta utilizando la app
@@ -111,6 +142,20 @@ export function setBanderaTEMP(banderaTEMP) {
   return {
     type: 'SET_BANDERA_TEMP',
     banderaTEMP,
+  };
+}
+
+//aqui levanto la bandera TEMP
+export function setBanderaGRIT(banderaGRIT) {
+  return {
+    type: 'SET_BANDERA_GRIT',
+    banderaGRIT,
+  };
+}
+
+export function resetStates() {
+  return {
+    type: 'RESET_STATES',
   };
 }
 

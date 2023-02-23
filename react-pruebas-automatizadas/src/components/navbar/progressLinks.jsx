@@ -45,9 +45,11 @@ const Link = styled.a`
 export function ProLinks(props) {
   const banderaTIE = useSelector((state) => state.banderaTIE);
   const banderaTEMP = useSelector((state) => state.banderaTEMP);
+  const banderaGRIT = useSelector((state) => state.banderaGRIT);
 
   const imageSrc1 = banderaTEMP ? pngegg : pngegg_empty;
   const imageSrc2 = banderaTIE ? pngegg : pngegg_empty;
+  const imageSrc3 = banderaGRIT ? pngegg : pngegg_empty;
 
     return (
         <NavLinksContainer>
@@ -65,6 +67,13 @@ export function ProLinks(props) {
                 </LinkItem>
                 <LinkItem>
                 <img src={imageSrc2}/>
+                </LinkItem>
+
+                <LinkItem>
+                    GRIT
+                </LinkItem>
+                <LinkItem>
+                <img src={imageSrc3}/>
                 </LinkItem>
 
             </LinkWrapper>

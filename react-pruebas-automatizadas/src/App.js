@@ -9,6 +9,7 @@ import Home from './components/pruebas/home';
 import Quiz from './components/Temperamento/quizTEMP';
 import { QuizProvider } from "./contexts/quizTemperamento";
 import TestTIE from './components/pruebas/TIE';
+import TestGRIT from './components/pruebas/GRIT';
 import { MyProvider } from './contexts/contextEmail';
 
 
@@ -27,6 +28,7 @@ function App() {
       <Route exact path='/' element={< Home />}></Route>
       <Route exact path='/Temperamento' element={< TestTemperamento />}></Route>
       <Route exact path='/TIE' element={< TestTIE />}></Route>
+      <Route exact path='/GRIT' element={< TestGRIT />}></Route>
     </Routes>
     </BrowserRouter>
   );
