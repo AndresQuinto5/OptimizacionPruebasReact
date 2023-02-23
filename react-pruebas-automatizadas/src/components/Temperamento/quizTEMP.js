@@ -86,22 +86,13 @@ const Quiz = (props) => {
   }
   //<pre>{JSON.stringify(templateFinal, null, 2)}</pre>
   //<pre>{JSON.stringify(templateParams2, null, 2)}</pre>
-  <div className="congratulations">Ha completado con exito el test!!</div>
+  <div className="congratulations">¡Ha completado con éxito el test!</div>
   return (
     
     <div className="quiz">
       
       {quizState.showResults && (
         <div className="results">
-<<<<<<< HEAD
-
-          <div className="congratulations">¡Ha completado con exito el test!</div>
-
-=======
-          <pre>{JSON.stringify(templateFinal, null, 2)}</pre>
-          <pre>{JSON.stringify(templateParams2, null, 2)}</pre>
-          <div className="congratulations">¡Ha completado con exito el test!</div>
->>>>>>> GritTest
           <div className="results-info">
 
           

@@ -44,7 +44,6 @@ const Link = styled.a`
 
 export function NavLinks(props) {
     return (
-<<<<<<< HEAD
       <LinkWrapper>
         <LinkItem>
           <Link href="/">Inicio</Link>
@@ -58,31 +57,9 @@ export function NavLinks(props) {
         <LinkItem>
           <Link href="/CAM">English test</Link>
         </LinkItem>
+        <LinkItem>
+          <Link href="/GRIT">GRIT test</Link>
+        </LinkItem>
       </LinkWrapper>
     );
   }
-  
-  export function Navbar() {
-    return (
-      <NavContainer>
-        <NavLinksContainer2>
-=======
-        <NavLinksContainer>
->>>>>>> GritTest
-            <LinkWrapper>
-                <LinkItem>
-                    <Link href="/">Inicio</Link>
-                </LinkItem>
-                <LinkItem>
-                    <Link href="/Temperamento">Test de Temperamento</Link>
-                </LinkItem>
-                <LinkItem>
-                    <Link href="/TIE">TIE</Link>
-                </LinkItem>
-                <LinkItem>
-                    <Link href="/GRIT">GRIT</Link>  
-                </LinkItem>
-            </LinkWrapper>
-        </NavLinksContainer>
-    );
-}
