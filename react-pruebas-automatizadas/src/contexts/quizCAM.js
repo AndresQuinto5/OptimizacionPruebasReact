@@ -11,7 +11,7 @@ const initialStateCAM = {
     correctAnswersCount: 0,
     indexValue: 0,
     total: 0,
-    templateParams: {},
+    templateParamsCAM: {},
     mapa: new Map()
     
 };
@@ -60,7 +60,7 @@ const reducerCAM = (state, action) => {
             console.log(state.total)
             console.log(state.mapa)
 
-            state.templateParams = {
+            state.templateParamsCAM = {
             Acertadas: state.total
             }
         }
@@ -101,6 +101,28 @@ const reducerCAM = (state, action) => {
 
 
 export const Context = createContext({});
+
+
+export const MyProvider = (props) => {
+    const [arrayCAM, setArrayCAM] = useState({});
+  
+      const mergeArrays = () => {
+          const templateFinal = { ...arrayCAM};
+          return templateFinal;
+      };
+  
+      return (
+          <Context.Provider
+          value={{
+              arrayCAM,
+              setArrayCAM,
+              mergeArrays,
+          }}
+          >
+          {props.children}
+          </Context.Provider>
+      );
+    };
 
 export const QuizContextCAM = createContext();
 

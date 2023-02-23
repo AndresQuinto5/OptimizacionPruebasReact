@@ -38,16 +38,7 @@ const generateAnswers = (question) => {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "SELECT_ANSWER": { /*
-      if(action.payload == 1){
-        state.sangineoAnswers = state.sangineoAnswers + 1
-      }else if (action.payload == 2){
-        state.colericoAnswers = state.colericoAnswers + 1
-      }else if (action.payload == 3){
-        state.melancolicoAnswers = state.melancolicoAnswers + 1
-      }else if (action.payload == 4){
-        state.flematicoAnswers = state.flematicoAnswers + 1
-      }*/
+    case "SELECT_ANSWER": { 
       return {
         ...state,
         currentAnswer: action.payload

@@ -60,8 +60,7 @@ function reducer(state = initialState, action) {
         console.log(state.templateFinal);
       return {
         ...state,
-        templateFinal: {...state.idArray, ...state.templateParams, ...state.templateParams2, ...state.templateParamsCAM},
-        templateFinal: {...state.idArray, ...state.templateParams, ...state.templateParams2, ...state.templateParamsGRIT},
+        templateFinal: {...state.idArray, ...state.templateParams, ...state.templateParams2, ...state.templateParamsGRIT, ...state.templateParamsCAM},
       };
     case 'SET_BANDERA_TIE':
       console.log(state.banderaTIE);
