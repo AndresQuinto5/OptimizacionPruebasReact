@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { QuizContextCAM } from "../../contexts/quizCAM";
 import "./CAMBRIDGE.css";
 import QuestionCAM from "./Questioncam";
-import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, legendType, ResponsiveContainer } from "recharts";
 import emailjs from '@emailjs/browser';
 import { sendEmail, mergeArrays, ArrayCAM} from "../../contexts/SendEmail";
 import { Context } from '../../contexts/contextEmail';
@@ -41,7 +41,7 @@ const QuizCAM = (props) => {
   };
 
   const BarChartResults = [
-    { name: "Acertadas", Frecuencia: totalCAM }
+    { name: "Acertadas", Total: totalCAM }
   ];
 
   useEffect(() => {
@@ -66,9 +66,9 @@ const QuizCAM = (props) => {
       {quizState.showResults && (
         <div className="results-CAM">
 
-          <div className="congratulations">Ha finalizado con éxito el test de ingles Cambridge</div>
+          <div className="congratulations">Ha finalizado con éxito el test de inglés Cambridge</div>
             <div className="results-info"> 
-              <div className='graficos'>
+
                   <div style={{display: "flex", flexDirection: "column", justifyContent: "flex-start"}}>
                     <div style={{width: "0%"}}></div>
 
@@ -76,23 +76,23 @@ const QuizCAM = (props) => {
                       width={600}
                       height={330}
                       data={BarChartResults}
+                      layout="vertical"
                       margin={{
-                          top: 5,
-                          right: 50,
-                          left: 0,
-                          bottom: 40,
+                        top: 5,
+                        right: 50,
+                        left: 50,
+                        bottom: 40,
                       }}
-                  >
+                    >
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" textAnchor="start" />
-                      <YAxis tickCount={5} domain={[0, 25]} />
+                      <XAxis type="number" orientation='top' tickCount={6} domain={[0, 25]}/>
+                      <YAxis dataKey="name" type='category'/>
                       <Tooltip />
-                      <Bar dataKey="Frecuencia" fill="#f16a24" barSize={75} />
-                  </BarChart>
+                      <Bar dataKey="Total" fill="#f16a24" barSize={75} />
+                    </BarChart>
 
                   </div>
-                
-              </div>
+              
             </div>
             <div
               onClick={() => dispatch2({ type: "RESTART" })}

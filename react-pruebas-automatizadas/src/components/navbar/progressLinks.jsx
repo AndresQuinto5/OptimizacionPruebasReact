@@ -69,7 +69,7 @@ export function ProLinks(props) {
                 <img src={imageSrc2}/>
                 </LinkItem>
                 <LinkItem>
-                    CAM
+                    English test
                 </LinkItem>
                 <LinkItem>
                 <img src={imageSrc3}/>

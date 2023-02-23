@@ -6,8 +6,7 @@ div {
   .quiz {
     box-sizing: border-box;
     max-width: 975px;
-    margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 5%;
     
   }
   
@@ -34,6 +33,13 @@ div {
     height: 300px;
     text-align: center;
     margin-bottom: 145%;
+  }
+
+  .results-CAM {
+    background-color: #fff;
+    height: 300px;
+    text-align: center;
+    margin-bottom: 30%;
   }
 
   .congratulations {
