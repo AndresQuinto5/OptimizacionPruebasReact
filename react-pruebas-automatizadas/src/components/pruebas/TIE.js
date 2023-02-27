@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import QuizTIE from '../TIE/quizTIE';
 import { QuizProviderTIE } from '../../contexts/quizTIE';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import './TIE.css';
 
 const Final = () => {
@@ -11,7 +13,8 @@ const Final = () => {
 
   if (complete === false) {
     return (
-      <div>
+      <div className='FormAlert'>
+        <FontAwesomeIcon icon={faTriangleExclamation} size="4x" color='#003660' />  
         <p>Por favor complete el formulario del componente Home primero.</p>
       </div>
     );

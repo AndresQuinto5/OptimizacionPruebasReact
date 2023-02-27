@@ -12,6 +12,8 @@ import emailjs from '@emailjs/browser';
 import { sendEmail, mergeArrays, ArrayTemperamento } from "../../contexts/SendEmail";
 import { Context } from '../../contexts/contextEmail';
 import { Redirect } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -79,9 +81,10 @@ const Quiz = (props) => {
   
   if (complete === false) {
     return (
-      <div>
-        <p>Por favor complete el formulario del componente Home primero.</p>
-      </div>
+      <div className='FormAlert'>
+            <FontAwesomeIcon icon={faTriangleExclamation} size="4x" color='#003660' />  
+            <p>Por favor complete el formulario del componente Home primero.</p>
+        </div>
     );
   }
   //<pre>{JSON.stringify(templateFinal, null, 2)}</pre>

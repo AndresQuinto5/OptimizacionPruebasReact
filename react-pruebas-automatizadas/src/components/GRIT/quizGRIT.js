@@ -17,6 +17,8 @@ const QuizGRIT = (props) => {
   const complete = useSelector((state) => state.complete);
   const [quizState, dispatchGRIT] = useContext(QuizContextGRIT);
   const [banderaGRIT, setBanderaGRIT] = useState(false);
+  const [showQuiz, setShowQuiz] = useState(false);
+
 
   const showResults = quizState.showResults;
   //data normalization for chart
@@ -63,6 +65,7 @@ const QuizGRIT = (props) => {
     );
   }
   return (
+    
     
     <div className="quiz">
       
