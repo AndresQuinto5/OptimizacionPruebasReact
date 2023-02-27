@@ -21,6 +21,7 @@ styled components
 web vitals.  
 
  ## Installation Steps
+ ### Please go to the folder w name: react-pruebas-automatizadas and do:
 
  1. Clone the repository to your local machine: `git clone https://github.com/username/react_pruebas_automatizadas`
 
