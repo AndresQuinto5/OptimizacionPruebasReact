@@ -46,18 +46,15 @@ const QuizTIE = (props) => {
   var templateParams = quizState.templateParams;
 
   const handleSendEmail = () => {
-    console.log("params actualizados");
     props.saveTemplateParams(quizState.templateParams);
   };
 
   const handleMergeArrays = () => {
     dispatch({ type: 'MERGE_ARRAYS' });
-    console.log("redux");
   };
 
   const handleBanderaTIE = (x) => {
     props.setBanderaTIE(x);
-    console.log("Cambiando bandera TIE...");
   };
 
   function sendEmail22(a) {

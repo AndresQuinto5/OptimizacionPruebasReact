@@ -65,12 +65,10 @@ const Quiz = (props) => {
   
   const handleMergeArrays = () => {
     dispatch({ type: 'MERGE_ARRAYS' });
-    console.log("redux");
   };
 
   const handleBanderaTEMP = (y) => {
     props.setBanderaTEMP(y);
-    console.log("Cambiando bandera TEMP...");
   };
 
   useEffect(() => {
@@ -89,8 +87,6 @@ const Quiz = (props) => {
         </div>
     );
   }
-  //<pre>{JSON.stringify(templateFinal, null, 2)}</pre>
-  //<pre>{JSON.stringify(templateParams2, null, 2)}</pre>
   <div className="congratulations">¡Ha completado con éxito el test!</div>
   return (
     

@@ -58,7 +58,6 @@ const reducer = (state, action) => {
     case "NEXT_QUESTION": {
       
       let currentAnswer = state.currentAnswer;
-      console.log(state.currentQuestionIndex, "esto es el index de la pregunta?")
       if(currentAnswer == 1){
         state.mapa.set(state.currentQuestionIndex, currentAnswer)
       }else if (currentAnswer == 2){
@@ -78,20 +77,15 @@ const reducer = (state, action) => {
         : AnswerList(state.questions[currentQuestionIndex]);
 
       if(showResults === true){
-        console.log(state.mapa)
         state.mapa.forEach((valor,clave)=> {
           if(valor == 1){
             state.sangineoAnswers += 1
-            //console.log(state.sangineoAnswers, "respuesta añadida a sangineo")
           }else if(valor == 2){
             state.colericoAnswers += 1
-            //console.log(state.colericoAnswers, "respuesta añadida a colerico")
           }else if(valor == 3){
             state.melancolicoAnswers += 1
-            //console.log(state.melancolicoAnswers, "respuesta añadida a melancolico")
           }else if(valor == 4){
             state.flematicoAnswers += 1
-            //console.log(state.flematicoAnswers, "respuesta añadida a flematico")
           }
         })
         const entries = Array.from(state.mapa.entries());
@@ -142,7 +136,6 @@ const reducer = (state, action) => {
           DM: state.DM,
           DF: state.DF
         };
-        console.log(state.templateParams, "esto es el template params")
 
       }
       return {
@@ -163,7 +156,6 @@ const reducer = (state, action) => {
         ? []
         : AnswerList(state.questions[currentQuestionIndex]);
       if(showResults === true){
-          console.log(state.mapa)
           state.mapa.forEach((valor,clave)=> {
             if(valor == 1){
               state.sangineoAnswers += 1

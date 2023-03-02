@@ -51,7 +51,6 @@ const initialStateGRIT = {
         
 
           state.mapa.set(state.currentQuestionIndex, respuesta);
-          console.log(state.mapa)
           
           const showResults =
           state.currentQuestionIndex === state.questionsGRIT.length - 1;
@@ -63,19 +62,14 @@ const initialStateGRIT = {
           : AnswerList(state.questionsGRIT[currentQuestionIndex]);
           
           if (showResults === true){
-            console.log(state.mapa)
             state.mapa.forEach((value, key) => {
 
               state.totalGRIT += value;
-              console.log(state.totalGRIT);
               
             })
-            console.log(state.totalGRIT);
-            console.log(state.totalGRIT / 10);
             state.templateParamsGRIT = {
               totalGRIT: state.totalGRIT / 10,
             }
-            console.log(state.templateParamsGRIT)
           }
           
         return {

@@ -31,19 +31,15 @@ const templateFinal = useSelector((state) => state.templateFinal);
 
 const handleSendIdArray = (a) => {
   props.saveIdArray(a);
-  console.log(a);
   //dispatch({ type: 'SET_COMPLETE', payload: true });
 }
 const handleSetState = (a) => {
   props.setComplete(a);
-  console.log("set complete");
 }
 const handleMergeArrays = () => {
   dispatch({ type: 'MERGE_ARRAYS' });
-  console.log("merging arrays...");
 };
 
-//console.log(sendEmail())
 return (
   <div style={{
     width: "100%",
@@ -61,7 +57,6 @@ return (
                   dpi: '',
                 }}
                 onSubmit={async (values) => {
-                  console.log(values)
                   const regexDPI = /^\d{13}$/;
                   const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|outlook|yahoo|hotmail)\.(com|net|org|edu|info)$/i;
 
@@ -74,7 +69,6 @@ return (
                     handleSetState(false);
                   } 
                   else if (!emailRegex.test(values.correo)) {
-                    console.log("Correo no válido:", values.correo);
                     alert("El correo debe ser válido y tener una de las terminaciones permitidas (gmail, outlook, yahoo o hotmail)");
                     setComplete(false);
                     handleSetState(false);

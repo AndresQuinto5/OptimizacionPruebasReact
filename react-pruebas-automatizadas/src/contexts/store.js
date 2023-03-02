@@ -63,13 +63,11 @@ function reducer(state = initialState, action) {
         complete: action.complete,
       };
     case 'MERGE_ARRAYS':
-        console.log(state.templateFinal);
       return {
         ...state,
         templateFinal: {...state.idArray, ...state.templateParams, ...state.templateParams2, ...state.templateParamsGRIT, ...state.templateParamsCAM},
       };
     case 'SET_BANDERA_TIE':
-      console.log(state.banderaTIE);
       return {
         ...state,
         banderaTIE: action.banderaTIE,
@@ -145,7 +143,6 @@ export function saveTemplateParamsGRIT(templateParamsGRIT) {
 }
 //aqui guardo los datos de la persona que esta utilizando la app
 export function saveIdArray(idArray) {
-    console.log('this is array id', idArray);
     return {
       type: 'SAVE_ID_ARRAY',
       idArray,

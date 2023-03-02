@@ -29,19 +29,15 @@ const QuizCAM = (props) => {
   var templateParamsCAM = quizState.templateParamsCAM;
 
   const handleSendEmail = () => {
-    console.log("params actualizados");
-    console.log(templateParamsCAM)
     props.saveTemplateParamsCAM(quizState.templateParamsCAM);
   };
 
   const handleMergeArrays = () => {
     dispatch({ type: 'MERGE_ARRAYS' });
-    console.log("redux");
   };
 
   const handleBanderaCAM = (x) => {
     props.setBanderaCAM(x);
-    console.log("Cambiando bandera CAM...");
   };
 
   const BarChartResults = [

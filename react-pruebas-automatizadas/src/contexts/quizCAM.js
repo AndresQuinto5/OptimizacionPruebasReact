@@ -43,13 +43,8 @@ const reducerCAM = (state, action) => {
         let currentAnswer = state.currentAnswer;
         let indexPregunta = state.currentQuestionIndex;
         let indexCAM = PreguntaYrespuestas[state.indexValue].indexCAM;
-        console.log('this is the index pregunta',indexPregunta)
-        console.log('this is the index',indexCAM)
-        console.log('this is the currentAnswer',currentAnswer)
         respuesta = PreguntaYrespuestas.find(answer => answer.answer === currentAnswer).value;
-        console.log('this is the respuesta',respuesta)
         state.mapa.set(state.currentQuestionIndex, respuesta);
-        console.log(state.mapa)
         
         const showResults =
         state.currentQuestionIndex === state.questionsCAM.length - 1;
@@ -61,19 +56,13 @@ const reducerCAM = (state, action) => {
         : AnswerList(state.questionsCAM[currentQuestionIndex]);
         
         if (showResults === true){
-            console.log(state.mapa)
             state.mapa.forEach((value, key) => {
-                console.log(value)
-                console.log('this is la llave',key)
                 state.total += value;
             })
-            console.log(state.total)
-            console.log(state.mapa)
 
             state.templateParamsCAM = {
             Acertadas: state.total
             }
-            console.log(state.templateParamsCAM)
         }
         
         return {

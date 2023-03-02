@@ -44,12 +44,10 @@ const QuizGRIT = (props) => {
   
   const handleMergeArrays = () => {
     dispatch({ type: 'MERGE_ARRAYS' });
-    console.log("redux");
   };
 
   const handleBanderaGRIT = (w) => {
     props.setBanderaGRIT(w);
-    console.log("Cambiando bandera GRIT...");
   };
   useEffect(() => {
     if (showResults) {

@@ -127,10 +127,8 @@ const initialStateTIE = {
         let currentAnswer = state.currentAnswer;
         respuesta = PreguntaYrespuestas.find(answer => answer.answer === currentAnswer).value;
         subcomp = PreguntaYrespuestas.find(answer => answer.answer === currentAnswer).subcompetencia;
-        console.log(respuesta, subcomp)
 
           state.mapa.set(state.currentQuestionIndex, {respuesta, description: subcomp});
-          console.log(state.mapa)
           
           const showResults =
           state.currentQuestionIndex === state.questionsTIE.length - 1;
@@ -142,7 +140,6 @@ const initialStateTIE = {
           : AnswerList(state.questionsTIE[currentQuestionIndex]);
           
           if (showResults === true){
-            console.log(state.mapa)
             state.mapa.forEach((value, key) => {
               if (value.description == "IEP"){
                 state.IEP += value.respuesta;
@@ -185,31 +182,11 @@ const initialStateTIE = {
               }
               
             })
-            console.log("Estos son los valores de las subscompetencias");
-            console.log(state.IEP);
-            console.log(state.CEP);
-            console.log(state.MEDFC);
-            console.log(state.TAE);
-            console.log(state.AUTO);
-            console.log(state.IEEO);
-            console.log(state.CEEO);
-            console.log(state.COLAB);
-            console.log(state.FYAAC);
-            console.log(state.RDC);
-            console.log(state.COM);
-            console.log(state.INFLU);
-            console.log(state.LIDER);
 
             state.Autoconciencia = state.IEP + state.CEP;
             state.Autocontrol = state.MEDFC + state.TAE + state.AUTO;
             state.Empatia = state.IEEO + state.CEEO;
             state.HabilidadesSociales = state.COLAB + state.FYAAC + state.RDC + state.COM + state.INFLU + state.LIDER;
-
-            console.log("Estos son los valores de las competencias");
-            console.log(state.Autoconciencia);
-            console.log(state.Autocontrol);
-            console.log(state.Empatia);
-            console.log(state.HabilidadesSociales);
 
             let evalIEP = eval2(state.IEP);
             let evalCEP = eval1(state.CEP);
