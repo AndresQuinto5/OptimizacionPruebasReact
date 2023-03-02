@@ -82,8 +82,6 @@ return (
                     handleMergeArrays();
                     handleSetState(true);
                     navigate('/Temperamento');
-
-                    sendEmail();
                   }
                 }}
               >
