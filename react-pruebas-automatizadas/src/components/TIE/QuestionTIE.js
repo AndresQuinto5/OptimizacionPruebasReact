@@ -5,7 +5,9 @@ import imagen1 from "../../assets/Picture1.png";
 import imagen2 from "../../assets/Picture2.png";
 import imagen3 from "../../assets/Picture3.png";
 import imagen4 from "../../assets/Picture4.png";
-
+/*
+  Este archivo tiene como finalidad mostrar la pregunta actual y el dispatch para la respuesta seleccionada
+*/
 const QuestionTIE = () => {
   const [quizState, dispatch] = useContext(QuizContextTIE);
   const currentQuestion = quizState.questionsTIE[quizState.currentQuestionIndex];

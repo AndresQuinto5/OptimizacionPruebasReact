@@ -12,7 +12,11 @@ import emailjs from '@emailjs/browser';
 import { sendEmail, mergeArrays, ArrayGRIT} from "../../contexts/SendEmail";
 import { Context } from '../../contexts/contextEmail';
 import { Redirect } from 'react-router-dom';
-
+/*
+  Este archivo tiene la finalidad de importar los resultados de los quiz del context de su prueba correspondiente
+  ademas, se encarga de la reporteria de los datos obtenidos en el quiz, como tambien el manejo de las banderas para la barra de progreso una vez finalizado el test
+  al final de este archivo por medio de los handlers se actualiza el store con los datos obtenidos en el quiz
+*/
 const QuizGRIT = (props) => {
   const complete = useSelector((state) => state.complete);
   const [quizState, dispatchGRIT] = useContext(QuizContextGRIT);
@@ -55,15 +59,6 @@ const QuizGRIT = (props) => {
       handleBanderaGRIT(true);
     }
   }, [showResults]);
-  
-
-  if (complete === false) {
-    return (
-      <div>
-        <p>Por favor complete el formulario del componente Home primero.</p>
-      </div>
-    );
-  }
   return (
     
     
@@ -77,7 +72,7 @@ const QuizGRIT = (props) => {
           <div className="results-info">    
 
             <div className="exitoprompt">Sus resultados son:</div>
-              <div className="sanguineo">
+              <div className="GRITSCALE">
                 GRIT: {(quizState.totalGRIT / 10) }
               </div>
               </div>

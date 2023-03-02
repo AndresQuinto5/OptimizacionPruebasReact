@@ -1,3 +1,10 @@
+
+/*
+
+  Archivo que tiene como finalidad almacenar las preguntas y respuestas para el test de inteligencia emocional
+
+*/
+
 const dataTIE = [
   {
   question: "Pienso que merece la pena prestar atención a mis emociones y estados de ánimo.",
@@ -198,7 +205,7 @@ const dataTIE = [
   { answer: "Bastante de acuerdo", value: 2 , subcompetencia: "TAE", competencia: "Autocontrol"},
   { answer: "Totalmente de acuerdo", value: 3 , subcompetencia: "TAE", competencia: "Autocontrol"},
   ],
-  },/*
+  },
   {
   question: "Generalmente cumplo con lo que me propongo.",
   answers: [

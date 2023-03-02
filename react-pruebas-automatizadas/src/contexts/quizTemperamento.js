@@ -3,6 +3,17 @@ import questions from "./dataTemperamento";
 import { AnswerList } from "../helper";
 import { sendEmail } from "./SendEmail";
 
+/*
+
+  Archivo de js, donde se encuentra el contexto de la evaluacion temperamento en el cual manejo los casos de los botones como
+  siguiente pregunta, pregunta anterior, seleccionar respuesta, mostrar resultados, reiniciar evaluacion, etc.
+
+  ademas al final del archivo realizo la actualizacion de datos en mi store.js, en donde almaceno en el navegador los resultados o data necesaria
+  para enviar
+
+  La evaluacion consta de 4 rasgos de personalidad, los totales se dividen en fortalezas para cada rasgo, debilidades para cada rasgo, y un total general
+  este ultimo siendo la suma de ambos.
+*/
 
 const initialState = {
   questions,

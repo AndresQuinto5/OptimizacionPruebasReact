@@ -1,7 +1,17 @@
 import React, { createContext, useReducer, useState } from "react";
 import questionsTIE from "../contexts/dataTIE"
 import { AnswerList } from "../../src/helper";
+/*
 
+  Archivo de js, donde se encuentra el contexto de la evaluacion TIE en el cual manejo los casos de los botones como
+  siguiente pregunta, pregunta anterior, seleccionar respuesta, mostrar resultados, reiniciar evaluacion, etc.
+
+  ademas al final del archivo realizo la actualizacion de datos en mi store.js, en donde almaceno en el navegador los resultados o data necesaria
+  para enviar
+
+  La calificacion de cada competencia se realiza en base a la suma de las respuestas de cada subcompetencia, y 
+  Ademas se realizan cinco casos de evaluacion, evaluaciones para subcompetencias y competencias indicando si para cada caso es bajo, medio o alto
+*/
 const initialStateTIE = {
     questionsTIE,
     currentQuestionIndex: 0,
@@ -10,28 +20,22 @@ const initialStateTIE = {
     showResults: false,
     correctAnswersCount: 0,
     indexValue: 0,
-
-
-    
     //Competencia
     Autoconciencia: 0,
     //subs
     IEP: 0,
     CEP: 0,
-
     //Competencia
     Autocontrol: 0,
     //subs
     MEDFC: 0,
     TAE: 0,
     AUTO: 0,
-
     //Competencia
     Empatia: 0,
     //subs
     IEEO: 0,
     CEEO: 0,
-
     //Competencia
     HabilidadesSociales : 0,
     //subs
@@ -48,9 +52,7 @@ const initialStateTIE = {
     mapa: new Map()
     
   };
-  
-
-
+  //Evaluaciones de cada sub competencia - competencia
   function eval1(a){
     if (a <= 8) {
       return "Bajo"
@@ -123,36 +125,10 @@ const initialStateTIE = {
         let respuesta;
         let subcomp;
         let currentAnswer = state.currentAnswer;
-        
-        switch (currentAnswer) {
-          case "Nada de acuerdo":
-          state.indexValue = 0;
-          respuesta = PreguntaYrespuestas[state.indexValue].value;
-          subcomp = PreguntaYrespuestas[state.indexValue].subcompetencia;
-          console.log(subcomp, respuesta)
-          break;
-          case "Algo de acuerdo":
-          state.indexValue = 1;
-          respuesta = PreguntaYrespuestas[state.indexValue].value;
-          subcomp = PreguntaYrespuestas[state.indexValue].subcompetencia;
-          console.log(subcomp, respuesta)
+        respuesta = PreguntaYrespuestas.find(answer => answer.answer === currentAnswer).value;
+        subcomp = PreguntaYrespuestas.find(answer => answer.answer === currentAnswer).subcompetencia;
+        console.log(respuesta, subcomp)
 
-          break;
-          case "Bastante de acuerdo":
-          state.indexValue = 2;
-          respuesta = PreguntaYrespuestas[state.indexValue].value;
-          subcomp = PreguntaYrespuestas[state.indexValue].subcompetencia;
-          console.log(subcomp, respuesta)
-
-          break;
-          case "Totalmente de acuerdo":
-          state.indexValue = 3;
-          respuesta = PreguntaYrespuestas[state.indexValue].value;
-          subcomp = PreguntaYrespuestas[state.indexValue].subcompetencia;
-          console.log(subcomp, respuesta)
-
-          break;
-          }
           state.mapa.set(state.currentQuestionIndex, {respuesta, description: subcomp});
           console.log(state.mapa)
           
@@ -254,40 +230,40 @@ const initialStateTIE = {
             let evalHabilidadesSociales = eval5(state.HabilidadesSociales);
 
             state.templateParams = {
-              uno: state.IEP,
-              uno_: evalIEP,
-              dos: state.CEP,
-              dos_: evalCEP,
-              tres: state.MEDFC,
-              tres_: evalMEDFC,
-              cuatro: state.TAE,
-              cuatro_: evalTAE,
-              cinco: state.AUTO,
-              cinco_: evalAUTO,
-              seis: state.IEEO,
-              seis_: evalIEEO,
-              siete: state.CEEO,
-              siete_: evalCEEO,
-              ocho: state.COLAB,
-              ocho_: evalCOLAB,
-              nueve: state.FYAAC,
-              nueve_: evalFYAAC,
-              diez: state.RDC,
-              diez_: evalRDC,
-              once: state.COM,
-              once_: evalCOM,
-              doce: state.INFLU,
-              doce_: evalINFLU,
-              trece: state.LIDER,
-              trece_: evalLIDER,
-              catorce: state.Autoconciencia,
-              catorce_: evalAutoconciencia,
-              quince: state.Autocontrol,
-              quince_: evalAutocontrol,
-              dieciseis: state.Empatia,
-              dieciseis_: evalEmpatia,
-              diecisiete: state.HabilidadesSociales,
-              diecisiete_: evalHabilidadesSociales
+              IEP: state.IEP,
+              evalIEP: evalIEP,
+              CEP: state.CEP,
+              evalCEP: evalCEP,
+              MEDFC: state.MEDFC,
+              evalMEDFC: evalMEDFC,
+              TAE: state.TAE,
+              evalTAE: evalTAE,
+              AUTO: state.AUTO,
+              evalAUTO: evalAUTO,
+              IEEO: state.IEEO,
+              evalIEEO: evalIEEO,
+              CEEO: state.CEEO,
+              evalCEEO: evalCEEO,
+              COLAB: state.COLAB,
+              evalCOLAB: evalCOLAB,
+              FYAAC: state.FYAAC,
+              evalFYAAC: evalFYAAC,
+              RDC: state.RDC,
+              evalRDC: evalRDC,
+              COM: state.COM,
+              evalCOM: evalCOM,
+              INFLU: state.INFLU,
+              evalINFLU: evalINFLU,
+              LIDER: state.LIDER,
+              evalLIDER: evalLIDER,
+              Autoconciencia: state.Autoconciencia,
+              evalAutoconciencia: evalAutoconciencia,
+              Autocontrol: state.Autocontrol,
+              evalAutocontrol: evalAutocontrol,
+              Empatia: state.Empatia,
+              evalEmpatia: evalEmpatia,
+              HabilidadesSociales: state.HabilidadesSociales,
+              evalHabilidadesSociales: evalHabilidadesSociales
             }
           }
           

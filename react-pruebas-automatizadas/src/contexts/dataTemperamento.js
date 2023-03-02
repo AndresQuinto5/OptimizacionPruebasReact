@@ -1,4 +1,9 @@
 
+/*
+
+  Archivo que tiene como finalidad almacenar las preguntas y respuestas para el test de temperamento
+
+*/
 const pregunta = "Seleccione la palabra que más lo identifique, si no sabe el significado de alguna palabra, consulte un diccionario antes de contestar. "
 
 const data2 = [

@@ -66,6 +66,12 @@ export function MobileNavLinks(props) {
                 <LinkItem>
                     <Link href="/TIE">TIE</Link>
                 </LinkItem>
+                <LinkItem>
+                    <Link href="/CAM">English test</Link>
+                    </LinkItem>
+                <LinkItem>
+                    <Link href="/GRIT">GRIT test</Link>
+                </LinkItem>
                 <Marginer/>
 
             </LinkWrapper>

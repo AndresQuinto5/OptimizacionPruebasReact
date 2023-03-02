@@ -1,3 +1,6 @@
+/*
+  Archivo que tiene la finalidad de mostrar las respuestas de cada pregunta del test TIE inteligencia emocional
+*/
 const AnswerTIE = ({
     answerText,
     index,

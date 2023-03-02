@@ -6,9 +6,7 @@
   .quiz {
     box-sizing: border-box;
     max-width: 975px;
-    margin: 0 auto;
-    margin-top: 100px;
-    
+    margin: 0 auto;    
   }
   
   .question {

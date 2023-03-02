@@ -1,3 +1,7 @@
+/*
+  Archivo que tiene la finalidad de mostrar las respuestas de cada pregunta del test GRIT
+*/
+
 const AnswerGRIT = ({
     answerText,
     index,

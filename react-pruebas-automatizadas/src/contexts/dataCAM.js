@@ -1,3 +1,8 @@
+/*
+
+  Archivo que tiene como finalidad almacenar las preguntas y respuestas para el test de ingles Cambridge
+
+*/
 
 const dataCAM = [
     {
@@ -7,7 +12,7 @@ const dataCAM = [
     { answer: "It's the same place.", value: 0, indexCAM: 1},
     { answer: "Only for half an hour.", value: 1, indexCAM: 2 },
     ],
-    },/*
+    },
     {
     question: "What colour will you paint the children's bedroom?",
     answers: [

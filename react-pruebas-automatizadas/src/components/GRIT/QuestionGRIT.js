@@ -1,7 +1,9 @@
 import AnswerGRIT from "./AnswerGRIT";
 import { useContext } from "react";
 import { QuizContextGRIT } from "../../contexts/quizGRIT";
-
+/*
+  Este archivo tiene como finalidad mostrar la pregunta actual y el dispatch para la respuesta seleccionada
+*/
 const QuestionGRIT = () => {
   const [quizState, dispatch] = useContext(QuizContextGRIT);
   const currentQuestion = quizState.questionsGRIT[quizState.currentQuestionIndex];

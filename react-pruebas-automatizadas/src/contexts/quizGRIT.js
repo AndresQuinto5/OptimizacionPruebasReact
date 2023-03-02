@@ -2,6 +2,16 @@ import React, { createContext, useReducer, useState } from "react";
 import questionsGRIT from "../contexts/dataGRIT"
 import { AnswerList } from "../../src/helper";
 
+/*
+
+  Archivo de js, donde se encuentra el contexto de la evaluacion GRIT en el cual manejo los casos de los botones como
+  siguiente pregunta, pregunta anterior, seleccionar respuesta, mostrar resultados, reiniciar evaluacion, etc.
+
+  ademas al final del archivo realizo la actualizacion de datos en mi store.js, en donde almaceno en el navegador los resultados o data necesaria
+  para enviar
+
+*/
+
 const initialStateGRIT = {
     questionsGRIT,
     currentQuestionIndex: 0,
@@ -60,10 +70,12 @@ const initialStateGRIT = {
               console.log(state.totalGRIT);
               
             })
-
+            console.log(state.totalGRIT);
+            console.log(state.totalGRIT / 10);
             state.templateParamsGRIT = {
               totalGRIT: state.totalGRIT / 10,
             }
+            console.log(state.templateParamsGRIT)
           }
           
         return {

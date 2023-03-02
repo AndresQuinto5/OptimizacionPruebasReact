@@ -1,3 +1,9 @@
+
+/*
+
+  Archivo que tiene como finalidad almacenar las preguntas y respuestas para el test de escala de GRIT
+
+*/
 const dataGRIT = [
     {
     question: 'Las nuevas ideas y proyectos a veces me distraen de los anteriores.',

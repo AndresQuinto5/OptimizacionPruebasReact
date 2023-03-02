@@ -1,7 +1,9 @@
 import Answer from "./AnswerTEMP";
 import { useContext } from "react";
 import { QuizContext } from "../../contexts/quizTemperamento";
-
+/*
+  Este archivo tiene como finalidad mostrar la pregunta actual y el dispatch para la respuesta seleccionada
+*/
 const Question = () => {
   const [quizState, dispatch] = useContext(QuizContext);
   const currentQuestion = quizState.questions[quizState.currentQuestionIndex];

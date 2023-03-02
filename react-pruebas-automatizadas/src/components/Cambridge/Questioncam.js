@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { QuizContextCAM } from "../../contexts/quizCAM";
 import AnswerCAM from "./AnswerCAM";
-
+/*
+  Este archivo tiene como finalidad mostrar la pregunta actual y el dispatch para la respuesta seleccionada
+*/
 const QuestionCAM = () => {
   const [quizState, dispatch] = useContext(QuizContextCAM);
   const currentQuestion = quizState.questionsCAM[quizState.currentQuestionIndex];

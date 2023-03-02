@@ -10,7 +10,12 @@ import { useNavigate } from 'react-router-dom';
 import { sendEmail } from "../../contexts/SendEmail";
 
 import './home.css'
-
+/*
+  Este archivo tiene el formulario inicial el cual si no es llenado no da acceso a los distintos test
+  el form tiene los datos que seran el encabezado cuando se envien los resultados por email
+  una vez realizado el form por medio de los handlers se actualiza el store con los datos obtenidos en el form
+  y la bandera de que el form fue completado para que se pueda acceder a los disntitos quiz
+*/
 
 function Home(props) {
 const navigate = useNavigate();
@@ -84,7 +89,7 @@ return (
                     handleSetState(true);
                     navigate('/Temperamento');
 
-                    //sendEmail();
+                    sendEmail();
                   }
                 }}
               >

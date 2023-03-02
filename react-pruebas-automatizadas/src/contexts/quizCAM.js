@@ -2,6 +2,16 @@ import React, { createContext, useReducer, useState } from "react";
 import questionsCAM from "../contexts/dataCAM";
 import { AnswerList } from "../../src/helper";
 
+/*
+
+  Archivo de js, donde se encuentra el contexto de la evaluacion Cambridge en el cual manejo los casos de los botones como
+  siguiente pregunta, pregunta anterior, seleccionar respuesta, mostrar resultados, reiniciar evaluacion, etc.
+
+  ademas al final del archivo realizo la actualizacion de datos en mi store.js, en donde almaceno en el navegador los resultados o data necesaria
+  para enviar
+
+*/
+
 const initialStateCAM = {
     questionsCAM,
     currentQuestionIndex: 0,

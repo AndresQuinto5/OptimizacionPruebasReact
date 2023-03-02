@@ -10,7 +10,11 @@ import emailjs from '@emailjs/browser';
 import { sendEmail, mergeArrays, ArrayCAM} from "../../contexts/SendEmail";
 import { Context } from '../../contexts/contextEmail';
 import React, { useEffect, useState } from 'react';
-
+/*
+  Este archivo tiene la finalidad de importar los resultados de los quiz del context de su prueba correspondiente
+  ademas, se encarga de la reporteria de los datos obtenidos en el quiz, como tambien el manejo de las banderas para la barra de progreso una vez finalizado el test
+  al final de este archivo por medio de los handlers se actualiza el store con los datos obtenidos en el quiz
+*/
 const QuizCAM = (props) => {
   const complete = useSelector((state) => state.complete);
   const [quizState, dispatch2] = useContext(QuizContextCAM);

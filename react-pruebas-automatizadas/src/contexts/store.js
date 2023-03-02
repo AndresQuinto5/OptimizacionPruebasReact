@@ -2,8 +2,16 @@ import { createStore } from 'redux';
 import { connect } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistReducer, persistStore } from 'redux-persist';
-
 import storage from 'redux-persist/lib/storage'; // importa el almacenamiento que quieres utilizar
+
+/*
+
+  Este archivo de js, es el encargado de almacenar los datos de los test en un array llamado: arrayFinal
+  cada test, manda sus resultados por medio de un dispatch, el cual se encarga de almacenarlos en el array
+  luego se tiene un caso que es merge arrays, el cual se encarga de unir todos los arrays en uno solo, y este
+  es el que es almacenado y enviado por email
+
+*/
 
 const initialState = {
   idArray: {},

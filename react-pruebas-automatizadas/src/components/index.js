@@ -1,3 +1,7 @@
+/*
+    resoluciones para la navBar
+*/
+
 export const DeviceSize = {
     mobile: 768,
     tablet: 992,

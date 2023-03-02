@@ -3,6 +3,13 @@ import Quiz from "../components/Temperamento/quizTEMP";
 import emailjs from '@emailjs/browser';
 import { store } from './store';
 
+/*
+
+    Este archivo de js, maneja la funcion de send email, la cual se encarga de enviar un email con los resultados
+    de todos los test en un array llamado: arrayFinal
+
+*/
+
 export function sendEmail() {
     const state = store.getState();
     const templateFinal = state.templateFinal;
