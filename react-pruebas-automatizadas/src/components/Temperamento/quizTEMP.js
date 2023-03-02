@@ -10,7 +10,6 @@ import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import emailjs from '@emailjs/browser';
 import { sendEmail, mergeArrays, ArrayTemperamento } from "../../contexts/SendEmail";
-import { Context } from '../../contexts/contextEmail';
 import { Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';

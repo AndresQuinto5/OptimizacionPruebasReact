@@ -11,7 +11,6 @@ import { QuizProvider } from "./contexts/quizTemperamento";
 import TestTIE from './components/pruebas/TIE';
 import TestCAM from './components/pruebas/CAM';
 import TestGRIT from './components/pruebas/GRIT';
-import { MyProvider } from './contexts/contextEmail';
 
 
 function App() {

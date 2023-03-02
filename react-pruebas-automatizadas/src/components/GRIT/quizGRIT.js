@@ -10,7 +10,6 @@ import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import emailjs from '@emailjs/browser';
 import { sendEmail, mergeArrays, ArrayGRIT} from "../../contexts/SendEmail";
-import { Context } from '../../contexts/contextEmail';
 import { Redirect } from 'react-router-dom';
 /*
   Este archivo tiene la finalidad de importar los resultados de los quiz del context de su prueba correspondiente

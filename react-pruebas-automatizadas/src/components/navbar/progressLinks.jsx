@@ -43,15 +43,15 @@ const Link = styled.a`
 `;
 
 export function ProLinks(props) {
-  const banderaTIE = useSelector((state) => state.banderaTIE);
-  const banderaTEMP = useSelector((state) => state.banderaTEMP);
-  const banderaCAM = useSelector((state) => state.banderaCAM);
-  const banderaGRIT = useSelector((state) => state.banderaGRIT);
+    const banderaTIE = useSelector((state) => state.banderaTIE);
+    const banderaTEMP = useSelector((state) => state.banderaTEMP);
+    const banderaCAM = useSelector((state) => state.banderaCAM);
+    const banderaGRIT = useSelector((state) => state.banderaGRIT);
 
-  const imageSrc1 = banderaTEMP ? pngegg : pngegg_empty;
-  const imageSrc2 = banderaTIE ? pngegg : pngegg_empty;
-  const imageSrc3 = banderaCAM ? pngegg : pngegg_empty;
-  const imageSrc4 = banderaGRIT ? pngegg : pngegg_empty;
+    const imageSrc1 = banderaTEMP ? pngegg : pngegg_empty;
+    const imageSrc2 = banderaTIE ? pngegg : pngegg_empty;
+    const imageSrc3 = banderaCAM ? pngegg : pngegg_empty;
+    const imageSrc4 = banderaGRIT ? pngegg : pngegg_empty;
 
     return (
         <NavLinksContainer>

@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "./card";
 import "./StartingPage.css";
 
 import Quiz from '../Temperamento/quizTEMP';

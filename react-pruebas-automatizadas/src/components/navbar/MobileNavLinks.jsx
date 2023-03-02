@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Accessibility } from "./accessibility";
 import { MenuToggle } from "./MenuToggle";
 
 const NavLinksContainer = styled.div`

@@ -8,7 +8,6 @@ import QuestionTIE from "./QuestionTIE";
 import { PieChart, Pie, Sector, Cell, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend, ResponsiveContainer } from "recharts";
 import emailjs from '@emailjs/browser';
 import { sendEmail, mergeArrays, ArrayTIE} from "../../contexts/SendEmail";
-import { Context } from '../../contexts/contextEmail';
 import React, { useEffect, useState } from 'react';
 /*
   Este archivo tiene la finalidad de importar los resultados de los quiz del context de su prueba correspondiente
