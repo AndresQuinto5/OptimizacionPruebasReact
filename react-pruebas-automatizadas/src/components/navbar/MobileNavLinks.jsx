@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { MenuToggle } from "./MenuToggle";
+import { Link } from "react-router-dom";
 
 const NavLinksContainer = styled.div`
     height: 100%;
@@ -37,7 +38,7 @@ const LinkItem = styled.li`
 
 `;
 
-const Link = styled.a`
+const Link2 = styled.a`
     text-decoration: none;
     color: inherit;
     font-size: inherit;
@@ -48,8 +49,18 @@ const Marginer = styled.div`
     height: 7em;
 `;
 
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+`;
+
 export function MobileNavLinks(props) {
     const [isOpen, setIsOpen] = React.useState(false);
+
+    const closeMenu = () => {
+        setIsOpen(false);
+    }
 
     return (
         <NavLinksContainer>
@@ -57,19 +68,19 @@ export function MobileNavLinks(props) {
             {isOpen && ( 
             <LinkWrapper>
                 <LinkItem>
-                    <Link href="/">Home</Link>
+                    <StyledLink  onClick={closeMenu} to="/">Home</StyledLink >
                 </LinkItem>
                 <LinkItem>
-                    <Link href="/Temperamento">Test de Temperamento</Link>
+                    <StyledLink  onClick={closeMenu} to="/Temperamento">Test de Temperamento</StyledLink >
                 </LinkItem>
                 <LinkItem>
-                    <Link href="/TIE">TIE</Link>
+                    <StyledLink  onClick={closeMenu} to="/TIE">TIE</StyledLink >
                 </LinkItem>
                 <LinkItem>
-                    <Link href="/CAM">English test</Link>
+                    <StyledLink  onClick={closeMenu} to="/CAM">English test</StyledLink >
                     </LinkItem>
                 <LinkItem>
-                    <Link href="/GRIT">GRIT test</Link>
+                    <StyledLink  onClick={closeMenu} to="/GRIT">GRIT test</StyledLink >
                 </LinkItem>
                 <Marginer/>
 

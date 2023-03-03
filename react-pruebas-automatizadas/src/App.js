@@ -16,22 +16,23 @@ import TestGRIT from './components/pruebas/GRIT';
 function App() {
   return (
     <BrowserRouter>
-    <div className="App">
-    <div className='navbar'>
-        <Navbar />
-    </div>
-    
-    <ProgressBar />
+      <div className="App">
+        <div className='navbar'>
+          <Navbar />
+        </div>
+        <div className='progressBar'>
+          <ProgressBar />
+        </div>
 
-    </div>
-    <Routes>
-      <Route exact path='/' element={< Home />}></Route>
-      <Route exact path='/Temperamento' element={< TestTemperamento />}></Route>
-      <Route exact path='/TIE' element={< TestTIE />}></Route>
-      <Route exact path='/CAM' element={< TestCAM />}></Route>
-      <Route exact path='/GRIT' element={< TestGRIT />}></Route>
-    </Routes>
-    </BrowserRouter>
+      <Routes>
+        <Route exact path='/' element={< Home />}></Route>
+        <Route exact path='/Temperamento' element={< TestTemperamento />}></Route>
+        <Route exact path='/TIE' element={< TestTIE />}></Route>
+        <Route exact path='/CAM' element={< TestCAM />}></Route>
+        <Route exact path='/GRIT' element={< TestGRIT />}></Route>
+      </Routes>
+      </div>
+      </BrowserRouter>
   );
 }
 

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import home from "../pruebas/home";
 import StartingPage from "../pruebas/StartingPage";
 import { Route } from  "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const NavLinksContainer = styled.div`
@@ -35,30 +36,29 @@ const LinkItem = styled.li`
         border-top: 2px solid #f16a24;
 `;
 
-const Link = styled.a`
-    text-decoration: none;
-    color: inherit;
-    font-size: inherit;
-
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
 `;
 
 export function NavLinks(props) {
     return (
       <LinkWrapper>
         <LinkItem>
-          <Link href="/">Inicio</Link>
+          <StyledLink  to="/">Inicio</StyledLink >
         </LinkItem>
         <LinkItem>
-          <Link href="/Temperamento">Test de Temperamento</Link>
+          <StyledLink  to="/Temperamento">Test de Temperamento</StyledLink >
         </LinkItem>
         <LinkItem>
-          <Link href="/TIE">TIE</Link>
+          <StyledLink  to="/TIE">TIE</StyledLink >
         </LinkItem>
         <LinkItem>
-          <Link href="/CAM">English test</Link>
+          <StyledLink  to="/CAM">English test</StyledLink >
         </LinkItem>
         <LinkItem>
-          <Link href="/GRIT">GRIT test</Link>
+          <StyledLink  to="/GRIT">GRIT test</StyledLink >
         </LinkItem>
       </LinkWrapper>
     );

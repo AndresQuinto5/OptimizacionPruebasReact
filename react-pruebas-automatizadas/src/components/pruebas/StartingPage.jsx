@@ -1,6 +1,5 @@
 import React from "react";
 import "./StartingPage.css";
-
 import Quiz from '../Temperamento/quizTEMP';
 import { QuizProvider } from "../../contexts/quizTemperamento";
 

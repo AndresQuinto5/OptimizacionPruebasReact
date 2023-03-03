@@ -4,7 +4,8 @@ import home from "../pruebas/home";
 import StartingPage from "../pruebas/StartingPage";
 import { Route } from  "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-
+import { useMediaQuery } from "react-responsive";
+import { DeviceSize } from "../index.js"
 import pngegg_empty from "../../assets/pngegg_empty.png";
 import pngegg from "../../assets/pngegg.png";
 
@@ -33,13 +34,24 @@ const LinkItem = styled.li`
     justify-content: center;
     border-top: 2px solid transparent;
     transition: all 220ms ease-in-out;
+
+    @media screen and (max-width: ${DeviceSize.mobile}px) {
+        font-size: 12px;
+        padding: 0 0.5em;
+    }
 `;
 
 const Link = styled.a`
     text-decoration: none;
     color: inherit;
     font-size: inherit;
+`;
 
+const Icon = styled.img`
+    @media screen and (max-width: ${DeviceSize.mobile}px) {
+        width: 16px;
+        height: 16px;
+    }
 `;
 
 export function ProLinks(props) {
@@ -47,6 +59,8 @@ export function ProLinks(props) {
     const banderaTEMP = useSelector((state) => state.banderaTEMP);
     const banderaCAM = useSelector((state) => state.banderaCAM);
     const banderaGRIT = useSelector((state) => state.banderaGRIT);
+
+    const isMobile = useMediaQuery({maxWidth: DeviceSize.mobile });
 
     const imageSrc1 = banderaTEMP ? pngegg : pngegg_empty;
     const imageSrc2 = banderaTIE ? pngegg : pngegg_empty;
@@ -56,34 +70,30 @@ export function ProLinks(props) {
     return (
         <NavLinksContainer>
             <LinkWrapper>
-
                 <LinkItem>
-                    Test de Temperamento
+                    Temperamento
                 </LinkItem>
                 <LinkItem>
-                <img src={imageSrc1}/>
+                    <Icon src={imageSrc1} alt="Temperamento" />
                 </LinkItem>
-
                 <LinkItem>
                     TIE
                 </LinkItem>
                 <LinkItem>
-                <img src={imageSrc2}/>
+                    <Icon src={imageSrc2} alt="TIE" />
                 </LinkItem>
                 <LinkItem>
                     English test
                 </LinkItem>
                 <LinkItem>
-                <img src={imageSrc3}/>
+                    <Icon src={imageSrc3} alt="English test" />
                 </LinkItem>
-
                 <LinkItem>
                     GRIT
                 </LinkItem>
                 <LinkItem>
-                <img src={imageSrc4}/>
+                    <Icon src={imageSrc4} alt="GRIT" />
                 </LinkItem>
-
             </LinkWrapper>
         </NavLinksContainer>
     );

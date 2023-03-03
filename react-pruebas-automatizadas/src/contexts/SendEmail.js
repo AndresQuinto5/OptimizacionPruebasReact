@@ -14,7 +14,7 @@ export function sendEmail() {
     const state = store.getState();
     const templateFinal = state.templateFinal;
 
-    emailjs.send('service_ljon6t8', 'template_bn1bwyl', templateFinal, 'dw7yxB6O6v4NSfxS0')
+    emailjs.send('service_i75e10h', 'template_skh5pei', templateFinal, 'c6LVdGvVPY8iMQmhO')
     .then(function(response) {
         console.log('SUCCESS!', response.status, response.text);
     }, function(error) {

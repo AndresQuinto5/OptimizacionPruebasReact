@@ -8,7 +8,6 @@ import { DeviceSize } from "../index.js"
 import { MobileNavLinks } from "./MobileNavLinks"
 import { EmailIcon } from './SendEmailBtn' 
 
-
 const ProgressBarContainer = styled.div`
     box-sizing: border-box;
     width: 100%;
@@ -18,11 +17,24 @@ const ProgressBarContainer = styled.div`
     background-color: #f5f5f5;
     align-items: center;
     padding: 0 1.5em;
+
+    @media (max-width: 767px) {
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+    }
 `;
 
 const LeftSection = styled.div`
     display: flex;
 
+    @media (max-width: 767px) {
+        width: 100%;
+        justify-content: flex-start;
+        margin-bottom: 1em;
+    }
 `;
 
 const MiddleSection = styled.div`
@@ -31,11 +43,52 @@ const MiddleSection = styled.div`
     height: 100%;
     justify-content: center;
     align-items: center;
-`;
 
+    @media (max-width: 767px) {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1em;
+        flex-wrap: wrap;
+    }
+`;
 
 const RightSection = styled.div`
     display: flex;
+
+    @media (max-width: 767px) {
+        width: 100%;
+        justify-content: center;
+    }
+`;
+
+const LinkWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    margin-right: 1.5em;
+
+    @media (max-width: 767px) {
+        margin-right: 0;
+    }
+`;
+
+const Link = styled.a`
+    display: flex;
+    align-items: center;
+    color: #555;
+    text-decoration: none;
+    margin-right: 1.5em;
+    font-size: 1.1em;
+
+    @media (max-width: 767px) {
+        margin-right: 1em;
+        font-size: 0.9em;
+    }
+`;
+
+const Icon = styled.i`
+    margin-right: 0.5em;
+    color: ${props => props.done ? "#7ac142" : "#ccc"};
 `;
 
 export function ProgressBar(props) {

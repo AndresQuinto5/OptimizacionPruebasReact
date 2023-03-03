@@ -48,7 +48,7 @@ return (
     justifyContent: "center"
   }}>
 <div style={{ padding: "20px", maxWidth: "500px", width: "100%" }}>
-<h3>Contenido de la página principal o definir otra prueba aquí</h3>
+<h3>Antes de realizar las evaluaciones, por favor, llene el formulario.</h3>
 <Formik
                 initialValues={{
                   nombre: '',
@@ -58,7 +58,7 @@ return (
                 }}
                 onSubmit={async (values) => {
                   const regexDPI = /^\d{13}$/;
-                  const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|outlook|yahoo|hotmail)\.(com|net|org|edu|info)$/i;
+                  const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|outlook|yahoo|hotmail|improgress)\.(com|net|org|edu|info)$/i;
 
                   if (values.apellido == "" || values.nombre == "" || values.correo == "" || values.dpi == ""){
                     alert("Tiene que llenar todo el formulario");
@@ -96,7 +96,7 @@ return (
                   <Field id="apellido" name="apellido" />
                   <br></br>
                   <br></br>
-                  <label htmlFor="correo">Correo Clectronico</label>
+                  <label htmlFor="correo">Correo Electrónico</label>
                   <br></br>
                   <Field id="correo" name="correo" />
                   <br></br>
