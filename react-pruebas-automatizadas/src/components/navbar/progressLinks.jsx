@@ -71,28 +71,28 @@ export function ProLinks(props) {
         <NavLinksContainer>
             <LinkWrapper>
                 <LinkItem>
-                    Temperamento
-                </LinkItem>
-                <LinkItem>
-                    <Icon src={imageSrc1} alt="Temperamento" />
-                </LinkItem>
-                <LinkItem>
                     TIE
                 </LinkItem>
                 <LinkItem>
                     <Icon src={imageSrc2} alt="TIE" />
                 </LinkItem>
                 <LinkItem>
-                    English test
+                    Temperamento
                 </LinkItem>
                 <LinkItem>
-                    <Icon src={imageSrc3} alt="English test" />
+                    <Icon src={imageSrc1} alt="Temperamento" />
                 </LinkItem>
+                <LinkItem>
                 <LinkItem>
                     GRIT
                 </LinkItem>
                 <LinkItem>
                     <Icon src={imageSrc4} alt="GRIT" />
+                </LinkItem>
+                    English test
+                </LinkItem>
+                <LinkItem>
+                    <Icon src={imageSrc3} alt="English test" />
                 </LinkItem>
             </LinkWrapper>
         </NavLinksContainer>

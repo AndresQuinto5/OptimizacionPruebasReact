@@ -71,17 +71,17 @@ export function MobileNavLinks(props) {
                     <StyledLink  onClick={closeMenu} to="/">Home</StyledLink >
                 </LinkItem>
                 <LinkItem>
+                    <StyledLink  onClick={closeMenu} to="/TIE">TIE</StyledLink >
+                </LinkItem>
+                <LinkItem>
                     <StyledLink  onClick={closeMenu} to="/Temperamento">Test de Temperamento</StyledLink >
                 </LinkItem>
                 <LinkItem>
-                    <StyledLink  onClick={closeMenu} to="/TIE">TIE</StyledLink >
+                    <StyledLink  onClick={closeMenu} to="/GRIT">GRIT test</StyledLink >
                 </LinkItem>
                 <LinkItem>
                     <StyledLink  onClick={closeMenu} to="/CAM">English test</StyledLink >
                     </LinkItem>
-                <LinkItem>
-                    <StyledLink  onClick={closeMenu} to="/GRIT">GRIT test</StyledLink >
-                </LinkItem>
                 <Marginer/>
 
             </LinkWrapper>

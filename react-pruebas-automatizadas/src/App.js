@@ -26,10 +26,10 @@ function App() {
 
       <Routes>
         <Route exact path='/' element={< Home />}></Route>
-        <Route exact path='/Temperamento' element={< TestTemperamento />}></Route>
         <Route exact path='/TIE' element={< TestTIE />}></Route>
-        <Route exact path='/CAM' element={< TestCAM />}></Route>
+        <Route exact path='/Temperamento' element={< TestTemperamento />}></Route>
         <Route exact path='/GRIT' element={< TestGRIT />}></Route>
+        <Route exact path='/CAM' element={< TestCAM />}></Route>
       </Routes>
       </div>
       </BrowserRouter>

@@ -49,16 +49,16 @@ export function NavLinks(props) {
           <StyledLink  to="/">Inicio</StyledLink >
         </LinkItem>
         <LinkItem>
-          <StyledLink  to="/Temperamento">Test de Temperamento</StyledLink >
-        </LinkItem>
-        <LinkItem>
           <StyledLink  to="/TIE">TIE</StyledLink >
         </LinkItem>
         <LinkItem>
-          <StyledLink  to="/CAM">English test</StyledLink >
+          <StyledLink  to="/Temperamento">Test de Temperamento</StyledLink >
         </LinkItem>
         <LinkItem>
           <StyledLink  to="/GRIT">GRIT test</StyledLink >
+        </LinkItem>
+        <LinkItem>
+          <StyledLink  to="/CAM">English test</StyledLink >
         </LinkItem>
       </LinkWrapper>
     );
